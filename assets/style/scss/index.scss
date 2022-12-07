@@ -109,9 +109,11 @@ header {
 
 .item-board {
     @include widthHeight(100%, 12rem);
+    border-radius: 20px;
     position: relative;
     transition: .3s ease-in-out;
     cursor: pointer;
+    overflow: hidden;
 
     &:hover {
         transform: scale(1.03);
@@ -119,13 +121,12 @@ header {
 
     img {
         @include widthHeight(100%, 100%);
-        border-radius: 22px;
         object-fit: cover;
         z-index: 1;
-        box-shadow: 0 0 10px rgb(0, 0, 0, .5);
+        box-shadow: 0 5px 10px rgb(0, 0, 0, .5);
     }
-
-    div {
+       
+    div{
         @include displayFlex(flex, column, nowrap, center, center, flex-start);
         @include colRowGap(0, 0.1rem);
         position: absolute;
@@ -135,11 +136,11 @@ header {
         z-index: 2;
 
         p {
-            @include fontSizeWeightColor(16px, 600, $whiteColor);
+            @include fontSizeWeightColor(18px, 600, $whiteColor);
             letter-spacing: .03rem;
 
             &:nth-child(2) {
-                @include fontSizeWeightColor(15px, 400, $accentColor);
+                @include fontSizeWeightColor(12px, 400, $whiteColor);
                 opacity: .7;
             }
 
@@ -164,7 +165,6 @@ header {
     }
 
 }
-
 
 // /* ////////////////////////////////////////////////////////////
 // ///////////////////////////////////////////////////////////
@@ -323,7 +323,6 @@ header {
     button {
         @include widthHeight(2.5rem, 2.5rem);
         border-radius: 1000px;
-        box-shadow: 0 0 10px rgb(0 0 0 / 50%);
         background-color: $primaryColor;
         cursor: pointer;
         z-index: 3;
@@ -350,22 +349,22 @@ header {
 
         input[type="range"] {
             -webkit-appearance: none;
-            border-radius: 1000px;
+            @include widthHeight(10rem, .3rem);
             transform: rotate(-90deg);
-            @include widthHeight(10rem, .5rem);
             background: rgba(255, 255, 255, 0.6);
             background-image: linear-gradient($accentColor, $accentColor);
             background-size: 50% 100%;
             background-repeat: no-repeat;
+            border-radius: 1000px;
 
             &::-webkit-slider-thumb {
-                @include widthHeight(.8rem, .8rem);
                 -webkit-appearance: none;
-                border-radius: 50%;
+                @include widthHeight(.8rem, .8rem);
                 background: $accentColorDarker;
-                cursor: n-resize;
-                box-shadow: 0 0 2px 0 rgb(63, 63, 63);
+                box-shadow: 0 5px 10px 0 rgb(0, 0, 0,.5);
                 transition: background .3s ease-in-out;
+                border-radius: 50%;
+                cursor: n-resize;
             }
 
         }
@@ -449,10 +448,9 @@ header {
     @include displayFlex(flex, column, nowrap, flex-start, center, center);
 }
 
-.container-music-1{
+.container-music-1 {
     margin-top: 3.5rem;
 }
-
 
 .header-container-music {
     @include widthHeight(100%, "");
@@ -591,6 +589,85 @@ header {
 // /////////////////////////////////////////////////////////// */
 
 
+.box-download {
+    @include widthHeight(100%, 100%);
+    position: absolute;
+    @include displayFlex(none, row, nowrap, center, center, center);
+    background-color: rgb(20, 22, 46, .95);
+    z-index: 999;
+}
+
+.form-download {
+    @include widthHeight(22rem,auto);
+    box-shadow: 0 5px 25px rgb(0,0,0,.5);
+    background-color: $primaryColorDarker;
+    border-radius: 20px;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        object-fit: cover;
+        animation: anim-form-download .5s 1 both;
+    }
+
+    h3 {
+        width: 100%;
+        @include fontSizeWeightColor(14px, 400, $accentColorDarker);
+        padding: 1.5rem 2rem;
+        line-height: 1.1rem;
+    }
+
+}
+
+.div-btn-download {
+    width: 100%;
+    @include displayFlex(flex, row, nowrap, center, center, center);
+    @include colRowGap(1rem, 0);
+    padding: .5rem 0 2.5rem 0;
+    animation: anim-form-download .3s 1 both;
+
+    button {
+        @include displayFlex(flex, row, nowrap, center, center, center);
+        @include colRowGap(.5rem, 0);
+        @include fontSizeWeightColor(14px, 500, $whiteColor);
+        border: 1px solid $whiteColor;
+        padding: .7rem 2rem;
+        border-radius: 1000px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $accentColor;
+            border-color: $accentColor;
+            color: $primaryColor;
+        }
+
+        &:nth-child(2) {
+            border: 0 transparent;
+            background-color: transparent;
+            padding: .5rem 1rem;
+
+            &:hover {
+                color: $accentColor;
+            }
+        }
+
+        p {
+            padding: 0;
+        }
+    }
+}
+
+@keyframes anim-form-download {
+    from{width: 0%;}
+    to{}
+}
+
+
+// /* ////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////// */
+
+
 footer {
     width: 100%;
     padding: 2rem 0;
@@ -637,9 +714,10 @@ footer {
 
     .container-music {
         padding: 0rem 0rem;
-        margin: 1rem 0; 
+        margin: 1rem 0;
     }
-    .container-music-1{
+
+    .container-music-1 {
         margin-top: 1.5rem;
     }
 
@@ -727,7 +805,7 @@ footer {
         padding-right: 0;
 
         img {
-            @include widthHeight(6.5rem,auto);
+            @include widthHeight(6.5rem, auto);
             border-radius: 20px;
         }
 

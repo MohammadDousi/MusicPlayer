@@ -2,9 +2,9 @@ let songs = [
   {
     id: 1,
     image_cover: "pic1 (3).jpg",
-    name: "La Minor",
-    song: "Kaveh Afagh - La Minor.mp3",
-    singer: "Kaveh Afagh",
+    name: "ha mahdi",
+    song: "ha mahdi.mp3",
+    singer: "Basem Karbalaye",
   },
   {
     id: 2,

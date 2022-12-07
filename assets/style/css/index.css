@@ -523,6 +523,10 @@ header {
   align-items: center;
 }
 
+.container-music-1 {
+  margin-top: 3.5rem;
+}
+
 .header-container-music {
   width: 100%;
   height: "";
@@ -677,14 +681,14 @@ header {
   align-content: center;
   justify-content: center;
   align-items: center;
-  border-radius: 15px;
+  border-radius: 20px;
   background-color: #070818;
   padding-right: 1.5rem;
 }
 .best-item-list-music img {
   width: 25%;
   height: 100%;
-  border-radius: 15px 0 0 15px;
+  border-radius: 20px 0 0 20px;
   object-fit: cover;
 }
 .best-item-list-music div {
@@ -731,12 +735,6 @@ footer p:nth-child(3) {
   margin-top: 0.2rem;
 }
 
-@media (min-width: 992px) and (max-width: 1366px) {
-  .boards {
-    column-gap: 1.5rem;
-    row-gap: 0;
-  }
-}
 @media (min-width: 0px) and (max-width: 420px) {
   .search-header {
     width: 100%;
@@ -747,6 +745,10 @@ footer p:nth-child(3) {
   }
   .container-music {
     padding: 0rem 0rem;
+    margin: 1rem 0;
+  }
+  .container-music-1 {
+    margin-top: 1.5rem;
   }
   .header-container-music span {
     font-size: 1.5rem;
@@ -767,6 +769,78 @@ footer p:nth-child(3) {
   .list-music::-webkit-scrollbar {
     display: none;
     width: 0 !important;
+  }
+  .item-list-music {
+    width: 100%;
+    height: "";
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0;
+    row-gap: 0.5rem;
+  }
+  .item-list-music img {
+    width: 6.5rem;
+  }
+  .item-list-music div {
+    column-gap: 0;
+    row-gap: 0;
+    margin-left: 0;
+  }
+  .item-list-music div i {
+    display: none;
+  }
+  .item-list-music div div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0;
+    row-gap: 0.2rem;
+    margin-left: 0;
+  }
+  .item-list-music div div p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+  }
+  .item-list-music div div p:nth-child(2) {
+    opacity: 0.5;
+    font-weight: 400;
+  }
+  .item-list-music div div p:nth-child(2):hover {
+    text-decoration: underline;
+  }
+  .album-item-list-music {
+    width: auto !important;
+  }
+  .album-item-list-music img {
+    width: 10rem;
+  }
+  .best-list-music {
+    flex-wrap: nowrap !important;
+  }
+  .best-item-list-music {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    padding-right: 0;
+  }
+  .best-item-list-music img {
+    width: 6.5rem;
+    height: auto;
+    border-radius: 20px;
   }
   .playlist-onplay {
     width: 100%;
@@ -795,9 +869,6 @@ footer p:nth-child(3) {
   }
   .btn-item:nth-child(2) {
     display: none;
-  }
-  footer {
-    padding: 0 0;
   }
   footer ul {
     display: inline-flex;

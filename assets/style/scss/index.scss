@@ -449,6 +449,11 @@ header {
     @include displayFlex(flex, column, nowrap, flex-start, center, center);
 }
 
+.container-music-1{
+    margin-top: 3.5rem;
+}
+
+
 .header-container-music {
     @include widthHeight(100%, "");
     @include displayFlex(flex, row, nowrap, space-between, center, center);
@@ -564,13 +569,13 @@ header {
 .best-item-list-music {
     @include widthHeight(32.33% !important, 5rem);
     @include displayFlex(flex, row, nowrap, center, center, center);
-    border-radius: 15px;
+    border-radius: 20px;
     background-color: $primaryColorDarker;
     padding-right: 1.5rem;
 
     img {
         @include widthHeight(25%, 100%);
-        border-radius: 15px 0 0 15px;
+        border-radius: 20px 0 0 20px;
         object-fit: cover;
     }
 
@@ -618,12 +623,6 @@ footer {
 
 }
 
-@include media(M) {
-    .boards {
-        @include colRowGap(1.5rem, 0);
-    }
-}
-
 
 @include media(Mobile) {
 
@@ -638,6 +637,10 @@ footer {
 
     .container-music {
         padding: 0rem 0rem;
+        margin: 1rem 0; 
+    }
+    .container-music-1{
+        margin-top: 1.5rem;
     }
 
     .header-container-music {
@@ -664,6 +667,73 @@ footer {
             width: 0 !important;
         }
     }
+
+    .item-list-music {
+        @include widthHeight(100%, "");
+        @include displayFlex(flex, column, nowrap, center, center, center);
+        @include colRowGap(0, .5rem);
+
+        img {
+            width: 6.5rem;
+        }
+
+        div {
+            @include colRowGap(0, 0);
+            margin-left: 0;
+
+            i {
+                display: none;
+            }
+
+            div {
+                @include displayFlex(flex, column, nowrap, center, center, center);
+                @include colRowGap(0, .2rem);
+                margin-left: 0;
+
+                p {
+                    @include fontSizeWeightColor(14px, 500, $whiteColor);
+
+                    &:nth-child(2) {
+                        opacity: .5;
+                        font-weight: 400;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    .album-item-list-music {
+        width: auto !important;
+
+        img {
+            width: 10rem;
+        }
+    }
+
+    .best-list-music {
+        flex-wrap: nowrap !important;
+    }
+
+    .best-item-list-music {
+        @include widthHeight(auto, auto);
+        @include displayFlex(flex, column, nowrap, center, center, center);
+        background-color: transparent;
+        padding-right: 0;
+
+        img {
+            @include widthHeight(6.5rem,auto);
+            border-radius: 20px;
+        }
+
+    }
+
+
 
     .playlist-onplay {
         @include widthHeight(100%, calc(100% - 4.5rem));
@@ -699,8 +769,8 @@ footer {
         }
     }
 
+
     footer {
-        padding: 0 0;
 
         ul {
             @include displayFlex(inline-flex, row-reverse, wrap, center, center, center);

@@ -25,6 +25,12 @@ $whiteColor :#ffffff;
 }
 
 
+@mixin fontSizeWeightColor($size,$weight,$color) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+
 @mixin media($size) {
 
     @if($size == M) {
@@ -32,5 +38,12 @@ $whiteColor :#ffffff;
             @content;
         }
     }
+
+    @if($size == Mobile) {
+        @media (min-width:0px) and (max-width:420px) {
+            @content;
+        }
+    }
+
 
 }

@@ -23,6 +23,10 @@ body {
     @include colRowGap(0, 0);
     background-color: $primaryColor;
     position: fixed;
+    scrollbar-width: none;
+    overflow: auto;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
 }
 
 // /* ////////////////////////////////////////////////////////////
@@ -69,7 +73,7 @@ header {
     background-color: $primaryColorDarker;
     box-shadow: 0 0 10px rgb(0 0 0 / 50%);
     border-radius: 1000px;
-    padding: 0.8rem 3rem;
+    padding: 1rem 3rem;
     @include displayFlex(flex, row, nowrap, space-between, center, baseline);
     @include colRowGap(1rem, 0);
 
@@ -80,9 +84,7 @@ header {
 
     input {
         @include widthHeight(100%, "");
-        color: $accentColor;
-        font-size: 14px;
-        font-weight: 500;
+        @include fontSizeWeightColor(14px, 500, $accentColor);
         text-align: left;
 
         &::placeholder {
@@ -133,14 +135,11 @@ header {
         z-index: 2;
 
         p {
-            font-weight: 600;
-            font-size: 16px;
-            color: $whiteColor;
+            @include fontSizeWeightColor(16px, 600, $whiteColor);
             letter-spacing: .03rem;
 
             &:nth-child(2) {
-                font-weight: 400;
-                font-size: 12px;
+                @include fontSizeWeightColor(15px, 400, $accentColor);
                 opacity: .7;
             }
 
@@ -204,9 +203,7 @@ header {
 
 .title-2 {
     text-align: left;
-    font-size: 14px;
-    font-weight: 400;
-    color: $whiteColor;
+    @include fontSizeWeightColor(14px, 400, $whiteColor);
     opacity: .4;
 }
 
@@ -242,34 +239,34 @@ header {
 
         div {
             @include displayFlex(flex, column, nowrap, center, center, flex-start);
+
+            p {
+                @include fontSizeWeightColor(12px, 500, $whiteColor);
+                letter-spacing: .01rem;
+
+                &:nth-child(2) {
+                    @include fontSizeWeightColor(12px, 300, $whiteColor);
+                    margin-top: .3rem;
+                    opacity: .5;
+                }
+            }
+
         }
+
     }
-
-    p {
-        font-size: 12px;
-        font-weight: 500;
-        color: $whiteColor;
-
-        &:nth-child(2) {
-            font-weight: 300;
-            opacity: .5;
-            margin-top: .2rem;
-        }
-    }
-
-
 
 }
 
 .btn-item {
     @extend .title-2;
 
-    &:hover{
+    &:hover {
         opacity: 1;
     }
 
     &:nth-child(2) {
         font-size: 22px;
+        margin-left: .5rem
     }
 
 }
@@ -307,14 +304,11 @@ header {
     @include displayFlex(flex, column, nowrap, center, center, flex-start);
 
     p {
-        font-size: 14px;
-        font-weight: 600;
-        color: $whiteColor;
+        @include fontSizeWeightColor(14px, 600, $whiteColor);
         text-align: left;
 
         &:nth-child(2) {
-            font-size: 12px;
-            font-weight: 400;
+            @include fontSizeWeightColor(12px, 400, $whiteColor);
             opacity: .5;
             margin-top: .3rem;
         }
@@ -335,9 +329,9 @@ header {
         z-index: 3;
 
         i {
+            font-size: 14px;
             color: $whiteColor;
             opacity: .5;
-            font-size: 14px;
             transition: .3s ease-in-out;
         }
 
@@ -385,9 +379,7 @@ header {
     margin: 0 2rem;
 
     p {
-        font-size: .9rem;
-        font-weight: 500;
-        color: $whiteColor;
+        @include fontSizeWeightColor(.9rem, 500, $whiteColor);
 
         &:nth-child(3) {
             color: $accentColor;
@@ -451,7 +443,6 @@ header {
 
 
 .container-music {
-    width: 100%;
     @include widthHeight(100%, "");
     margin: 2rem 0;
     padding: 0rem 9rem;
@@ -463,12 +454,10 @@ header {
     @include displayFlex(flex, row, nowrap, space-between, center, center);
 
     span {
-        font-size: 2rem;
-        font-weight: 900;
+        @include fontSizeWeightColor(2rem, 900, $whiteColor);
         text-align: left;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: $whiteColor;
     }
 
     div {
@@ -478,9 +467,7 @@ header {
         button {
             @include displayFlex(flex, row, nowrap, center, center, center);
             @include colRowGap(.7rem, 0);
-            color: $whiteColor;
-            font-size: 12px;
-            font-weight: 600;
+            @include fontSizeWeightColor(12px, 600, $whiteColor);
             border-radius: 1000px;
             border: 1px solid $whiteColor;
             padding: .5rem 1rem;
@@ -548,9 +535,7 @@ header {
             margin-left: 0;
 
             p {
-                font-size: 14px;
-                font-weight: 500;
-                color: $whiteColor;
+                @include fontSizeWeightColor(14px, 500, $whiteColor);
 
                 &:nth-child(2) {
                     opacity: .5;
@@ -596,7 +581,6 @@ header {
 }
 
 
-
 // /* ////////////////////////////////////////////////////////////
 // ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////// */
@@ -609,10 +593,7 @@ footer {
     ul {
         @include displayFlex(inline-flex, row-reverse, nowrap, center, center, center);
         @include colRowGap(1.5rem, 0);
-        letter-spacing: .05px;
-        font-size: 14px;
-        font-weight: 500;
-        color: $whiteColor;
+        @include fontSizeWeightColor(14px, 500, $whiteColor);
 
         li {
             cursor: pointer;
@@ -627,9 +608,7 @@ footer {
     p {
         width: 100%;
         margin-top: 1.5rem;
-        font-weight: 400;
-        font-size: 14px;
-        color: $whiteColor;
+        @include fontSizeWeightColor(14px, 400, $whiteColor);
         opacity: .3;
 
         &:nth-child(3) {
@@ -639,8 +618,106 @@ footer {
 
 }
 
-@include media(M){
-    .boards{
-        @include colRowGap(1.5rem,0);
+@include media(M) {
+    .boards {
+        @include colRowGap(1.5rem, 0);
     }
+}
+
+
+@include media(Mobile) {
+
+    .search-header {
+        width: 100%;
+        padding: 1.2rem 3rem;
+    }
+
+    .boards {
+        width: 98%;
+    }
+
+    .container-music {
+        padding: 0rem 0rem;
+    }
+
+    .header-container-music {
+
+        span {
+            @include fontSizeWeightColor(1.5rem, 900, $whiteColor);
+        }
+
+        div {
+            @include colRowGap(.5rem, 0);
+
+            button {
+                @include colRowGap(.6rem, 0);
+            }
+        }
+
+    }
+
+    .list-music {
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+            width: 0 !important;
+        }
+    }
+
+    .playlist-onplay {
+        @include widthHeight(100%, calc(100% - 4.5rem));
+    }
+
+    .item-playlist-onplay {
+        padding: .8rem 3.5rem;
+
+        img {
+            @include widthHeight(3.5rem, 3.5rem);
+        }
+
+        div {
+            @include colRowGap(1.5rem, 0);
+
+            div {
+                p {
+                    @include fontSizeWeightColor(14px, 500, $whiteColor);
+
+                    &:nth-child(2) {
+                        @include fontSizeWeightColor(12px, 300, $whiteColor);
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    .btn-item {
+        &:nth-child(2) {
+            display: none;
+        }
+    }
+
+    footer {
+        padding: 0 0;
+
+        ul {
+            @include displayFlex(inline-flex, row-reverse, wrap, center, center, center);
+            @include colRowGap(1.5rem, 1.5rem);
+        }
+
+        p {
+            width: 100%;
+            margin-top: 1.5rem;
+            @include fontSizeWeightColor(14px, 400, $whiteColor);
+            opacity: .3;
+
+            &:nth-child(3) {
+                margin-top: .2rem;
+            }
+        }
+
+    }
+
 }

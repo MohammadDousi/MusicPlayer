@@ -28,6 +28,10 @@ body {
   row-gap: 0;
   background-color: #14162E;
   position: fixed;
+  scrollbar-width: none;
+  overflow: auto;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
 }
 
 .content-main {
@@ -79,7 +83,7 @@ header {
   background-color: #070818;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   border-radius: 1000px;
-  padding: 0.8rem 3rem;
+  padding: 1rem 3rem;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -96,9 +100,9 @@ header {
 .search-header input {
   width: 100%;
   height: "";
-  color: #F8AE5E;
   font-size: 14px;
   font-weight: 500;
+  color: #F8AE5E;
   text-align: left;
 }
 .search-header input::placeholder {
@@ -153,14 +157,15 @@ header {
   z-index: 2;
 }
 .item-board div p {
-  font-weight: 600;
   font-size: 16px;
+  font-weight: 600;
   color: #ffffff;
   letter-spacing: 0.03rem;
 }
 .item-board div p:nth-child(2) {
+  font-size: 15px;
   font-weight: 400;
-  font-size: 12px;
+  color: #F8AE5E;
   opacity: 0.7;
 }
 .item-board span {
@@ -284,15 +289,18 @@ header {
   justify-content: center;
   align-items: flex-start;
 }
-.item-playlist-onplay p {
+.item-playlist-onplay div div p {
   font-size: 12px;
   font-weight: 500;
   color: #ffffff;
+  letter-spacing: 0.01rem;
 }
-.item-playlist-onplay p:nth-child(2) {
+.item-playlist-onplay div div p:nth-child(2) {
+  font-size: 12px;
   font-weight: 300;
+  color: #ffffff;
+  margin-top: 0.3rem;
   opacity: 0.5;
-  margin-top: 0.2rem;
 }
 
 .btn-item:hover {
@@ -300,6 +308,7 @@ header {
 }
 .btn-item:nth-child(2) {
   font-size: 22px;
+  margin-left: 0.5rem;
 }
 
 .player {
@@ -347,6 +356,7 @@ header {
 .name-music-onplay p:nth-child(2) {
   font-size: 12px;
   font-weight: 400;
+  color: #ffffff;
   opacity: 0.5;
   margin-top: 0.3rem;
 }
@@ -372,9 +382,9 @@ header {
   z-index: 3;
 }
 .sonund-and-playlist button i {
+  font-size: 14px;
   color: #ffffff;
   opacity: 0.5;
-  font-size: 14px;
   transition: 0.3s ease-in-out;
 }
 .sonund-and-playlist .sound-control-progres {
@@ -502,7 +512,6 @@ header {
 
 .container-music {
   width: 100%;
-  width: 100%;
   height: "";
   margin: 2rem 0;
   padding: 0rem 9rem;
@@ -527,10 +536,10 @@ header {
 .header-container-music span {
   font-size: 2rem;
   font-weight: 900;
+  color: #ffffff;
   text-align: left;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #ffffff;
 }
 .header-container-music div {
   display: flex;
@@ -551,9 +560,9 @@ header {
   align-items: center;
   column-gap: 0.7rem;
   row-gap: 0;
-  color: #ffffff;
   font-size: 12px;
   font-weight: 600;
+  color: #ffffff;
   border-radius: 1000px;
   border: 1px solid #ffffff;
   padding: 0.5rem 1rem;
@@ -700,7 +709,6 @@ footer ul {
   align-items: center;
   column-gap: 1.5rem;
   row-gap: 0;
-  letter-spacing: 0.05px;
   font-size: 14px;
   font-weight: 500;
   color: #ffffff;
@@ -714,8 +722,8 @@ footer ul li:hover {
 footer p {
   width: 100%;
   margin-top: 1.5rem;
-  font-weight: 400;
   font-size: 14px;
+  font-weight: 400;
   color: #ffffff;
   opacity: 0.3;
 }
@@ -727,6 +735,90 @@ footer p:nth-child(3) {
   .boards {
     column-gap: 1.5rem;
     row-gap: 0;
+  }
+}
+@media (min-width: 0px) and (max-width: 420px) {
+  .search-header {
+    width: 100%;
+    padding: 1.2rem 3rem;
+  }
+  .boards {
+    width: 98%;
+  }
+  .container-music {
+    padding: 0rem 0rem;
+  }
+  .header-container-music span {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+  }
+  .header-container-music div {
+    column-gap: 0.5rem;
+    row-gap: 0;
+  }
+  .header-container-music div button {
+    column-gap: 0.6rem;
+    row-gap: 0;
+  }
+  .list-music {
+    overflow: auto;
+  }
+  .list-music::-webkit-scrollbar {
+    display: none;
+    width: 0 !important;
+  }
+  .playlist-onplay {
+    width: 100%;
+    height: calc(100% - 4.5rem);
+  }
+  .item-playlist-onplay {
+    padding: 0.8rem 3.5rem;
+  }
+  .item-playlist-onplay img {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  .item-playlist-onplay div {
+    column-gap: 1.5rem;
+    row-gap: 0;
+  }
+  .item-playlist-onplay div div p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+  }
+  .item-playlist-onplay div div p:nth-child(2) {
+    font-size: 12px;
+    font-weight: 300;
+    color: #ffffff;
+  }
+  .btn-item:nth-child(2) {
+    display: none;
+  }
+  footer {
+    padding: 0 0;
+  }
+  footer ul {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+  }
+  footer p {
+    width: 100%;
+    margin-top: 1.5rem;
+    font-size: 14px;
+    font-weight: 400;
+    color: #ffffff;
+    opacity: 0.3;
+  }
+  footer p:nth-child(3) {
+    margin-top: 0.2rem;
   }
 }
 

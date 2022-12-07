@@ -32,9 +32,6 @@ let songs = [
 let playlist = [];
 
 
-// console.log(screen.width);  
-
-
 const audio = new Audio();
 
 let player = document.querySelector(".player");

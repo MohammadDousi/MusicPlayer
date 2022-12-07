@@ -1,0 +1,646 @@
+@import "font.css";
+@import "mixin";
+
+* {
+    padding: 0;
+    margin: 0;
+    direction: ltr;
+    line-height: normal;
+    box-sizing: border-box;
+    background: transparent;
+    outline: 0;
+    list-style-type: none;
+    border: 0 transparent;
+    text-decoration: none;
+    align-items: center;
+    text-align: center;
+    font-family: Roboto;
+}
+
+body {
+    @include widthHeight(100vw, 100vh);
+    @include displayFlex(flex, column, nowrap, center, center, center);
+    @include colRowGap(0, 0);
+    background-color: $primaryColor;
+    position: fixed;
+}
+
+// /* ////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////// */
+
+.content-main {
+    @include widthHeight(100%, 100%);
+    padding: 0 1.5rem 5rem 1.5rem;
+    @include displayFlex(flex, column, nowrap, flex-start, center, center);
+    @include colRowGap(0, 1rem);
+    scrollbar-width: none;
+    overflow: auto;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    width: .3rem;
+    border-radius: 1000px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $accentColor;
+    border-radius: 1000px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: $primaryColorDarker;
+    border-radius: 1000px;
+}
+
+// /* ////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////// */
+
+header {
+    @include widthHeight(100%, 60px);
+    @include displayFlex(flex, row-reverse, nowrap, space-between, center, flex-start);
+    margin: 1.5rem 0 .5rem 0;
+}
+
+.search-header {
+    background-color: $primaryColorDarker;
+    box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+    border-radius: 1000px;
+    padding: 0.8rem 3rem;
+    @include displayFlex(flex, row, nowrap, space-between, center, baseline);
+    @include colRowGap(1rem, 0);
+
+    i {
+        font-size: 12px;
+        color: $whiteColor;
+    }
+
+    input {
+        @include widthHeight(100%, "");
+        color: $accentColor;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: left;
+
+        &::placeholder {
+            font-weight: 300;
+            color: $whiteColor;
+        }
+    }
+
+}
+
+
+// /* ////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////// */
+
+
+.boards {
+    @include widthHeight(100%, "");
+    @include displayFlex(flex, row, nowrap, center, center, center);
+    @include colRowGap(1rem, 0);
+}
+
+.item-board {
+    @include widthHeight(100%, 12rem);
+    position: relative;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.03);
+    }
+
+    img {
+        @include widthHeight(100%, 100%);
+        border-radius: 22px;
+        object-fit: cover;
+        z-index: 1;
+        box-shadow: 0 0 10px rgb(0, 0, 0, .5);
+    }
+
+    div {
+        @include displayFlex(flex, column, nowrap, center, center, flex-start);
+        @include colRowGap(0, 0.1rem);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 1rem 2rem;
+        z-index: 2;
+
+        p {
+            font-weight: 600;
+            font-size: 16px;
+            color: $whiteColor;
+            letter-spacing: .03rem;
+
+            &:nth-child(2) {
+                font-weight: 400;
+                font-size: 12px;
+                opacity: .7;
+            }
+
+        }
+
+    }
+
+    span {
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        background-image: radial-gradient(#00000000, rgba(7, 8, 24, 0));
+        border-radius: 20px;
+        z-index: 1;
+        transition: .3s all;
+
+        &:hover {
+            background-image: radial-gradient(#00000000, rgba(7, 8, 24, .7));
+        }
+    }
+
+}
+
+
+// /* ////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////// */
+
+
+.playlist-onplay {
+    @include widthHeight(22rem, calc(100% - 4.5rem));
+    @include displayFlex(none, column, nowrap, flex-start, center, center);
+    @include colRowGap(0, 0);
+    background-color: hsla(236, 55%, 6%, 0.9);
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 999;
+    animation: anim-playlist .3s 1;
+}
+
+@keyframes anim-playlist {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.title-onplay {
+    @include widthHeight(100%, "");
+    @include displayFlex(flex, row, nowrap, flex-start, center, baseline);
+    @include colRowGap(.5rem, 0);
+    padding: 1.5rem 1.5rem;
+}
+
+.title-2 {
+    text-align: left;
+    font-size: 14px;
+    font-weight: 400;
+    color: $whiteColor;
+    opacity: .4;
+}
+
+.list-music-onplay {
+    @include widthHeight(100%, 14rem);
+    @include displayFlex(flex, column, nowrap, flex-start, center, flex-start);
+    @include colRowGap(0, .2rem);
+    /* overflow: auto;
+    overflow: -moz-scrollbars-none;
+    scrollbar-width: none;
+    -ms-overflow-style: none; */
+}
+
+.item-playlist-onplay {
+    @include widthHeight(100%, "");
+    @include displayFlex(flex, row, nowrap, space-between, center, center);
+    cursor: pointer;
+    padding: .5rem 1.5rem;
+
+    &:hover {
+        background-color: rgb(248, 174, 94, .15);
+    }
+
+    img {
+        @include widthHeight(2.5rem, 2.5rem);
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    div {
+        @include displayFlex(flex, row, nowrap, center, center, center);
+        @include colRowGap(1rem, 0);
+
+        div {
+            @include displayFlex(flex, column, nowrap, center, center, flex-start);
+        }
+    }
+
+    p {
+        font-size: 12px;
+        font-weight: 500;
+        color: $whiteColor;
+
+        &:nth-child(2) {
+            font-weight: 300;
+            opacity: .5;
+            margin-top: .2rem;
+        }
+    }
+
+
+
+}
+
+.btn-item {
+    @extend .title-2;
+
+    &:hover{
+        opacity: 1;
+    }
+
+    &:nth-child(2) {
+        font-size: 22px;
+    }
+
+}
+
+
+// /* ////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////// */
+
+
+
+.player {
+    @include widthHeight(100%, 4.5rem);
+    padding: 0.5rem 1.5rem;
+    background-color: rgb(7, 8, 24, .9);
+    @include displayFlex(flex, row, nowrap, center, center, center);
+    @include colRowGap(1rem, 0);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    transition: .3s ease-in-out;
+
+    img {
+        height: 3rem;
+        width: 3rem;
+        border-radius: 15px;
+        object-fit: cover;
+    }
+}
+
+.name-music-onplay {
+    min-width: 11%;
+    @include displayFlex(flex, column, nowrap, center, center, flex-start);
+
+    p {
+        font-size: 14px;
+        font-weight: 600;
+        color: $whiteColor;
+        text-align: left;
+
+        &:nth-child(2) {
+            font-size: 12px;
+            font-weight: 400;
+            opacity: .5;
+            margin-top: .3rem;
+        }
+    }
+}
+
+.sonund-and-playlist {
+    @include displayFlex(flex, row, nowrap, center, center, center);
+    @include colRowGap(.5rem, 0);
+    position: relative;
+
+    button {
+        @include widthHeight(2.5rem, 2.5rem);
+        border-radius: 1000px;
+        box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+        background-color: $primaryColor;
+        cursor: pointer;
+        z-index: 3;
+
+        i {
+            color: $whiteColor;
+            opacity: .5;
+            font-size: 14px;
+            transition: .3s ease-in-out;
+        }
+
+    }
+
+    .sound-control-progres {
+        @include widthHeight(2.5rem, 12rem);
+        @include displayFlex(none, column, nowrap, center, center, center);
+        background-color: $primaryColorDarker;
+        border-radius: 1000px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 2;
+        overflow: hidden;
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            border-radius: 1000px;
+            transform: rotate(-90deg);
+            @include widthHeight(10rem, .5rem);
+            background: rgba(255, 255, 255, 0.6);
+            background-image: linear-gradient($accentColor, $accentColor);
+            background-size: 50% 100%;
+            background-repeat: no-repeat;
+
+            &::-webkit-slider-thumb {
+                @include widthHeight(.8rem, .8rem);
+                -webkit-appearance: none;
+                border-radius: 50%;
+                background: $accentColorDarker;
+                cursor: n-resize;
+                box-shadow: 0 0 2px 0 rgb(63, 63, 63);
+                transition: background .3s ease-in-out;
+            }
+
+        }
+    }
+
+}
+
+.time-control {
+    @include displayFlex(flex, row, nowrap, center, center, center);
+    @include colRowGap(2rem, 0);
+    margin: 0 2rem;
+
+    p {
+        font-size: .9rem;
+        font-weight: 500;
+        color: $whiteColor;
+
+        &:nth-child(3) {
+            color: $accentColor;
+            font-weight: 500;
+        }
+    }
+
+}
+
+.control-music-onplay {
+    @include displayFlex(flex, row, nowrap, center, center, center);
+    @include colRowGap(2rem, 0);
+
+    i {
+        cursor: pointer;
+        color: $whiteColor;
+        font-size: 1rem;
+
+        &:nth-child(2) {
+            font-size: 2rem;
+            width: 32px;
+        }
+    }
+
+}
+
+.progrees-time-onplay {
+    @include widthHeight(100%, .4rem);
+    border-radius: 1000px;
+    background-color: $primaryColor;
+    @include displayFlex(flex, row, nowrap, flex-start, center, center);
+    position: relative;
+    cursor: pointer;
+}
+
+.progrees-time-play {
+    @include widthHeight(0%, .4rem);
+    background-color: $accentColor;
+    border-radius: 1000px;
+    z-index: 2;
+    @include displayFlex(flex, row, nowrap, flex-start, center, center);
+    position: absolute;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#badge-time {
+    @include widthHeight(.7rem, .7rem);
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+    background-color: $accentColorDarker;
+    z-index: 3;
+    transition: .3s;
+}
+
+
+// /* ////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////// */
+
+
+.container-music {
+    width: 100%;
+    @include widthHeight(100%, "");
+    margin: 2rem 0;
+    padding: 0rem 9rem;
+    @include displayFlex(flex, column, nowrap, flex-start, center, center);
+}
+
+.header-container-music {
+    @include widthHeight(100%, "");
+    @include displayFlex(flex, row, nowrap, space-between, center, center);
+
+    span {
+        font-size: 2rem;
+        font-weight: 900;
+        text-align: left;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $whiteColor;
+    }
+
+    div {
+        @include displayFlex(flex, row, nowrap, center, center, center);
+        @include colRowGap(.3rem, 0);
+
+        button {
+            @include displayFlex(flex, row, nowrap, center, center, center);
+            @include colRowGap(.7rem, 0);
+            color: $whiteColor;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 1000px;
+            border: 1px solid $whiteColor;
+            padding: .5rem 1rem;
+            cursor: pointer;
+            transition: .3 ease-in-out;
+
+            &:nth-child(1):hover {
+                color: $primaryColorDarker;
+                background-color: $accentColor;
+                border: 1px solid $accentColor;
+            }
+
+            &:nth-child(2) {
+                border: 0 transparent;
+                padding-right: 0;
+
+                &:hover {
+                    color: $accentColor;
+                }
+            }
+        }
+    }
+
+}
+
+.list-music {
+    @include widthHeight(100%, "");
+    @include displayFlex(flex, row, nowrap, flex-start, center, center);
+    @include colRowGap(1rem, 0);
+    padding-top: 1.5rem;
+}
+
+.item-list-music {
+    @include widthHeight(16.66%, "");
+    @include displayFlex(flex, column, nowrap, center, center, center);
+    @include colRowGap(0, 1rem);
+    cursor: pointer;
+
+    img {
+        width: 100%;
+        border-radius: 20px;
+        object-fit: cover;
+    }
+
+    div {
+        width: 100%;
+        @include displayFlex(flex, row, nowrap, flex-start, center, center);
+        @include colRowGap(.5rem, 0);
+        margin-left: 1rem;
+
+        i {
+            font-size: 1.6rem;
+            color: $whiteColor;
+            opacity: .5;
+
+            &:hover {
+                color: $accentColor;
+                opacity: 1;
+            }
+        }
+
+        div {
+            @include displayFlex(flex, column, nowrap, flex-start, center, flex-start);
+            @include colRowGap(0, .2rem);
+            margin-left: 0;
+
+            p {
+                font-size: 14px;
+                font-weight: 500;
+                color: $whiteColor;
+
+                &:nth-child(2) {
+                    opacity: .5;
+                    font-weight: 400;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+        }
+    }
+
+}
+
+.album-item-list-music {
+    width: 25% !important;
+}
+
+.best-list-music {
+    flex-wrap: wrap !important;
+    row-gap: 1rem;
+}
+
+.best-item-list-music {
+    @include widthHeight(32.33% !important, 5rem);
+    @include displayFlex(flex, row, nowrap, center, center, center);
+    border-radius: 15px;
+    background-color: $primaryColorDarker;
+    padding-right: 1.5rem;
+
+    img {
+        @include widthHeight(25%, 100%);
+        border-radius: 15px 0 0 15px;
+        object-fit: cover;
+    }
+
+    div {
+        @include displayFlex(flex, row-reverse, nowrap, space-between, center, center);
+    }
+
+}
+
+
+
+// /* ////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////// */
+
+
+footer {
+    width: 100%;
+    padding: 2rem 0;
+
+    ul {
+        @include displayFlex(inline-flex, row-reverse, nowrap, center, center, center);
+        @include colRowGap(1.5rem, 0);
+        letter-spacing: .05px;
+        font-size: 14px;
+        font-weight: 500;
+        color: $whiteColor;
+
+        li {
+            cursor: pointer;
+
+            &:hover {
+                opacity: .5;
+            }
+        }
+
+    }
+
+    p {
+        width: 100%;
+        margin-top: 1.5rem;
+        font-weight: 400;
+        font-size: 14px;
+        color: $whiteColor;
+        opacity: .3;
+
+        &:nth-child(3) {
+            margin-top: .2rem;
+        }
+    }
+
+}
+
+@include media(M){
+    .boards{
+        @include colRowGap(1.5rem,0);
+    }
+}

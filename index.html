@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/style/css/index.css">
+    <link rel="stylesheet" href="assets/style/css/all.css">
+
+    <title>Music Player</title>
+
+</head>
+
+<body>
+
+    <sidebar class="playlist-onplay">
+
+        <div class="title-onplay">
+            <i class="fa fa-list-check title-2"></i>
+            <p class="title-2">Queue</p>
+        </div>
+
+        <div class="list-music-onplay"></div>
+
+    </sidebar>
+
+    <sidebar class="player">
+
+        <img id="cover-music-onplay" src="assets/file/cover/cover-music (17).jpg">
+
+        <div class="name-music-onplay">
+            <p id="name-music-onplay">OPHELIA</p>
+            <p id="singer-music-onplay">STEVEN PRICE</p>
+        </div>
+
+        <div class="sonund-and-playlist">
+            <div class="sound-control-progres">
+                <input type="range" id="rngVolume" min="0" max="1" step=".01" value=".5" />
+            </div>
+            <button id="btn-sound">
+                <i class="fa fas fa-volume-high"></i>
+            </button>
+            <button id="btn-playlist">
+                <i class="fa fa-list-check"></i>
+            </button>
+        </div>
+
+        <div class="time-control">
+            <p class="time-onplay" id="all-time-music">00:00</p>
+            <div class="control-music-onplay">
+                <!-- <i id="repet-music-onplay" class="fa fa-repeat"></i> -->
+                <i id="prev-music-onplay" class="fa fa-backward-step"></i>
+                <i class="play-music-onplay fa fa-circle-play"></i>
+                <i id="next-music-onplay" class="fa fa-backward-step" style="transform: rotateY(180deg);"></i>
+                <!-- <i id="shuff-music-onplay" class="fa fa-shuffle"></i> -->
+            </div>
+            <p class="time-onplay color-oringe-dark" id="time-play">00:00</p>
+        </div>
+
+        <div class="progrees-time-onplay">
+            <span class="progrees-time-play"></span>
+            <span id="badge-time"></span>
+
+        </div>
+
+    </sidebar>
+
+    <main class="content-main">
+
+        <header>
+
+            <div class="search-header">
+                <i class="fa fa-search"></i>
+                <input type="text" placeholder="Search Music or Singer" autofocus="off" maxlength="30">
+            </div>
+
+        </header>
+
+        <div class="boards"></div>
+
+        <section class="container-music">
+            <div class="header-container-music">
+                <span>Featured</span>
+                <div>
+                    <button><i class="fa fa-play"></i>
+                        <p>Play All</p>
+                    </button>
+                    <button>
+                        <p>See All</p>
+                        <i class="fa fa-angle-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="list-music">
+                <div class="item-list-music">
+                    <img src="assets/file/cover/cover-music (1).jpg" alt="">
+                    <div>
+                        <i class="fa fa-play-circle"></i>
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list-music">
+                    <img src="assets/file/cover/cover-music (2).jpg" alt="">
+                    <div>
+                        <i class="fa fa-play-circle"></i>
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list-music">
+                    <img src="assets/file/cover/cover-music (3).jpg" alt="">
+                    <div>
+                        <i class="fa fa-play-circle"></i>
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list-music">
+                    <img src="assets/file/cover/cover-music (4).jpg" alt="">
+                    <div>
+                        <i class="fa fa-play-circle"></i>
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list-music">
+                    <img src="assets/file/cover/cover-music (5).jpg" alt="">
+                    <div>
+                        <i class="fa fa-play-circle"></i>
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list-music">
+                    <img src="assets/file/cover/cover-music (6).jpg" alt="">
+                    <div>
+                        <i class="fa fa-play-circle"></i>
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-music">
+            <div class="header-container-music">
+                <span>New Albums</span>
+            </div>
+            <div class="list-music">
+                <div class="item-list-music album-item-list-music">
+                    <img src="assets/file/cover/cover-music (25).jpg" alt="">
+                    <div class="album">
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list-music album-item-list-music">
+                    <img src="assets/file/cover/cover-music (26).jpg" alt="">
+                    <div class="album">
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list-music album-item-list-music">
+                    <img src="assets/file/cover/cover-music (27).jpg" alt="">
+                    <div class="album">
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list-music album-item-list-music">
+                    <img src="assets/file/cover/cover-music (42).jpg" alt="">
+                    <div class="album">
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-music">
+            <div class="header-container-music">
+                <span>Best Of Month</span>
+                <div>
+                    <button><i class="fa fa-play"></i>
+                        <p>Play All</p>
+                    </button>
+                    <button>
+                        <p>See All</p>
+                        <i class="fa fa-angle-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="list-music best-list-music">
+
+                <div class="item-list-music best-item-list-music">
+                    <img src="assets/file/cover/cover-music (7).jpg" alt="">
+                    <div>
+                        <i class="fa fa-play-circle"></i>
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list-music best-item-list-music">
+                    <img src="assets/file/cover/cover-music (8).jpg" alt="">
+                    <div>
+                        <i class="fa fa-play-circle"></i>
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list-music best-item-list-music">
+                    <img src="assets/file/cover/cover-music (9).jpg" alt="">
+                    <div>
+                        <i class="fa fa-play-circle"></i>
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list-music best-item-list-music">
+                    <img src="assets/file/cover/cover-music (10).jpg" alt="">
+                    <div>
+                        <i class="fa fa-play-circle"></i>
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list-music best-item-list-music">
+                    <img src="assets/file/cover/cover-music (11).jpg" alt="">
+                    <div>
+                        <i class="fa fa-play-circle"></i>
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list-music best-item-list-music">
+                    <img src="assets/file/cover/cover-music (12).jpg" alt="">
+                    <div>
+                        <i class="fa fa-play-circle"></i>
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list-music best-item-list-music">
+                    <img src="assets/file/cover/cover-music (13).jpg" alt="">
+                    <div>
+                        <i class="fa fa-play-circle"></i>
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list-music best-item-list-music">
+                    <img src="assets/file/cover/cover-music (14).jpg" alt="">
+                    <div>
+                        <i class="fa fa-play-circle"></i>
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-list-music best-item-list-music">
+                    <img src="assets/file/cover/cover-music (17).jpg" alt="">
+                    <div>
+                        <i class="fa fa-play-circle"></i>
+                        <div>
+                            <p>name music</p>
+                            <p>singer music</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer>
+            <ul>
+                <li>Applications</li>
+                <li>Instagram</li>
+                <li>Contact US</li>
+                <li>FAQ & Help</li>
+                <li>Privacy Policy</li>
+                <li>Terms of Service</li>
+                <li>DMCA</li>
+            </ul>
+            <p>© 2022 mrtehran.com All Rights Reserved. Persian Music Service 24/7</p>
+            <p>this webpage is registered in mohammad dousi</p>
+        </footer>
+
+    </main>
+
+</body>
+
+<script src="assets/js/script.js"></script>
+
+</html>

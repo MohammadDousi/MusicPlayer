@@ -1,0 +1,36 @@
+$primaryColor : #14162E;
+$primaryColorDarker : #070818;
+$accentColor : #F8AE5E;
+$accentColorDarker : #D07164;
+$whiteColor :#ffffff;
+
+
+@mixin displayFlex($display, $flexDirection, $flexWrap , $justifyContent, $alignContent, $alignItems) {
+    display: $display;
+    flex-direction: $flexDirection;
+    flex-wrap: $flexWrap;
+    align-content: $alignContent;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+}
+
+@mixin colRowGap($c-gap, $r-gap) {
+    column-gap: $c-gap;
+    row-gap: $r-gap;
+}
+
+@mixin widthHeight($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+
+@mixin media($size) {
+
+    @if($size == M) {
+        @media (min-width:992px) and (max-width:1366px) {
+            @content;
+        }
+    }
+
+}

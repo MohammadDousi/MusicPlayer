@@ -1,6 +1,8 @@
+
+
+
 $primaryColor : #14162E;
 $primaryColorDarker : #070818;
-
 $accentColor : #F8AE5E;
 $accentColorDarker : #D07164;
 $whiteColor :#ffffff;
@@ -74,7 +76,6 @@ $whiteColor :#ffffff;
     }
 }
 
-
 @mixin media($size) {
 
     @if($size ==M) {
@@ -88,6 +89,4 @@ $whiteColor :#ffffff;
             @content;
         }
     }
-
-
 }

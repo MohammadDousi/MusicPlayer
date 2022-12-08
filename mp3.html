@@ -9,63 +9,11 @@
     <link rel="stylesheet" href="assets/style/css/index.css">
     <link rel="stylesheet" href="assets/style/css/all.css">
 
-    <title>Music Player</title>
+    <title>name music</title>
 
 </head>
 
 <body>
-    <!-- plyalist aside -->
-    <sidebar class="playlist-onplay">
-
-        <div class="title-onplay">
-            <i class="fa fa-list-check title-2"></i>
-            <p class="title-2">Queue</p>
-        </div>
-
-        <div class="list-music-onplay"></div>
-
-    </sidebar>
-
-    <!-- player -->
-    <sidebar class="player">
-
-        <img id="cover-music-onplay" src="assets/file/cover/cover-music (17).jpg">
-
-        <div class="name-music-onplay">
-            <p id="name-music-onplay">OPHELIA</p>
-            <p id="singer-music-onplay">STEVEN PRICE</p>
-        </div>
-
-        <div class="sonund-and-playlist">
-            <div class="sound-control-progres">
-                <input type="range" id="rngVolume" min="0" max="1" step=".01" value=".5" />
-            </div>
-            <button id="btn-sound">
-                <i class="fa fas fa-volume-high"></i>
-            </button>
-            <button id="btn-playlist">
-                <i class="fa fa-list-check"></i>
-            </button>
-        </div>
-
-        <div class="time-control">
-            <p class="time-onplay" id="all-time-music">00:00</p>
-            <div class="control-music-onplay">
-                <!-- <i id="repet-music-onplay" class="fa fa-repeat"></i> -->
-                <i id="prev-music-onplay" class="fa fa-backward-step"></i>
-                <i class="play-music-onplay fa fa-circle-play"></i>
-                <i id="next-music-onplay" class="fa fa-backward-step" style="transform: rotateY(180deg);"></i>
-                <!-- <i id="shuff-music-onplay" class="fa fa-shuffle"></i> -->
-            </div>
-            <p class="time-onplay color-oringe-dark" id="time-play">00:00</p>
-        </div>
-
-        <div class="progrees-time-onplay">
-            <span class="progrees-time-play"></span>
-            <span id="badge-time"></span>
-        </div>
-
-    </sidebar>
 
     <main class="content-main">
 
@@ -78,11 +26,58 @@
 
         </header>
 
-        <!-- boards -->
-        <div class="boards"></div>
+        <section class="box-info">
+            <img src="assets/file/cover/cover-music (14).jpg">
+            <div>
+                <div class="date-play-like-box">
+                    <i class="fa fa-calendar"></i>
+                    <p>2022-09-12</p>
+                    <i class="fa fa-play"></i>
+                    <p>422.8K Plays</p>
+                    <i class="fa fa-heart"></i>
+                    <p>577 Likes</p>
+                </div>
+                <div class="name-box">
+                    <p>Name Music</p>
+                    <p>signer music</p>
+                </div>
+                <div class="btn-box">
+                    <button>
+                        <i class="fa fa-play"></i>
+                        <p>Play Now</p>
+                    </button>
+                    <button>
+                        <i class="fa fa-bookmark"></i>
+                        <p>Bookmark</p>
+                    </button>
+                    <button>
+                        <i class="fa fa-heart"></i>
+                        <p>Like</p>
+                    </button>
+                    <button>
+                        <i class="fa fa-download"></i>
+                        <p>Download</p>
+                    </button>
+                    <button>
+                        <i class="fa fa-share"></i>
+                        <p>Share</p>
+                    </button>
+                </div>
 
-        <!-- featured music -->
-        <section class="container-music container-music-1">
+                <div class="track-artist-box">
+                    <p>Track Artists:</p>
+                    <p>Name Singer</p>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+
+        <!-- top related -->
+        <section class="container-music">
             <div class="header-container-music">
                 <span>Featured</span>
                 <div>
@@ -177,64 +172,7 @@
             </div>
         </section>
 
-        <!-- album music -->
-        <section class="container-music">
-            <div class="header-container-music">
-                <span>New Albums</span>
-            </div>
-            <div class="list-music">
-                <div class="item-list-music album-item-list-music">
-                    <div class="cover">
-                        <img src="assets/file/cover/cover-music (42).jpg" alt="">
-                        <span></span>
-                    </div>
-                    <div class="name">
-                        <div>
-                            <p>name music</p>
-                            <p>singer music</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-list-music album-item-list-music">
-                    <div class="cover">
-                        <img src="assets/file/cover/cover-music (25).jpg" alt="">
-                        <span></span>
-                    </div>
-                    <div class="name">
-                        <div>
-                            <p>name music</p>
-                            <p>singer music</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-list-music album-item-list-music">
-                    <div class="cover">
-                        <img src="assets/file/cover/cover-music (26).jpg" alt="">
-                        <span></span>
-                    </div>
-                    <div class="name">
-                        <div>
-                            <p>name music</p>
-                            <p>singer music</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-list-music album-item-list-music">
-                    <div class="cover">
-                        <img src="assets/file/cover/cover-music (27).jpg" alt="">
-                        <span></span>
-                    </div>
-                    <div class="name">
-                        <div>
-                            <p>name music</p>
-                            <p>singer music</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- best music -->
+        <!-- more related -->
         <section class="container-music">
             <div class="header-container-music">
                 <span>Best Of Month</span>

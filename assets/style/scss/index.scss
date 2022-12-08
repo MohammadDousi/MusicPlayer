@@ -201,10 +201,8 @@ header {
         @include colRowGap(.3rem, 0);
 
         button {
-            @include displayFlex(flex, row, nowrap, center, center, center);
-            @include colRowGap(.7rem, 0);
-            @include fontSizeWeightColor(12px, 600, $whiteColor);
             @include btnStyleBorder;
+            @include fontSizeWeightColor(12px, 600, $whiteColor);
 
             &:nth-child(2) {
                 @include btnStyleNonBorder;
@@ -304,7 +302,6 @@ header {
 
         img {
             @include widthHeight(100%, 100%);
-            @include borderRadiusBox;
             object-fit: cover;
         }
 
@@ -639,10 +636,8 @@ header {
     animation: anim-form-download .3s 1 both;
 
     button {
-        @include displayFlex(flex, row, nowrap, center, center, center);
-        @include colRowGap(.5rem, 0);
-        @include fontSizeWeightColor(14px, 500, $whiteColor);
         @include btnStyleBorder;
+        @include fontSizeWeightColor(14px, 500, $whiteColor);
         padding: .5rem 2rem;
 
         &:nth-child(2) {
@@ -702,6 +697,95 @@ footer {
     }
 
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////                                 ////////////////////////////////////
+////////////////////////////        mp3 - box info           ////////////////////////////////////
+////////////////////////////                                 ////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+.box-info {
+    @include widthHeight(calc(100% - 18rem), auto);
+    @include displayFlex(flex, row, nowrap, space-between, center, center);
+    @include colRowGap(2rem, 0);
+    @include borderRadiusBox;
+    background-color: $primaryColorDarker;
+    margin: 2rem 0;
+
+    >img {
+        @include widthHeight(28%, 100%);
+        @include borderRadiusBox;
+        border-end-end-radius: 0px;
+        border-top-right-radius: 0px;
+        object-fit: cover;
+    }
+
+    >div {
+        @include widthHeight(70%, 100%);
+        @include displayFlex(flex, column, nowrap, center, center, flex-start);
+        @include colRowGap(0, 2rem);
+        padding: 0 3.5rem 0 0;
+        overflow: hidden;
+
+        .date-play-like-box,
+        .name-box,
+        .btn-box,
+        .track-artist-box {
+            @include widthHeight(100%, auto);
+            @include colRowGap(.7rem, 0.2rem);
+        }
+    }
+}
+
+.date-play-like-box {
+    @include displayFlex(flex, row, nowrap, flex-end, center, flex-start);
+    @include fontSizeWeightColor(12px, 400, $whiteColor);
+    opacity: .5;
+}
+
+.name-box {
+    @include displayFlex(flex, column, nowrap, flex-start, center, flex-start);
+
+    >p {
+        @include fontSizeWeightColor(26px, 600, $whiteColor);
+
+        &:nth-child(2) {
+            @include fontSizeWeightColor(18px, 400, $whiteColor);
+            opacity: .5;
+        }
+    }
+}
+
+.btn-box {
+    @include displayFlex(flex, row, nowrap, flex-start, center, center);
+
+    button {
+        @include btnStyleBorder;
+        @include fontSizeWeightColor(12px, 500, $whiteColor);
+    }
+}
+
+.track-artist-box {
+    @include displayFlex(flex, row, nowrap, flex-start, center, center);
+    column-gap: .3rem !important;
+    p {
+        @include fontSizeWeightColor(12px, 500, $whiteColor);
+        opacity: .5;
+
+        &:nth-child(2) {
+            opacity: 1;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////

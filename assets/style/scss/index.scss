@@ -109,11 +109,12 @@ header {
 
 .item-board {
     @include widthHeight(100%, 12rem);
-    border-radius: 20px;
+    @include borderRadiusBox;
     position: relative;
     transition: .3s ease-in-out;
     cursor: pointer;
     overflow: hidden;
+
 
     &:hover {
         transform: scale(1.03);
@@ -122,11 +123,12 @@ header {
     img {
         @include widthHeight(100%, 100%);
         object-fit: cover;
-        z-index: 1;
+        // z-index: 1;
         box-shadow: 0 5px 10px rgb(0, 0, 0, .5);
     }
-       
-    div{
+
+
+    div {
         @include displayFlex(flex, column, nowrap, center, center, flex-start);
         @include colRowGap(0, 0.1rem);
         position: absolute;
@@ -149,19 +151,7 @@ header {
     }
 
     span {
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        position: absolute;
-        background-image: radial-gradient(#00000000, rgba(7, 8, 24, 0));
-        border-radius: 20px;
-        z-index: 1;
-        transition: .3s all;
-
-        &:hover {
-            background-image: radial-gradient(#00000000, rgba(7, 8, 24, .7));
-        }
+        @include hoverImg;
     }
 
 }
@@ -361,7 +351,7 @@ header {
                 -webkit-appearance: none;
                 @include widthHeight(.8rem, .8rem);
                 background: $accentColorDarker;
-                box-shadow: 0 5px 10px 0 rgb(0, 0, 0,.5);
+                box-shadow: 0 5px 10px 0 rgb(0, 0, 0, .5);
                 transition: background .3s ease-in-out;
                 border-radius: 50%;
                 cursor: n-resize;
@@ -445,7 +435,7 @@ header {
     @include widthHeight(100%, "");
     margin: 2rem 0;
     padding: 0rem 9rem;
-    @include displayFlex(flex, column, nowrap, flex-start, center, center);
+    @include displayFlex(flex, column, nowrap, flex-start, center, flex-start);
 }
 
 .container-music-1 {
@@ -471,25 +461,10 @@ header {
             @include displayFlex(flex, row, nowrap, center, center, center);
             @include colRowGap(.7rem, 0);
             @include fontSizeWeightColor(12px, 600, $whiteColor);
-            border-radius: 1000px;
-            border: 1px solid $whiteColor;
-            padding: .5rem 1rem;
-            cursor: pointer;
-            transition: .3 ease-in-out;
-
-            &:nth-child(1):hover {
-                color: $primaryColorDarker;
-                background-color: $accentColor;
-                border: 1px solid $accentColor;
-            }
+            @include btnStyleBorder;
 
             &:nth-child(2) {
-                border: 0 transparent;
-                padding-right: 0;
-
-                &:hover {
-                    color: $accentColor;
-                }
+                @include btnStyleNonBorder;
             }
         }
     }
@@ -508,18 +483,26 @@ header {
     @include displayFlex(flex, column, nowrap, center, center, center);
     @include colRowGap(0, 1rem);
     cursor: pointer;
+    overflow: hidden;
 
-    img {
-        width: 100%;
-        border-radius: 20px;
-        object-fit: cover;
+    .cover {
+        img {
+            width: 100%;
+            @include borderRadiusBox;
+            object-fit: cover;
+        }
+        span {
+            @include hoverImg;
+        }
     }
+   
 
     div {
         width: 100%;
         @include displayFlex(flex, row, nowrap, flex-start, center, center);
         @include colRowGap(.5rem, 0);
-        margin-left: 1rem;
+        position: relative;
+        overflow: hidden;
 
         i {
             font-size: 1.6rem;
@@ -535,7 +518,7 @@ header {
         div {
             @include displayFlex(flex, column, nowrap, flex-start, center, flex-start);
             @include colRowGap(0, .2rem);
-            margin-left: 0;
+            padding-left: .5rem;
 
             p {
                 @include fontSizeWeightColor(14px, 500, $whiteColor);
@@ -567,16 +550,24 @@ header {
 .best-item-list-music {
     @include widthHeight(32.33% !important, 5rem);
     @include displayFlex(flex, row, nowrap, center, center, center);
-    border-radius: 20px;
+    @include borderRadiusBox;
     background-color: $primaryColorDarker;
     padding-right: 1.5rem;
 
-    img {
-        @include widthHeight(25%, 100%);
-        border-radius: 20px 0 0 20px;
-        object-fit: cover;
-    }
+    .cover {
+        @include widthHeight(35%, 100%);
+        margin-right: 1rem;
 
+        img {
+            @include widthHeight(100%,100%);
+            @include borderRadiusBox;
+            object-fit: cover;
+        }
+        span {
+            @include hoverImg;
+        }
+    }
+   
     div {
         @include displayFlex(flex, row-reverse, nowrap, space-between, center, center);
     }
@@ -598,10 +589,10 @@ header {
 }
 
 .form-download {
-    @include widthHeight(22rem,auto);
-    box-shadow: 0 5px 25px rgb(0,0,0,.5);
+    @include widthHeight(22rem, auto);
+    box-shadow: 0 5px 25px rgb(0, 0, 0, .5);
     background-color: $primaryColorDarker;
-    border-radius: 20px;
+    @include borderRadiusBox;
     overflow: hidden;
 
     img {
@@ -612,7 +603,7 @@ header {
 
     h3 {
         width: 100%;
-        @include fontSizeWeightColor(14px, 400, $accentColorDarker);
+        @include fontSizeWeightColor(14px, 400, $whiteColor);
         padding: 1.5rem 2rem;
         line-height: 1.1rem;
     }
@@ -630,25 +621,11 @@ header {
         @include displayFlex(flex, row, nowrap, center, center, center);
         @include colRowGap(.5rem, 0);
         @include fontSizeWeightColor(14px, 500, $whiteColor);
-        border: 1px solid $whiteColor;
-        padding: .7rem 2rem;
-        border-radius: 1000px;
-        cursor: pointer;
-
-        &:hover {
-            background-color: $accentColor;
-            border-color: $accentColor;
-            color: $primaryColor;
-        }
+        @include btnStyleBorder;
+        padding: .5rem 2rem;
 
         &:nth-child(2) {
-            border: 0 transparent;
-            background-color: transparent;
-            padding: .5rem 1rem;
-
-            &:hover {
-                color: $accentColor;
-            }
+            @include btnStyleNonBorder;
         }
 
         p {
@@ -658,8 +635,11 @@ header {
 }
 
 @keyframes anim-form-download {
-    from{width: 0%;}
-    to{}
+    from {
+        width: 0%;
+    }
+
+    to {}
 }
 
 
@@ -806,12 +786,10 @@ footer {
 
         img {
             @include widthHeight(6.5rem, auto);
-            border-radius: 20px;
+            @include borderRadiusBox;
         }
 
     }
-
-
 
     .playlist-onplay {
         @include widthHeight(100%, calc(100% - 4.5rem));
@@ -846,7 +824,6 @@ footer {
             display: none;
         }
     }
-
 
     footer {
 

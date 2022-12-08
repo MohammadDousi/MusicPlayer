@@ -14,7 +14,6 @@ $whiteColor :#ffffff;
     justify-content: $justifyContent;
     align-items: $alignItems;
 }
-
 @mixin colRowGap($c-gap, $r-gap) {
     column-gap: $c-gap;
     row-gap: $r-gap;
@@ -25,22 +24,66 @@ $whiteColor :#ffffff;
     height: $height;
 }
 
-
-@mixin fontSizeWeightColor($size,$weight,$color) {
+@mixin fontSizeWeightColor($size, $weight, $color) {
     font-size: $size;
     font-weight: $weight;
     color: $color;
 }
 
+@mixin hoverImg {
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    background-image: radial-gradient(#00000000, rgba(7, 8, 24, 0));
+    z-index: 1;
+    transition: all .3s ease-in-out;
+    @include borderRadiusBox ;
+
+    &:hover {
+        background-image: radial-gradient(#00000000, rgba(7, 8, 24, .7));
+    }
+}
+
+@mixin borderRadiusBox {
+    border-radius: 20px;
+}
+
+@mixin btnStyleBorder {
+    padding: .6rem 1rem;
+    border: 1px solid $whiteColor;
+    border-radius: 1000px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+
+    &:hover{
+        color: $primaryColorDarker;
+        background-color: $accentColor;
+        border: 1px solid $accentColor;
+    }
+}
+
+@mixin btnStyleNonBorder {
+    background-color: transparent;
+    border: 0 transparent;
+    padding-right: 0;
+
+    &:hover {
+        color: $accentColor;
+    }
+}
+
+
 @mixin media($size) {
 
-    @if($size == M) {
+    @if($size ==M) {
         @media (min-width:992px) and (max-width:1366px) {
             @content;
         }
     }
 
-    @if($size == Mobile) {
+    @if($size ==Mobile) {
         @media (min-width:0px) and (max-width:420px) {
             @content;
         }

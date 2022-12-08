@@ -139,7 +139,6 @@ header {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 .item-board div {
@@ -176,9 +175,9 @@ header {
   bottom: 0;
   position: absolute;
   background-image: radial-gradient(rgba(0, 0, 0, 0), rgba(7, 8, 24, 0));
-  border-radius: 20px;
   z-index: 1;
-  transition: 0.3s all;
+  transition: all 0.3s ease-in-out;
+  border-radius: 20px;
 }
 .item-board span:hover {
   background-image: radial-gradient(rgba(0, 0, 0, 0), rgba(7, 8, 24, 0.7));
@@ -520,7 +519,7 @@ header {
   flex-wrap: nowrap;
   align-content: center;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .container-music-1 {
@@ -567,18 +566,19 @@ header {
   font-size: 12px;
   font-weight: 600;
   color: #ffffff;
-  border-radius: 1000px;
+  padding: 0.6rem 1rem;
   border: 1px solid #ffffff;
-  padding: 0.5rem 1rem;
+  border-radius: 1000px;
   cursor: pointer;
-  transition: 0.3 ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
-.header-container-music div button:nth-child(1):hover {
+.header-container-music div button:hover {
   color: #070818;
   background-color: #F8AE5E;
   border: 1px solid #F8AE5E;
 }
 .header-container-music div button:nth-child(2) {
+  background-color: transparent;
   border: 0 transparent;
   padding-right: 0;
 }
@@ -612,11 +612,26 @@ header {
   column-gap: 0;
   row-gap: 1rem;
   cursor: pointer;
+  overflow: hidden;
 }
-.item-list-music img {
+.item-list-music .cover img {
   width: 100%;
   border-radius: 20px;
   object-fit: cover;
+}
+.item-list-music .cover span {
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  background-image: radial-gradient(rgba(0, 0, 0, 0), rgba(7, 8, 24, 0));
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+  border-radius: 20px;
+}
+.item-list-music .cover span:hover {
+  background-image: radial-gradient(rgba(0, 0, 0, 0), rgba(7, 8, 24, 0.7));
 }
 .item-list-music div {
   width: 100%;
@@ -628,7 +643,8 @@ header {
   align-items: center;
   column-gap: 0.5rem;
   row-gap: 0;
-  margin-left: 1rem;
+  position: relative;
+  overflow: hidden;
 }
 .item-list-music div i {
   font-size: 1.6rem;
@@ -648,7 +664,7 @@ header {
   align-items: flex-start;
   column-gap: 0;
   row-gap: 0.2rem;
-  margin-left: 0;
+  padding-left: 0.5rem;
 }
 .item-list-music div div p {
   font-size: 14px;
@@ -685,11 +701,30 @@ header {
   background-color: #070818;
   padding-right: 1.5rem;
 }
-.best-item-list-music img {
-  width: 25%;
+.best-item-list-music .cover {
+  width: 35%;
   height: 100%;
-  border-radius: 20px 0 0 20px;
+  margin-right: 1rem;
+}
+.best-item-list-music .cover img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
   object-fit: cover;
+}
+.best-item-list-music .cover span {
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  background-image: radial-gradient(rgba(0, 0, 0, 0), rgba(7, 8, 24, 0));
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+  border-radius: 20px;
+}
+.best-item-list-music .cover span:hover {
+  background-image: radial-gradient(rgba(0, 0, 0, 0), rgba(7, 8, 24, 0.7));
 }
 .best-item-list-music div {
   display: flex;
@@ -731,7 +766,7 @@ header {
   width: 100%;
   font-size: 14px;
   font-weight: 400;
-  color: #D07164;
+  color: #ffffff;
   padding: 1.5rem 2rem;
   line-height: 1.1rem;
 }
@@ -761,20 +796,22 @@ header {
   font-size: 14px;
   font-weight: 500;
   color: #ffffff;
+  padding: 0.6rem 1rem;
   border: 1px solid #ffffff;
-  padding: 0.7rem 2rem;
   border-radius: 1000px;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  padding: 0.5rem 2rem;
 }
 .div-btn-download button:hover {
+  color: #070818;
   background-color: #F8AE5E;
-  border-color: #F8AE5E;
-  color: #14162E;
+  border: 1px solid #F8AE5E;
 }
 .div-btn-download button:nth-child(2) {
-  border: 0 transparent;
   background-color: transparent;
-  padding: 0.5rem 1rem;
+  border: 0 transparent;
+  padding-right: 0;
 }
 .div-btn-download button:nth-child(2):hover {
   color: #F8AE5E;

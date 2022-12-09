@@ -397,17 +397,6 @@ function fun_clearToListItem() {
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-let boxDownload = document.querySelector(".box-download");
-let btn = document.getElementById("btn");
-btn.addEventListener("click", () => {
-  boxDownload.style.display = "flex";
-})
-boxDownload.addEventListener("click",() => {
-  boxDownload.style.display = "none";
-})
-
-
-
 
 
 

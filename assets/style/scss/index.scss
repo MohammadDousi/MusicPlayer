@@ -266,12 +266,15 @@ header {
                 @include fontSizeWeightColor(14px, 500, $whiteColor);
 
                 &:nth-child(2) {
-                    opacity: .5;
-                    font-weight: 400;
-
                     &:hover {
                         text-decoration: underline;
                     }
+                }
+
+                a {
+                    @include fontSizeWeightColor(14px, 400, $whiteColor);
+                    opacity: .5;
+                    font-weight: 400;
                 }
             }
 
@@ -771,6 +774,7 @@ footer {
 .track-artist-box {
     @include displayFlex(flex, row, nowrap, flex-start, center, center);
     column-gap: .3rem !important;
+
     p {
         @include fontSizeWeightColor(12px, 500, $whiteColor);
         opacity: .5;
@@ -784,6 +788,42 @@ footer {
             }
         }
     }
+}
+
+.lyrics-details {
+    @include widthHeight(calc(100% - 18rem), auto);
+    @include displayFlex(flex, column, nowrap, flex-start, center, center);
+
+    .btn-details {
+        @include widthHeight(100%, auto);
+        @include displayFlex(flex, column, nowrap, center, center, center);
+        @include colRowGap(0, .5rem);
+        @include fontSizeWeightColor(14px, 500, $whiteColor);
+        cursor: pointer;
+
+        &:hover {
+            color: $accentColor;
+        }
+
+        i {
+            transform: rotate(90deg);
+            writing-mode: vertical-rl;
+        }
+    }
+
+    .body-details {
+        @include widthHeight(100%, 0);
+        @include fontSizeWeightColor(14px, 400, $whiteColor);
+        overflow: hidden;
+        transition: all .3s ease;
+
+        p {
+            opacity: .8;
+            line-height: 1.8rem;
+        }
+    }
+
+
 }
 
 

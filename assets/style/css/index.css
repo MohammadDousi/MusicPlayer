@@ -346,12 +346,15 @@ header {
   font-weight: 500;
   color: #ffffff;
 }
-.item-list-music div div p:nth-child(2) {
-  opacity: 0.5;
-  font-weight: 400;
-}
 .item-list-music div div p:nth-child(2):hover {
   text-decoration: underline;
+}
+.item-list-music div div p a {
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffffff;
+  opacity: 0.5;
+  font-weight: 400;
 }
 
 .album-item-list-music {
@@ -995,6 +998,53 @@ footer p:nth-child(3) {
 }
 .track-artist-box p:nth-child(2):hover {
   text-decoration: underline;
+}
+
+.lyrics-details {
+  width: calc(100% - 18rem);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+.lyrics-details .btn-details {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0;
+  row-gap: 0.5rem;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  cursor: pointer;
+}
+.lyrics-details .btn-details:hover {
+  color: #F8AE5E;
+}
+.lyrics-details .btn-details i {
+  transform: rotate(90deg);
+  writing-mode: vertical-rl;
+}
+.lyrics-details .body-details {
+  width: 100%;
+  height: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffffff;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.lyrics-details .body-details p {
+  opacity: 0.8;
+  line-height: 1.8rem;
 }
 
 @media (min-width: 0px) and (max-width: 420px) {

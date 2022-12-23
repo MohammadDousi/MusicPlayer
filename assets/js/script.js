@@ -1,3 +1,5 @@
+
+
 let songs = [
   {
     id: 1,
@@ -388,4 +390,15 @@ function fun_clearToListItem() {
     });
   });
 }
+
+
+
+// fetch("mp3.html")
+// .then(response => {
+//   return response.text()
+// })
+// .then(data => {
+//   document.getElementById("incloud-mp3").innerHTML = data;
+// });
+
 

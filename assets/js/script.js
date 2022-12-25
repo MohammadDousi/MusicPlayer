@@ -1,5 +1,38 @@
 
 
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////                                 ////////////////////////////////////
+////////////////////////////         include player          ////////////////////////////////////
+////////////////////////////                                 ////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+fetch("./player.html")
+.then (response => {return response.text()})
+.then(data =>{
+  document.getElementById("includ-player").innerHTML = data ;
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 let songs = [
   {
     id: 1,
@@ -33,10 +66,10 @@ let songs = [
 
 let playlist = [];
 
-
 const audio = new Audio();
 
 let player = document.querySelector(".player");
+let btn_playlist = document.getElementById("btn-playlist");
 let playlist_onplay = document.querySelector(".playlist-onplay");
 let columns = document.getElementsByClassName("vertical"),
   audioInteval,
@@ -215,7 +248,7 @@ function setProgress(e) {
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-let btn_playlist = document.getElementById("btn-playlist");
+
 btn_playlist.addEventListener("click", (e) => {
   playlist_onplay.style.display == "none"
     ? (playlist_onplay.style.display = "flex")
@@ -285,7 +318,7 @@ for (let i = 0; i < songIndex; i++) {
   const id = `${songs[i].id}`;
   div.id = id;
 
-  let sample = `<img src="assets/file/cover/${songs[i].image_cover}" alt="img ${songs[i].image_cover}"> 
+  let sample = `<img src="assets/file/cover/${songs[i].image_cover}" alt="img ${songs[i].image_cover}">
                   <div>
                     <p>${songs[i].name}</p>
                     <p>Track by ${songs[i].singer}</p>
@@ -390,15 +423,5 @@ function fun_clearToListItem() {
     });
   });
 }
-
-
-
-// fetch("mp3.html")
-// .then(response => {
-//   return response.text()
-// })
-// .then(data => {
-//   document.getElementById("incloud-mp3").innerHTML = data;
-// });
 
 

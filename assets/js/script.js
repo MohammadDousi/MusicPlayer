@@ -2,33 +2,69 @@
 
 
 
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////                                 ////////////////////////////////////
-////////////////////////////         include player          ////////////////////////////////////
-////////////////////////////                                 ////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 fetch("./player.html")
-.then (response => {return response.text()})
-.then(data =>{
-  document.getElementById("includ-player").innerHTML = data ;
+.then((response) => {
+  return response.text();
 })
+.then((data) => {
+  document.getElementById("include-player").innerHTML = data;
+});
 
 
+// const player_page = `<!-- plyalist aside -->
+// <sidebar class="playlist-onplay">
 
+//     <div class="title-onplay">
+//         <i class="fa fa-list-check title-2"></i>
+//         <p class="title-2">Queue</p>
+//     </div>
 
+//     <div class="list-music-onplay"></div>
 
+// </sidebar>
 
+// <!-- player -->
+// <sidebar class="player">
 
+//     <img id="cover-music-onplay" src="assets/file/cover/cover-music (17).jpg" alt="">
 
+//     <div class="name-music-onplay">
+//         <p id="name-music-onplay">OPHELIA</p>
+//         <p id="singer-music-onplay">STEVEN PRICE</p>
+//     </div>
 
+//     <div class="sonund-and-playlist">
+//         <div class="sound-control-progres">
+//             <input type="range" id="rngVolume" min="0" max="1" step=".01" value=".5"/>
+//         </div>
+//         <button id="btn-sound">
+//             <i class="fa fas fa-volume-high"></i>
+//         </button>
+//         <button id="btn-playlist">
+//             <i class="fa fa-list-check"></i>
+//         </button>
+//     </div>
 
+//     <div class="time-control">
+//         <p class="time-onplay" id="all-time-music">00:00</p>
+//         <div class="control-music-onplay">
+//             <!-- <i id="repet-music-onplay" class="fa fa-repeat"></i> -->
+//             <i id="prev-music-onplay" class="fa fa-backward-step"></i>
+//             <i class="play-music-onplay fa fa-circle-play"></i>
+//             <i id="next-music-onplay" class="fa fa-backward-step" style="transform: rotateY(180deg);"></i>
+//             <!-- <i id="shuff-music-onplay" class="fa fa-shuffle"></i> -->
+//         </div>
+//         <p class="time-onplay color-oringe-dark" id="time-play">00:00</p>
+//     </div>
 
+//     <div class="progrees-time-onplay">
+//         <span class="progrees-time-play"></span>
+//         <span id="badge-time"></span>
+//     </div>
+
+// </sidebar>`;
+
+// document.getElementById("include-player").innerHTML = player_page;
 
 
 
@@ -96,10 +132,10 @@ let prev = document.getElementById("prev-music-onplay");
 let next = document.getElementById("next-music-onplay");
 let play_pause = document.querySelectorAll(".play-music-onplay");
 
-progress_body.addEventListener("click", setProgress);
-prev.addEventListener("click", prevSong);
-next.addEventListener("click", nextSong);
-audio.addEventListener("ended", nextSong);
+progress_body?.addEventListener("click", setProgress);
+prev?.addEventListener("click", prevSong);
+next?.addEventListener("click", nextSong);
+audio?.addEventListener("ended", nextSong);
 
 // let repet = document.getElementById("repet-music-onplay"), switch_repet;
 // repet.addEventListener('click', repetSong);
@@ -248,8 +284,7 @@ function setProgress(e) {
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-btn_playlist.addEventListener("click", (e) => {
+btn_playlist?.addEventListener("click", (e) => {
   playlist_onplay.style.display == "none"
     ? (playlist_onplay.style.display = "flex")
     : (playlist_onplay.style.display = "none");
@@ -259,18 +294,18 @@ let btn_volume = document.getElementById("btn-sound");
 let btnVolumeIcon = document.querySelector("#btn-sound i");
 let volumeControl = document.querySelector(".sound-control-progres");
 
-btn_volume.addEventListener("mouseover", () => {
+btn_volume?.addEventListener("mouseover", () => {
   volumeControl.style.display = "flex";
   btn_volume.style.zIndex = "1";
 });
 
-volumeControl.addEventListener("mouseleave", () => {
+volumeControl?.addEventListener("mouseleave", () => {
   volumeControl.style.display = "none";
   btn_volume.style.zIndex = "3";
 });
 
 let inputRangeVolume = document.querySelector('input[type="range"]');
-inputRangeVolume.addEventListener("input", (e) => {
+inputRangeVolume?.addEventListener("input", (e) => {
   let target = e.target;
   if (e.target.type !== "range") {
     target = document.getElementById("rngVolume");
@@ -423,5 +458,6 @@ function fun_clearToListItem() {
     });
   });
 }
+
 
 

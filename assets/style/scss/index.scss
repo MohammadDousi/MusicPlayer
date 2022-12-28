@@ -49,8 +49,16 @@ body {
 }
 
 
-#include-header {
+#include-header,
+#include-footer,
+#include-main,
+#include-mp3 {
     width: 100%;
+}
+
+#include-mp3 {
+    @include displayFlex(flex, column, nowrap, flex-start, center, center);
+    display: none;
 }
 
 
@@ -109,6 +117,16 @@ header {
 
 }
 
+
+@include media(Mobile) {
+
+    .search-header {
+        width: 100%;
+        padding: 1.2rem 3rem;
+    }
+
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////                                 ////////////////////////////////////
@@ -118,18 +136,23 @@ header {
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 .boards {
-    @include widthHeight(100%, "");
-    @include displayFlex(flex, row, nowrap, center, center, center);
-    @include colRowGap(1rem, 0);
+    @include widthHeight(auto, 14rem);
+    @include displayFlex(flex, row, nowrap, flex-start, center, center);
+    @include colRowGap(1.2rem, 0);
+    overflow: auto;
+
+    // &::-webkit-scrollbar {
+    //     display: none;
+    //     width: 0 !important;
+    // }
 }
 
 .item-board {
-    @include widthHeight(100%, 12rem);
+    @include widthHeight(100%, 100%);
     @include borderRadiusBox;
-    position: relative;
     transition: .3s ease-in-out;
+    position: relative;
     cursor: pointer;
-    overflow: hidden;
 
 
     &:hover {
@@ -137,12 +160,12 @@ header {
     }
 
     img {
-        @include widthHeight(100%, 100%);
+        @include widthHeight("", 100%);
         object-fit: cover;
         // z-index: 1;
         box-shadow: 0 5px 10px rgb(0, 0, 0, .5);
+        @include borderRadiusBox;
     }
-
 
     div {
         @include displayFlex(flex, column, nowrap, center, center, flex-start);
@@ -171,6 +194,8 @@ header {
     }
 
 }
+
+@include media(Mobile) {}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -233,19 +258,21 @@ header {
     overflow: hidden;
 
     .cover {
+        position: relative;
+
         img {
             width: 100%;
             @include borderRadiusBox;
             object-fit: cover;
         }
 
-        span {
+        >span {
             @include hoverImg;
         }
     }
 
 
-    div {
+    .name {
         width: 100%;
         @include displayFlex(flex, row, nowrap, flex-start, center, center);
         @include colRowGap(.5rem, 0);
@@ -321,6 +348,109 @@ header {
 
     div {
         @include displayFlex(flex, row-reverse, nowrap, space-between, center, center);
+    }
+
+}
+
+
+@include media(Mobile) {
+
+    .container-music {
+        padding: 0rem 0rem;
+        margin: 3rem 0;
+    }
+
+    .container-music-1 {
+        margin-top: 3rem;
+    }
+
+    .header-container-music {
+
+        span {
+            @include fontSizeWeightColor(1.5rem, 900, $whiteColor);
+        }
+
+        div {
+            @include colRowGap(.2rem, 0);
+
+            button {
+                @include colRowGap(.3rem, 0);
+                padding: 0.6rem 0.8rem;
+            }
+        }
+
+    }
+
+    .list-music {
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+            width: 0 !important;
+        }
+    }
+
+    .item-list-music {
+        @include widthHeight(100%, "");
+        @include displayFlex(flex, column, nowrap, center, center, center);
+        @include colRowGap(0, .5rem);
+        overflow: visible;
+
+        .cover {
+            width: 6.5rem;
+        }
+
+        .name {
+            @include colRowGap(0, 0);
+            margin-left: 0;
+
+            i {
+                display: none;
+            }
+
+            div {
+                @include displayFlex(flex, column, nowrap, center, center, center);
+                @include colRowGap(0, .2rem);
+                margin-left: 0;
+
+                p {
+                    @include fontSizeWeightColor(14px, 500, $whiteColor);
+
+                    &:nth-child(2) {
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    .album-item-list-music {
+        width: auto !important;
+
+        img {
+            width: 10rem;
+        }
+    }
+
+    .best-list-music {
+        flex-wrap: nowrap !important;
+    }
+
+    .best-item-list-music {
+        @include widthHeight(auto, auto);
+        @include displayFlex(flex, column, nowrap, center, center, center);
+        background-color: transparent;
+        padding-right: 0;
+
+        img {
+            @include widthHeight(6.5rem, auto);
+            @include borderRadiusBox;
+        }
+
     }
 
 }
@@ -433,6 +563,43 @@ header {
 
 }
 
+@include media(Mobile) {
+
+    .playlist-onplay {
+        @include widthHeight(100%, calc(100% - 9.5rem));
+    }
+
+    .item-playlist-onplay {
+        padding: .8rem 3.5rem;
+
+        img {
+            @include widthHeight(3.5rem, 3.5rem);
+        }
+
+        div {
+            @include colRowGap(1.5rem, 0);
+
+            div {
+                p {
+                    @include fontSizeWeightColor(14px, 500, $whiteColor);
+
+                    &:nth-child(2) {
+                        @include fontSizeWeightColor(12px, 300, $whiteColor);
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    .btn-item {
+        &:nth-child(2) {
+            display: none;
+        }
+    }
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////                                 ////////////////////////////////////
@@ -454,85 +621,101 @@ header {
     bottom: 0;
     z-index: 999;
     transition: .3s ease-in-out;
-
-    img {
-        height: 3rem;
-        width: 3rem;
-        border-radius: 15px;
-        object-fit: cover;
-    }
 }
 
-.name-music-onplay {
-    min-width: 11%;
-    @include displayFlex(flex, column, nowrap, center, center, flex-start);
+.pic-name {
+    width: 45%;
+    @include displayFlex(flex, row, nowrap, space-between, center, center);
 
-    p {
-        @include fontSizeWeightColor(14px, 600, $whiteColor);
-        text-align: left;
 
-        &:nth-child(2) {
-            @include fontSizeWeightColor(12px, 400, $whiteColor);
-            opacity: .5;
-            margin-top: .3rem;
+    div {
+        @include displayFlex(flex, row, nowrap, center, center, center);
+
+        img {
+            height: 3rem;
+            width: 3rem;
+            border-radius: 15px;
+            object-fit: cover;
         }
-    }
-}
 
-.sonund-and-playlist {
-    @include displayFlex(flex, row, nowrap, center, center, center);
-    @include colRowGap(.5rem, 0);
-    position: relative;
+        .name-music-onplay {
+            min-width: 12%;
+            @include displayFlex(flex, column, nowrap, center, center, flex-start);
+            margin: 0 1rem 0 1rem;
 
-    button {
-        @include widthHeight(2.5rem, 2.5rem);
-        border-radius: 1000px;
-        background-color: $primaryColor;
-        cursor: pointer;
-        z-index: 3;
+            p {
+                @include fontSizeWeightColor(14px, 600, $whiteColor);
+                text-align: left;
 
-        i {
-            font-size: 14px;
-            color: $whiteColor;
-            opacity: .5;
-            transition: .3s ease-in-out;
+                &:nth-child(2) {
+                    @include fontSizeWeightColor(12px, 400, $whiteColor);
+                    opacity: .5;
+                    margin-top: .3rem;
+                }
+            }
         }
 
     }
 
-    .sound-control-progres {
-        @include widthHeight(2.5rem, 12rem);
-        @include displayFlex(none, column, nowrap, center, center, center);
-        background-color: $primaryColorDarker;
-        border-radius: 1000px;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        z-index: 2;
-        overflow: hidden;
 
-        input[type="range"] {
-            -webkit-appearance: none;
-            @include widthHeight(10rem, .3rem);
-            transform: rotate(-90deg);
-            background: rgba(255, 255, 255, 0.6);
-            background-image: linear-gradient($accentColor, $accentColor);
-            background-size: 50% 100%;
-            background-repeat: no-repeat;
+
+    .sonund-and-playlist {
+        @include displayFlex(flex, row, nowrap, center, center, center);
+        @include colRowGap(.5rem, 0);
+        position: relative;
+
+        button {
+            @include widthHeight(2.5rem, 2.5rem);
             border-radius: 1000px;
+            background-color: $primaryColor;
+            cursor: pointer;
+            z-index: 3;
 
-            &::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                @include widthHeight(.8rem, .8rem);
-                background: $accentColorDarker;
-                box-shadow: 0 5px 10px 0 rgb(0, 0, 0, .5);
-                transition: background .3s ease-in-out;
-                border-radius: 50%;
-                cursor: n-resize;
+            i {
+                font-size: 14px;
+                color: $whiteColor;
+                opacity: .5;
+                transition: .3s ease-in-out;
             }
 
         }
+
+        .sound-control-progres {
+            @include widthHeight(2.5rem, 12rem);
+            @include displayFlex(none, column, nowrap, center, center, center);
+            background-color: $primaryColorDarker;
+            border-radius: 1000px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: 2;
+            overflow: hidden;
+
+            input[type="range"] {
+                -webkit-appearance: none;
+                @include widthHeight(10rem, .3rem);
+                transform: rotate(-90deg);
+                background: rgba(255, 255, 255, 0.6);
+                background-image: linear-gradient($accentColor, $accentColor);
+                background-size: 50% 100%;
+                background-repeat: no-repeat;
+                border-radius: 1000px;
+
+                &::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    @include widthHeight(.8rem, .8rem);
+                    background: $accentColorDarker;
+                    box-shadow: 0 5px 10px 0 rgb(0, 0, 0, .5);
+                    transition: background .3s ease-in-out;
+                    border-radius: 50%;
+                    cursor: n-resize;
+                }
+
+            }
+        }
+
     }
+
 
 }
 
@@ -550,23 +733,22 @@ header {
         }
     }
 
-}
+    .control-music-onplay {
+        @include displayFlex(flex, row, nowrap, center, center, center);
+        @include colRowGap(2rem, 0);
 
-.control-music-onplay {
-    @include displayFlex(flex, row, nowrap, center, center, center);
-    @include colRowGap(2rem, 0);
+        i {
+            cursor: pointer;
+            color: $whiteColor;
+            font-size: 1rem;
 
-    i {
-        cursor: pointer;
-        color: $whiteColor;
-        font-size: 1rem;
-
-        &:nth-child(2) {
-            font-size: 2rem;
-            width: 32px;
+            &:nth-child(2) {
+                font-size: 2rem;
+                width: 32px;
+            }
         }
-    }
 
+    }
 }
 
 .progrees-time-onplay {
@@ -576,27 +758,40 @@ header {
     @include displayFlex(flex, row, nowrap, flex-start, center, center);
     position: relative;
     cursor: pointer;
+
+    .progrees-time-play {
+        @include widthHeight(0%, .4rem);
+        background-color: $accentColor;
+        border-radius: 1000px;
+        z-index: 2;
+        @include displayFlex(flex, row, nowrap, flex-start, center, center);
+        position: absolute;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+    #badge-time {
+        @include widthHeight(.7rem, .7rem);
+        border-radius: 50%;
+        position: absolute;
+        cursor: pointer;
+        background-color: $accentColorDarker;
+        z-index: 3;
+        transition: .3s;
+    }
 }
 
-.progrees-time-play {
-    @include widthHeight(0%, .4rem);
-    background-color: $accentColor;
-    border-radius: 1000px;
-    z-index: 2;
-    @include displayFlex(flex, row, nowrap, flex-start, center, center);
-    position: absolute;
-    cursor: pointer;
-    transition: .3s;
-}
+@include media(Mobile) {
 
-#badge-time {
-    @include widthHeight(.7rem, .7rem);
-    border-radius: 50%;
-    position: absolute;
-    cursor: pointer;
-    background-color: $accentColorDarker;
-    z-index: 3;
-    transition: .3s;
+    .player {
+        @include widthHeight(100%, 9.5rem);
+        @include displayFlex(flex, column, nowrap, center, center, center);
+        @include colRowGap(0, 1rem);
+    }
+
+    .pic-name {
+        width: 100%;
+    }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -634,7 +829,7 @@ header {
         padding: 1.5rem 2rem;
         line-height: 1.1rem;
     }
-    
+
 }
 
 .div-btn-download {
@@ -660,6 +855,7 @@ header {
 }
 
 @keyframes anim-form-download {
+
     from {
         width: 0%;
     }
@@ -705,6 +901,34 @@ footer {
         }
     }
 
+}
+
+@include media(Mobile) {
+
+    footer {
+        padding: 0 0 6.5rem 0;
+
+        ul {
+            @include displayFlex(inline-flex, row-reverse, wrap, center, center, center);
+            @include colRowGap(1.5rem, 1.5rem);
+            font-size: 12px;
+        }
+
+        p {
+            width: 100%;
+            margin-top: 1.5rem;
+            @include fontSizeWeightColor(14px, 400, $whiteColor);
+            opacity: .3;
+            font-size: 12px;
+
+            &:nth-child(3) {
+                margin-top: .2rem;
+            }
+        }
+
+
+
+    }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -840,169 +1064,3 @@ footer {
 ////////////////////////////                                 ////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
-
-@include media(Mobile) {
-
-    .search-header {
-        width: 100%;
-        padding: 1.2rem 3rem;
-    }
-
-    .boards {
-        width: 98%;
-    }
-
-    .container-music {
-        padding: 0rem 0rem;
-        margin: 1rem 0;
-    }
-
-    .container-music-1 {
-        margin-top: 1.5rem;
-    }
-
-    .header-container-music {
-
-        span {
-            @include fontSizeWeightColor(1.5rem, 900, $whiteColor);
-        }
-
-        div {
-            @include colRowGap(.5rem, 0);
-
-            button {
-                @include colRowGap(.6rem, 0);
-            }
-        }
-
-    }
-
-    .list-music {
-        overflow: auto;
-
-        &::-webkit-scrollbar {
-            display: none;
-            width: 0 !important;
-        }
-    }
-
-    .item-list-music {
-        @include widthHeight(100%, "");
-        @include displayFlex(flex, column, nowrap, center, center, center);
-        @include colRowGap(0, .5rem);
-
-        img {
-            width: 6.5rem;
-        }
-
-        div {
-            @include colRowGap(0, 0);
-            margin-left: 0;
-
-            i {
-                display: none;
-            }
-
-            div {
-                @include displayFlex(flex, column, nowrap, center, center, center);
-                @include colRowGap(0, .2rem);
-                margin-left: 0;
-
-                p {
-                    @include fontSizeWeightColor(14px, 500, $whiteColor);
-
-                    &:nth-child(2) {
-                        opacity: .5;
-                        font-weight: 400;
-
-                        &:hover {
-                            text-decoration: underline;
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-
-    .album-item-list-music {
-        width: auto !important;
-
-        img {
-            width: 10rem;
-        }
-    }
-
-    .best-list-music {
-        flex-wrap: nowrap !important;
-    }
-
-    .best-item-list-music {
-        @include widthHeight(auto, auto);
-        @include displayFlex(flex, column, nowrap, center, center, center);
-        background-color: transparent;
-        padding-right: 0;
-
-        img {
-            @include widthHeight(6.5rem, auto);
-            @include borderRadiusBox;
-        }
-
-    }
-
-    .playlist-onplay {
-        @include widthHeight(100%, calc(100% - 4.5rem));
-    }
-
-    .item-playlist-onplay {
-        padding: .8rem 3.5rem;
-
-        img {
-            @include widthHeight(3.5rem, 3.5rem);
-        }
-
-        div {
-            @include colRowGap(1.5rem, 0);
-
-            div {
-                p {
-                    @include fontSizeWeightColor(14px, 500, $whiteColor);
-
-                    &:nth-child(2) {
-                        @include fontSizeWeightColor(12px, 300, $whiteColor);
-                    }
-                }
-            }
-
-        }
-
-    }
-
-    .btn-item {
-        &:nth-child(2) {
-            display: none;
-        }
-    }
-
-    footer {
-
-        ul {
-            @include displayFlex(inline-flex, row-reverse, wrap, center, center, center);
-            @include colRowGap(1.5rem, 1.5rem);
-        }
-
-        p {
-            width: 100%;
-            margin-top: 1.5rem;
-            @include fontSizeWeightColor(14px, 400, $whiteColor);
-            opacity: .3;
-
-            &:nth-child(3) {
-                margin-top: .2rem;
-            }
-        }
-
-    }
-
-}

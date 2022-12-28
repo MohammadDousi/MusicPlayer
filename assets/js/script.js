@@ -1,68 +1,53 @@
-
-
-
+let include_main = document.getElementById("include-main");
+let include_mp3 = document.getElementById("include-mp3");
 
 async function load_header() {
-
   let myPromise = new Promise(function (resolve) {
-
     let load = new XMLHttpRequest();
     load.open("GET", "header.html");
 
     load.onload = function () {
-
       if (load.status == 200) {
         resolve(load.response);
       } else {
         resolve("File not Found");
       }
-
     };
 
     load.send();
-      
   });
   document.getElementById("include-header").innerHTML = await myPromise;
 }
 
 async function load_footer() {
-
   let myPromise = new Promise(function (resolve) {
-
     let load = new XMLHttpRequest();
     load.open("GET", "footer.html");
 
     load.onload = function () {
-
       if (load.status == 200) {
         resolve(load.response);
       } else {
         resolve("File not Found");
       }
-
     };
 
     load.send();
-      
   });
   document.getElementById("include-footer").innerHTML = await myPromise;
 }
 
 async function load_player() {
-
   let myPromise = new Promise(function (resolve) {
-
-    let load= new XMLHttpRequest();
+    let load = new XMLHttpRequest();
     load.open("GET", "player.html");
 
     load.onload = function () {
-
       if (load.status == 200) {
         resolve(load.response);
       } else {
         resolve("File not Found");
       }
-
     };
     load.send();
   });
@@ -72,50 +57,41 @@ async function load_player() {
 }
 
 async function load_main() {
-
   let myPromise = new Promise(function (resolve) {
-
-    let load= new XMLHttpRequest();
+    let load = new XMLHttpRequest();
     load.open("GET", "main.html");
 
     load.onload = function () {
-
       if (load.status == 200) {
         resolve(load.response);
       } else {
         resolve("File not Found");
       }
-
     };
     load.send();
   });
-  document.getElementById("include-main").innerHTML = await myPromise;
 
+  include_main.innerHTML = await myPromise;
 }
 
 async function load_mp3() {
-
   let myPromise = new Promise(function (resolve) {
-
-    let load= new XMLHttpRequest();
+    let load = new XMLHttpRequest();
     load.open("GET", "mp3.html");
 
     load.onload = function () {
-
       if (load.status == 200) {
         resolve(load.response);
       } else {
         resolve("File not Found");
       }
-
     };
     load.send();
   });
-  document.getElementById("include-mp3").innerHTML = await myPromise;
+  include_mp3.innerHTML = await myPromise;
 
+  await runMp3JS();
 }
-
-
 
 load_header();
 load_footer();
@@ -123,12 +99,7 @@ load_main();
 load_mp3();
 load_player();
 
-
-
-
-
 function all() {
-
   let songs = [
     {
       id: 1,
@@ -153,6 +124,33 @@ function all() {
     },
     {
       id: 4,
+      image_cover: "pic1 (2).jpg",
+      name: "Rose",
+      song: "Masih - Rose.mp3",
+      singer: "Masih",
+    },{
+      id: 5,
+      image_cover: "pic1 (3).jpg",
+      name: "ha mahdi",
+      song: "ha mahdi.mp3",
+      singer: "Basem Karbalaye",
+    },
+    {
+      id: 6,
+      image_cover: "pic1 (4).jpg",
+      name: "Bi Gonah",
+      song: "Alireza Ghorbani - Bi Gonah.mp3",
+      singer: "Alireza Ghorbani",
+    },
+    {
+      id: 7,
+      image_cover: "pic1 (1).jpg",
+      name: "Barzakhe Asheghi",
+      song: "Hamed Homayoun - Barzakhe Asheghi.mp3",
+      singer: "Hamed Homayoun",
+    },
+    {
+      id: 8,
       image_cover: "pic1 (2).jpg",
       name: "Rose",
       song: "Masih - Rose.mp3",
@@ -339,16 +337,10 @@ function all() {
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////                                 ////////////////////////////////////
-  ////////////////////////////             playlist            ////////////////////////////////////
+  ////////////////////////////       control volume            ////////////////////////////////////
   ////////////////////////////                                 ////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
-
-  btn_playlist?.addEventListener("click", (e) => {
-    playlist_onplay.style.display == "none"
-      ? (playlist_onplay.style.display = "flex")
-      : (playlist_onplay.style.display = "none");
-  });
 
   let btn_volume = document.getElementById("btn-sound");
   let btnVolumeIcon = document.querySelector("#btn-sound i");
@@ -393,16 +385,10 @@ function all() {
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////                                 ////////////////////////////////////
-  ////////////////////////////             item board          ////////////////////////////////////
+  ////////////////////////////       board - item board        ////////////////////////////////////
   ////////////////////////////                                 ////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
-
-  let list_music_onplay = document.querySelector(".list-music-onplay"),
-    item_playlist,
-    item_playlist_div,
-    btn_play,
-    clearToListItem;
 
   let boards = document.querySelector(".boards"),
     item_board;
@@ -425,18 +411,44 @@ function all() {
     item_board = document.querySelectorAll(".item-board");
   }
 
-  fun_item_boards();
-  function fun_item_boards() {
+  clickItemBoards();
+  function clickItemBoards() {
     item_board.forEach((element) => {
       element.addEventListener("click", () => {
         addToPlayList(element.id);
+
+        // include_main.style.display = "none";
+        // include_mp3.style.display = "flex";
+
+        // var stateObj = { foo: "bar" };
+        // history.pushState(stateObj, "mp3", "mp3.html");
+
       });
     });
   }
 
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////                                 ////////////////////////////////////
+  ////////////////////////////             playlist            ////////////////////////////////////
+  ////////////////////////////                                 ////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+
+  btn_playlist?.addEventListener("click", (e) => {
+    playlist_onplay.style.display == "none"
+      ? (playlist_onplay.style.display = "flex")
+      : (playlist_onplay.style.display = "none");
+  });
+
+  let list_music_onplay = document.querySelector(".list-music-onplay"),
+    item_playlist,
+    item_playlist_div,
+    btn_play,
+    clearToListItem;
+
   function addToPlayList(id) {
     loadSong(songs[songs.findIndex((x) => x.id == id)]);
-    console.log("id 2 =>" + songs[songs.findIndex((x) => x.id == id)]);
 
     playSong();
 
@@ -521,3 +533,56 @@ function all() {
     });
   }
 }
+
+function runMp3JS() {
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////                                 ////////////////////////////////////
+  ////////////////////////////           box Download          ////////////////////////////////////
+  ////////////////////////////                                 ////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+
+  let boxDownload = document.querySelector(".box-download");
+  let btnDownload = document.getElementById("btn-download");
+  btnDownload.addEventListener("click", () => {
+    boxDownload.style.display = "flex";
+  });
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////                                 ////////////////////////////////////
+  ////////////////////////////           detials music         ////////////////////////////////////
+  ////////////////////////////                                 ////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+
+  let btnDetails = document.querySelector(".btn-details");
+  let bodyDetails = document.querySelector(".body-details");
+  btnDetails.addEventListener("click", () => {
+    if (!bodyDetails.classList.contains("show")) {
+      bodyDetails.classList.add("show");
+      bodyDetails.style.padding = "1.5rem 2rem";
+
+      let count = 0,
+        myInterval;
+
+      myInterval = setInterval(() => {
+        if (count >= 100) {
+          clearInterval(myInterval);
+        } else {
+          count += 10;
+          bodyDetails.style.height = `${count}%`;
+          console.log(count);
+        }
+      }, 25);
+    } else {
+      bodyDetails.classList.remove("show");
+      bodyDetails.style.height = "0px";
+      bodyDetails.style.padding = "0";
+      clearInterval(myInterval);
+      count = 0;
+    }
+  });
+}
+

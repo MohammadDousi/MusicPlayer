@@ -52,6 +52,10 @@ body {
   -ms-overflow-style: none;
 }
 
+#include-header {
+  width: 100%;
+}
+
 ::-webkit-scrollbar {
   width: 0.3rem;
   border-radius: 1000px;

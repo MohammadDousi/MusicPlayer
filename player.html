@@ -1,54 +1,52 @@
+<!-- plyalist aside -->
+<sidebar class="playlist-onplay">
 
-    <!-- plyalist aside -->
-    <sidebar class="playlist-onplay">
+    <div class="title-onplay">
+        <i class="fa fa-list-check title-2"></i>
+        <p class="title-2">Queue</p>
+    </div>
 
-        <div class="title-onplay">
-            <i class="fa fa-list-check title-2"></i>
-            <p class="title-2">Queue</p>
+    <div class="list-music-onplay"></div>
+
+</sidebar>
+
+<!-- player -->
+<sidebar class="player">
+
+    <img id="cover-music-onplay" src="assets/file/cover/cover-music (17).jpg" alt="">
+
+    <div class="name-music-onplay">
+        <p id="name-music-onplay">OPHELIA</p>
+        <p id="singer-music-onplay">STEVEN PRICE</p>
+    </div>
+
+    <div class="sonund-and-playlist">
+        <div class="sound-control-progres">
+            <input type="range" id="rngVolume" min="0" max="1" step=".01" value=".5" />
         </div>
+        <button id="btn-sound">
+            <i class="fa fas fa-volume-high"></i>
+        </button>
+        <button id="btn-playlist">
+            <i class="fa fa-list-check"></i>
+        </button>
+    </div>
 
-        <div class="list-music-onplay"></div>
-
-    </sidebar>
-
-    <!-- player -->
-    <sidebar class="player">
-
-        <img id="cover-music-onplay" src="assets/file/cover/cover-music (17).jpg" alt="">
-
-        <div class="name-music-onplay">
-            <p id="name-music-onplay">OPHELIA</p>
-            <p id="singer-music-onplay">STEVEN PRICE</p>
+    <div class="time-control">
+        <p class="time-onplay" id="all-time-music">00:00</p>
+        <div class="control-music-onplay">
+            <!-- <i id="repet-music-onplay" class="fa fa-repeat"></i> -->
+            <i id="prev-music-onplay" class="fa fa-backward-step"></i>
+            <i class="play-music-onplay fa fa-circle-play"></i>
+            <i id="next-music-onplay" class="fa fa-backward-step" style="transform: rotateY(180deg);"></i>
+            <!-- <i id="shuff-music-onplay" class="fa fa-shuffle"></i> -->
         </div>
+        <p class="time-onplay color-oringe-dark" id="time-play">00:00</p>
+    </div>
 
-        <div class="sonund-and-playlist">
-            <div class="sound-control-progres">
-                <input type="range" id="rngVolume" min="0" max="1" step=".01" value=".5"/>
-            </div>
-            <button id="btn-sound">
-                <i class="fa fas fa-volume-high"></i>
-            </button>
-            <button id="btn-playlist">
-                <i class="fa fa-list-check"></i>
-            </button>
-        </div>
+    <div class="progrees-time-onplay">
+        <span class="progrees-time-play"></span>
+        <span id="badge-time"></span>
+    </div>
 
-        <div class="time-control">
-            <p class="time-onplay" id="all-time-music">00:00</p>
-            <div class="control-music-onplay">
-                <!-- <i id="repet-music-onplay" class="fa fa-repeat"></i> -->
-                <i id="prev-music-onplay" class="fa fa-backward-step"></i>
-                <i class="play-music-onplay fa fa-circle-play"></i>
-                <i id="next-music-onplay" class="fa fa-backward-step" style="transform: rotateY(180deg);"></i>
-                <!-- <i id="shuff-music-onplay" class="fa fa-shuffle"></i> -->
-            </div>
-            <p class="time-onplay color-oringe-dark" id="time-play">00:00</p>
-        </div>
-
-        <div class="progrees-time-onplay">
-            <span class="progrees-time-play"></span>
-            <span id="badge-time"></span>
-        </div>
-
-    </sidebar>
-
+</sidebar>

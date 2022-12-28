@@ -2,404 +2,464 @@
 
 
 
-fetch("./player.html")
-.then((response) => {
-  return response.text();
-})
-.then((data) => {
-  document.getElementById("include-player").innerHTML = data;
-});
+async function load_header() {
 
+  let myPromise = new Promise(function (resolve) {
 
-// const player_page = `<!-- plyalist aside -->
-// <sidebar class="playlist-onplay">
+    let load = new XMLHttpRequest();
+    load.open("GET", "header.html");
 
-//     <div class="title-onplay">
-//         <i class="fa fa-list-check title-2"></i>
-//         <p class="title-2">Queue</p>
-//     </div>
+    load.onload = function () {
 
-//     <div class="list-music-onplay"></div>
+      if (load.status == 200) {
+        resolve(load.response);
+      } else {
+        resolve("File not Found");
+      }
 
-// </sidebar>
+    };
 
-// <!-- player -->
-// <sidebar class="player">
-
-//     <img id="cover-music-onplay" src="assets/file/cover/cover-music (17).jpg" alt="">
-
-//     <div class="name-music-onplay">
-//         <p id="name-music-onplay">OPHELIA</p>
-//         <p id="singer-music-onplay">STEVEN PRICE</p>
-//     </div>
-
-//     <div class="sonund-and-playlist">
-//         <div class="sound-control-progres">
-//             <input type="range" id="rngVolume" min="0" max="1" step=".01" value=".5"/>
-//         </div>
-//         <button id="btn-sound">
-//             <i class="fa fas fa-volume-high"></i>
-//         </button>
-//         <button id="btn-playlist">
-//             <i class="fa fa-list-check"></i>
-//         </button>
-//     </div>
-
-//     <div class="time-control">
-//         <p class="time-onplay" id="all-time-music">00:00</p>
-//         <div class="control-music-onplay">
-//             <!-- <i id="repet-music-onplay" class="fa fa-repeat"></i> -->
-//             <i id="prev-music-onplay" class="fa fa-backward-step"></i>
-//             <i class="play-music-onplay fa fa-circle-play"></i>
-//             <i id="next-music-onplay" class="fa fa-backward-step" style="transform: rotateY(180deg);"></i>
-//             <!-- <i id="shuff-music-onplay" class="fa fa-shuffle"></i> -->
-//         </div>
-//         <p class="time-onplay color-oringe-dark" id="time-play">00:00</p>
-//     </div>
-
-//     <div class="progrees-time-onplay">
-//         <span class="progrees-time-play"></span>
-//         <span id="badge-time"></span>
-//     </div>
-
-// </sidebar>`;
-
-// document.getElementById("include-player").innerHTML = player_page;
-
-
-
-
-let songs = [
-  {
-    id: 1,
-    image_cover: "pic1 (3).jpg",
-    name: "ha mahdi",
-    song: "ha mahdi.mp3",
-    singer: "Basem Karbalaye",
-  },
-  {
-    id: 2,
-    image_cover: "pic1 (4).jpg",
-    name: "Bi Gonah",
-    song: "Alireza Ghorbani - Bi Gonah.mp3",
-    singer: "Alireza Ghorbani",
-  },
-  {
-    id: 3,
-    image_cover: "pic1 (1).jpg",
-    name: "Barzakhe Asheghi",
-    song: "Hamed Homayoun - Barzakhe Asheghi.mp3",
-    singer: "Hamed Homayoun",
-  },
-  {
-    id: 4,
-    image_cover: "pic1 (2).jpg",
-    name: "Rose",
-    song: "Masih - Rose.mp3",
-    singer: "Masih",
-  },
-];
-
-let playlist = [];
-
-const audio = new Audio();
-
-let player = document.querySelector(".player");
-let btn_playlist = document.getElementById("btn-playlist");
-let playlist_onplay = document.querySelector(".playlist-onplay");
-let columns = document.getElementsByClassName("vertical"),
-  audioInteval,
-  analyser,
-  buffer;
-
-let badge_time = document.getElementById("badge-time");
-let progress_play = document.querySelector(".progrees-time-play");
-let progress_body = document.querySelector(".progrees-time-onplay");
-
-const image_cover = document.querySelectorAll("#cover-music-onplay");
-const name_curr_music = document.querySelectorAll("#name-music-onplay");
-const singer_curr_music = document.querySelectorAll("#singer-music-onplay");
-const time_all_music = document.getElementById("all-time-music");
-const time_play = document.getElementById("time-play");
-
-let isPlaying,
-  current_Time,
-  songIndex = songs.length,
-  playListIndex = 0,
-  idOnlay;
-
-let prev = document.getElementById("prev-music-onplay");
-let next = document.getElementById("next-music-onplay");
-let play_pause = document.querySelectorAll(".play-music-onplay");
-
-progress_body?.addEventListener("click", setProgress);
-prev?.addEventListener("click", prevSong);
-next?.addEventListener("click", nextSong);
-audio?.addEventListener("ended", nextSong);
-
-// let repet = document.getElementById("repet-music-onplay"), switch_repet;
-// repet.addEventListener('click', repetSong);
-
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////                                 ////////////////////////////////////
-////////////////////////////          control btn music      ////////////////////////////////////
-////////////////////////////                                 ////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-
-play_pause.forEach((element) => {
-  element.addEventListener("click", () => {
-    isPlaying = player.classList.contains("play");
-    isPlaying ? puaseSong() : playSong();
+    load.send();
+      
   });
-});
+  document.getElementById("include-header").innerHTML = await myPromise;
+}
 
-// loadSong(songs[songIndex - 1]);
+async function load_footer() {
 
-function loadSong(song) {
-  image_cover.forEach((element) => {
-    element.src = "assets/file/cover/" + song.image_cover;
+  let myPromise = new Promise(function (resolve) {
+
+    let load = new XMLHttpRequest();
+    load.open("GET", "footer.html");
+
+    load.onload = function () {
+
+      if (load.status == 200) {
+        resolve(load.response);
+      } else {
+        resolve("File not Found");
+      }
+
+    };
+
+    load.send();
+      
   });
-  name_curr_music.forEach((element) => {
-    element.innerText = song.name;
+  document.getElementById("include-footer").innerHTML = await myPromise;
+}
+
+async function load_player() {
+
+  let myPromise = new Promise(function (resolve) {
+
+    let load= new XMLHttpRequest();
+    load.open("GET", "player.html");
+
+    load.onload = function () {
+
+      if (load.status == 200) {
+        resolve(load.response);
+      } else {
+        resolve("File not Found");
+      }
+
+    };
+    load.send();
   });
-  singer_curr_music.forEach((element) => {
-    element.innerText = song.singer;
+  document.getElementById("include-player").innerHTML = await myPromise;
+
+  await all();
+}
+
+async function load_main() {
+
+  let myPromise = new Promise(function (resolve) {
+
+    let load= new XMLHttpRequest();
+    load.open("GET", "main.html");
+
+    load.onload = function () {
+
+      if (load.status == 200) {
+        resolve(load.response);
+      } else {
+        resolve("File not Found");
+      }
+
+    };
+    load.send();
   });
-  idOnlay = song.id;
-  audio.src = "assets/file/music/" + song.song;
-  audio.load();
+  document.getElementById("include-main").innerHTML = await myPromise;
+
 }
 
-function playSong() {
-  player.classList.add("play");
-  if (current_Time) {
-    audio.currentTime = current_Time;
+async function load_mp3() {
+
+  let myPromise = new Promise(function (resolve) {
+
+    let load= new XMLHttpRequest();
+    load.open("GET", "mp3.html");
+
+    load.onload = function () {
+
+      if (load.status == 200) {
+        resolve(load.response);
+      } else {
+        resolve("File not Found");
+      }
+
+    };
+    load.send();
+  });
+  document.getElementById("include-mp3").innerHTML = await myPromise;
+
+}
+
+
+
+load_header();
+load_footer();
+load_main();
+load_mp3();
+load_player();
+
+
+
+
+
+function all() {
+
+  let songs = [
+    {
+      id: 1,
+      image_cover: "pic1 (3).jpg",
+      name: "ha mahdi",
+      song: "ha mahdi.mp3",
+      singer: "Basem Karbalaye",
+    },
+    {
+      id: 2,
+      image_cover: "pic1 (4).jpg",
+      name: "Bi Gonah",
+      song: "Alireza Ghorbani - Bi Gonah.mp3",
+      singer: "Alireza Ghorbani",
+    },
+    {
+      id: 3,
+      image_cover: "pic1 (1).jpg",
+      name: "Barzakhe Asheghi",
+      song: "Hamed Homayoun - Barzakhe Asheghi.mp3",
+      singer: "Hamed Homayoun",
+    },
+    {
+      id: 4,
+      image_cover: "pic1 (2).jpg",
+      name: "Rose",
+      song: "Masih - Rose.mp3",
+      singer: "Masih",
+    },
+  ];
+
+  let playlist = [];
+
+  const audio = new Audio();
+
+  let player = document.querySelector(".player");
+  let btn_playlist = document.getElementById("btn-playlist");
+  let playlist_onplay = document.querySelector(".playlist-onplay");
+  let columns = document.getElementsByClassName("vertical"),
+    audioInteval,
+    analyser,
+    buffer;
+
+  let badge_time = document.getElementById("badge-time");
+  let progress_play = document.querySelector(".progrees-time-play");
+  let progress_body = document.querySelector(".progrees-time-onplay");
+
+  const image_cover = document.querySelectorAll("#cover-music-onplay");
+  const name_curr_music = document.querySelectorAll("#name-music-onplay");
+  const singer_curr_music = document.querySelectorAll("#singer-music-onplay");
+  const time_all_music = document.getElementById("all-time-music");
+  const time_play = document.getElementById("time-play");
+
+  let isPlaying,
+    current_Time,
+    songIndex = songs.length,
+    playListIndex = 0,
+    idOnlay;
+
+  let prev = document.getElementById("prev-music-onplay");
+  let next = document.getElementById("next-music-onplay");
+  let play_pause = document.querySelectorAll(".play-music-onplay");
+
+  progress_body?.addEventListener("click", setProgress);
+  prev?.addEventListener("click", prevSong);
+  next?.addEventListener("click", nextSong);
+  audio?.addEventListener("ended", nextSong);
+
+  // let repet = document.getElementById("repet-music-onplay"), switch_repet;
+  // repet.addEventListener('click', repetSong);
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////                                 ////////////////////////////////////
+  ////////////////////////////          control btn music      ////////////////////////////////////
+  ////////////////////////////                                 ////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+
+  play_pause.forEach((element) => {
+    element.addEventListener("click", () => {
+      isPlaying = player.classList.contains("play");
+      isPlaying ? puaseSong() : playSong();
+    });
+  });
+
+  // loadSong(songs[songIndex - 1]);
+
+  function loadSong(song) {
+    image_cover.forEach((element) => {
+      element.src = "assets/file/cover/" + song.image_cover;
+    });
+    name_curr_music.forEach((element) => {
+      element.innerText = song.name;
+    });
+    singer_curr_music.forEach((element) => {
+      element.innerText = song.singer;
+    });
+    idOnlay = song.id;
+    audio.src = "assets/file/music/" + song.song;
+    audio.load();
   }
 
-  audio.addEventListener("timeupdate", updateProgress);
+  function playSong() {
+    player.classList.add("play");
+    if (current_Time) {
+      audio.currentTime = current_Time;
+    }
 
-  isPlaying ? audio.play() : audio.play();
+    audio.addEventListener("timeupdate", updateProgress);
 
-  for (let i = 0; i < play_pause.length; i++) {
-    play_pause[i].classList.remove("fa-circle-play");
-    play_pause[i].classList.add("fa-pause");
+    isPlaying ? audio.play() : audio.play();
+
+    for (let i = 0; i < play_pause.length; i++) {
+      play_pause[i].classList.remove("fa-circle-play");
+      play_pause[i].classList.add("fa-pause");
+    }
   }
-}
 
-function puaseSong() {
-  player.classList.remove("play");
-  clearInterval(audioInteval);
+  function puaseSong() {
+    player.classList.remove("play");
+    clearInterval(audioInteval);
 
-  audio.pause();
+    audio.pause();
 
-  for (let i = 0; i < play_pause.length; i++) {
-    play_pause[i].classList.remove("fa-pause");
-    play_pause[i].classList.add("fa-circle-play");
+    for (let i = 0; i < play_pause.length; i++) {
+      play_pause[i].classList.remove("fa-pause");
+      play_pause[i].classList.add("fa-circle-play");
+    }
   }
-}
 
-function prevSong() {
-  playListIndex--;
-  if (playListIndex < 0) {
-    playListIndex = playlist.length - 1;
+  function prevSong() {
+    playListIndex--;
+    if (playListIndex < 0) {
+      playListIndex = playlist.length - 1;
+    }
+    loadSong(songs[songs.findIndex((x) => x.id == playlist[playListIndex])]);
+    playSong();
   }
-  loadSong(songs[songs.findIndex((x) => x.id == playlist[playListIndex])]);
-  playSong();
-}
 
-function nextSong() {
-  playListIndex++;
+  function nextSong() {
+    playListIndex++;
 
-  if (playListIndex > playlist.length - 1) {
-    playListIndex = 0;
+    if (playListIndex > playlist.length - 1) {
+      playListIndex = 0;
+    }
+    loadSong(songs[songs.findIndex((x) => x.id == playlist[playListIndex])]);
+    playSong();
   }
-  loadSong(songs[songs.findIndex((x) => x.id == playlist[playListIndex])]);
-  playSong();
-}
 
-function repetSong() {
-  // switch(switch_repet){
-  //     case "norepet":
-  //         switch_repet = "one-repet";
-  //         repet.classList.remove();
-  //         repet.classList.add("fa fa-repeat");
-  //     break;
-  //     case "one-repet":
-  //         switch_repet = "total-repet";
-  //     break;
-  //     case "total-repet":
-  //         switch_repet = "norepet";
-  //         repet.classList.add("fa fa-repeat");
-  //     break;
-  // }
-}
+  function repetSong() {
+    // switch(switch_repet){
+    //     case "norepet":
+    //         switch_repet = "one-repet";
+    //         repet.classList.remove();
+    //         repet.classList.add("fa fa-repeat");
+    //     break;
+    //     case "one-repet":
+    //         switch_repet = "total-repet";
+    //     break;
+    //     case "total-repet":
+    //         switch_repet = "norepet";
+    //         repet.classList.add("fa fa-repeat");
+    //     break;
+    // }
+  }
 
-function updateProgress(e) {
-  const { duration, currentTime } = e.srcElement;
-  const progressPercent = (currentTime / duration) * 100;
-  progress_play.style.width = `${progressPercent}%`;
+  function updateProgress(e) {
+    const { duration, currentTime } = e.srcElement;
+    const progressPercent = (currentTime / duration) * 100;
+    progress_play.style.width = `${progressPercent}%`;
 
-  const badge = (currentTime / duration) * progress_body.offsetWidth;
-  badge_time.style.transform = `translateX(${badge - 10}px)`;
+    const badge = (currentTime / duration) * progress_body.offsetWidth;
+    badge_time.style.transform = `translateX(${badge - 10}px)`;
 
-  var cur_time = Math.floor(currentTime);
-  if (cur_time < 59) {
-    if (cur_time < 10) {
-      time_play.innerText = "0:0" + cur_time;
+    var cur_time = Math.floor(currentTime);
+    if (cur_time < 59) {
+      if (cur_time < 10) {
+        time_play.innerText = "0:0" + cur_time;
+      } else {
+        time_play.innerText = "0:" + cur_time;
+      }
     } else {
-      time_play.innerText = "0:" + cur_time;
+      var min = Math.floor(currentTime / 60);
+      var secend = Math.floor(currentTime - min * 60);
+      if (secend < 10) {
+        secend = "0" + secend;
+      }
+      time_play.innerText = min + ":" + secend;
     }
-  } else {
-    var min = Math.floor(currentTime / 60);
-    var secend = Math.floor(currentTime - min * 60);
-    if (secend < 10) {
-      secend = "0" + secend;
+
+    time_onplay = currentTime;
+
+    var min_dur = Math.floor(duration % 60);
+    if (min_dur < 10) {
+      min_dur = "0" + min_dur;
     }
-    time_play.innerText = min + ":" + secend;
+    time_all_music.innerText = Math.floor(duration / 60) + ":" + min_dur;
   }
 
-  time_onplay = currentTime;
-
-  var min_dur = Math.floor(duration % 60);
-  if (min_dur < 10) {
-    min_dur = "0" + min_dur;
-  }
-  time_all_music.innerText = Math.floor(duration / 60) + ":" + min_dur;
-}
-
-function setProgress(e) {
-  const width = this.clientWidth;
-  const clickX = e.offsetX;
-  const duration = audio.duration;
-  audio.currentTime = (clickX / width) * duration;
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////                                 ////////////////////////////////////
-////////////////////////////             playlist            ////////////////////////////////////
-////////////////////////////                                 ////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-
-btn_playlist?.addEventListener("click", (e) => {
-  playlist_onplay.style.display == "none"
-    ? (playlist_onplay.style.display = "flex")
-    : (playlist_onplay.style.display = "none");
-});
-
-let btn_volume = document.getElementById("btn-sound");
-let btnVolumeIcon = document.querySelector("#btn-sound i");
-let volumeControl = document.querySelector(".sound-control-progres");
-
-btn_volume?.addEventListener("mouseover", () => {
-  volumeControl.style.display = "flex";
-  btn_volume.style.zIndex = "1";
-});
-
-volumeControl?.addEventListener("mouseleave", () => {
-  volumeControl.style.display = "none";
-  btn_volume.style.zIndex = "3";
-});
-
-let inputRangeVolume = document.querySelector('input[type="range"]');
-inputRangeVolume?.addEventListener("input", (e) => {
-  let target = e.target;
-  if (e.target.type !== "range") {
-    target = document.getElementById("rngVolume");
-  }
-  const min = target.min;
-  const max = target.max;
-  const val = target.value;
-
-  target.style.backgroundSize = ((val - min) * 100) / (max - min) + "% 100%";
-
-  if (val >= 0.6) {
-    btnVolumeIcon.className = "";
-    btnVolumeIcon.className = "fa fas fa-volume-high";
-  } else if (0.3 >= val <= 0.7) {
-    btnVolumeIcon.className = "";
-    btnVolumeIcon.className = "fa fas fa-volume-low";
-  } else if (val <= 0.1) {
-    btnVolumeIcon.className = "";
-    btnVolumeIcon.className = "fa fas fa-volume-mute";
+  function setProgress(e) {
+    const width = this.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
+    audio.currentTime = (clickX / width) * duration;
   }
 
-  audio.volume = val;
-});
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////                                 ////////////////////////////////////
+  ////////////////////////////             playlist            ////////////////////////////////////
+  ////////////////////////////                                 ////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////                                 ////////////////////////////////////
-////////////////////////////             item board          ////////////////////////////////////
-////////////////////////////                                 ////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
+  btn_playlist?.addEventListener("click", (e) => {
+    playlist_onplay.style.display == "none"
+      ? (playlist_onplay.style.display = "flex")
+      : (playlist_onplay.style.display = "none");
+  });
 
-let list_music_onplay = document.querySelector(".list-music-onplay"),
-  item_playlist,
-  item_playlist_div,
-  btn_play,
-  clearToListItem;
+  let btn_volume = document.getElementById("btn-sound");
+  let btnVolumeIcon = document.querySelector("#btn-sound i");
+  let volumeControl = document.querySelector(".sound-control-progres");
 
-let boards = document.querySelector(".boards"),
-  item_board;
+  btn_volume?.addEventListener("mouseover", () => {
+    volumeControl.style.display = "flex";
+    btn_volume.style.zIndex = "1";
+  });
 
-for (let i = 0; i < songIndex; i++) {
-  var div = document.createElement("div");
-  div.className = "item-board";
-  const id = `${songs[i].id}`;
-  div.id = id;
+  volumeControl?.addEventListener("mouseleave", () => {
+    volumeControl.style.display = "none";
+    btn_volume.style.zIndex = "3";
+  });
 
-  let sample = `<img src="assets/file/cover/${songs[i].image_cover}" alt="img ${songs[i].image_cover}">
+  let inputRangeVolume = document.querySelector('input[type="range"]');
+  inputRangeVolume?.addEventListener("input", (e) => {
+    let target = e.target;
+    if (e.target.type !== "range") {
+      target = document.getElementById("rngVolume");
+    }
+    const min = target.min;
+    const max = target.max;
+    const val = target.value;
+
+    target.style.backgroundSize = ((val - min) * 100) / (max - min) + "% 100%";
+
+    if (val >= 0.6) {
+      btnVolumeIcon.className = "";
+      btnVolumeIcon.className = "fa fas fa-volume-high";
+    } else if (0.3 >= val <= 0.7) {
+      btnVolumeIcon.className = "";
+      btnVolumeIcon.className = "fa fas fa-volume-low";
+    } else if (val <= 0.1) {
+      btnVolumeIcon.className = "";
+      btnVolumeIcon.className = "fa fas fa-volume-mute";
+    }
+
+    audio.volume = val;
+  });
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////                                 ////////////////////////////////////
+  ////////////////////////////             item board          ////////////////////////////////////
+  ////////////////////////////                                 ////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+
+  let list_music_onplay = document.querySelector(".list-music-onplay"),
+    item_playlist,
+    item_playlist_div,
+    btn_play,
+    clearToListItem;
+
+  let boards = document.querySelector(".boards"),
+    item_board;
+
+  for (let i = 0; i < songIndex; i++) {
+    var div = document.createElement("div");
+    div.className = "item-board";
+    const id = `${songs[i].id}`;
+    div.id = id;
+
+    let sample = `<img src="assets/file/cover/${songs[i].image_cover}" alt="img ${songs[i].image_cover}">
                   <div>
                     <p>${songs[i].name}</p>
                     <p>Track by ${songs[i].singer}</p>
                   </div>
                   <span></span>`;
 
-  div.innerHTML = sample;
-  boards.appendChild(div);
-  item_board = document.querySelectorAll(".item-board");
-}
+    div.innerHTML = sample;
+    boards.appendChild(div);
+    item_board = document.querySelectorAll(".item-board");
+  }
 
-fun_item_boards();
-function fun_item_boards() {
-  item_board.forEach((element) => {
-    element.addEventListener("click", () => {
-      addToPlayList(element.id);
+  fun_item_boards();
+  function fun_item_boards() {
+    item_board.forEach((element) => {
+      element.addEventListener("click", () => {
+        addToPlayList(element.id);
+      });
     });
-  });
-}
-
-function addToPlayList(id) {
-  loadSong(songs[songs.findIndex((x) => x.id == id)]);
-  console.log("id 2 =>" + songs[songs.findIndex((x) => x.id == id)]);
-
-  playSong();
-
-  const found = playlist.find((element) => element == id);
-
-  if (!found) {
-    playlist.push(id);
-    updatePlaylist();
-  }
-}
-
-function updatePlaylist() {
-  if (list_music_onplay.hasChildNodes) {
-    list_music_onplay.innerHTML = "";
   }
 
-  for (let i = 0; i < playlist.length; i++) {
-    var div = document.createElement("div");
-    div.className = "item-playlist-onplay";
-    div.id = `${playlist[i]}`;
-    var indexx = songs.findIndex((x) => x.id == playlist[i]);
+  function addToPlayList(id) {
+    loadSong(songs[songs.findIndex((x) => x.id == id)]);
+    console.log("id 2 =>" + songs[songs.findIndex((x) => x.id == id)]);
 
-    let sample = `<div id = ${playlist[i]}>
+    playSong();
+
+    const found = playlist.find((element) => element == id);
+
+    if (!found) {
+      playlist.push(id);
+      updatePlaylist();
+    }
+  }
+
+  function updatePlaylist() {
+    if (list_music_onplay.hasChildNodes) {
+      list_music_onplay.innerHTML = "";
+    }
+
+    for (let i = 0; i < playlist.length; i++) {
+      var div = document.createElement("div");
+      div.className = "item-playlist-onplay";
+      div.id = `${playlist[i]}`;
+      var indexx = songs.findIndex((x) => x.id == playlist[i]);
+
+      let sample = `<div id = ${playlist[i]}>
                         <img src="assets/file/cover/${songs[indexx].image_cover}" alt="img cover">
                         <div>
                             <p>${songs[indexx].name}</p>
@@ -411,53 +471,53 @@ function updatePlaylist() {
                   <i class="fa fa-circle-play title-2 btn-item" id=${playlist[i]}></i>
                   </div>`;
 
-    div.innerHTML = sample;
-    list_music_onplay.appendChild(div);
+      div.innerHTML = sample;
+      list_music_onplay.appendChild(div);
 
-    item_playlist = document.querySelectorAll(".item-playlist-onplay");
-    item_playlist_div = document.querySelectorAll(".item-playlist-onplay> div");
-    clearToListItem = document.querySelectorAll(".btn-item:nth-child(1)");
-    btn_play = document.querySelectorAll(".btn-item:nth-child(2)");
+      item_playlist = document.querySelectorAll(".item-playlist-onplay");
+      item_playlist_div = document.querySelectorAll(
+        ".item-playlist-onplay> div"
+      );
+      clearToListItem = document.querySelectorAll(".btn-item:nth-child(1)");
+      btn_play = document.querySelectorAll(".btn-item:nth-child(2)");
 
-    fun_item_playlist();
-    fun_clearToListItem();
+      fun_item_playlist();
+      fun_clearToListItem();
 
-    // for (let i = 0; i < playlist.length; i++) {
-    //     console.log("for=>"+playlist[i]);
-    // }
+      // for (let i = 0; i < playlist.length; i++) {
+      //     console.log("for=>"+playlist[i]);
+      // }
+    }
+  }
+
+  function fun_item_playlist() {
+    item_playlist_div.forEach((element) => {
+      element.addEventListener("click", () => {
+        console.log(element.id);
+        loadSong(songs[songs.findIndex((x) => x.id == element.id)]);
+        playSong();
+      });
+    });
+    btn_play.forEach((element) => {
+      element.addEventListener("click", () => {
+        console.log(element.id);
+        loadSong(songs[songs.findIndex((x) => x.id == element.id)]);
+        playSong();
+      });
+    });
+  }
+
+  function fun_clearToListItem() {
+    clearToListItem.forEach((element) => {
+      element.addEventListener("click", () => {
+        if (element.id != idOnlay) {
+          const index = playlist.indexOf(element.id);
+          if (index > -1) {
+            playlist.splice(index, 1);
+          }
+          updatePlaylist();
+        }
+      });
+    });
   }
 }
-
-function fun_item_playlist() {
-  item_playlist_div.forEach((element) => {
-    element.addEventListener("click", () => {
-      console.log(element.id);
-      loadSong(songs[songs.findIndex((x) => x.id == element.id)]);
-      playSong();
-    });
-  });
-  btn_play.forEach((element) => {
-    element.addEventListener("click", () => {
-      console.log(element.id);
-      loadSong(songs[songs.findIndex((x) => x.id == element.id)]);
-      playSong();
-    });
-  });
-}
-
-function fun_clearToListItem() {
-  clearToListItem.forEach((element) => {
-    element.addEventListener("click", () => {
-      if (element.id != idOnlay) {
-        const index = playlist.indexOf(element.id);
-        if (index > -1) {
-          playlist.splice(index, 1);
-        }
-        updatePlaylist();
-      }
-    });
-  });
-}
-
-
-

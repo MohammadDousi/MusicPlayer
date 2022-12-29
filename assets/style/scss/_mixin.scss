@@ -31,7 +31,9 @@ $whiteColor :#ffffff;
     font-weight: $weight;
     color: $color;
 }
-
+@mixin borderRadiusBox {
+    border-radius: 20px;
+}
 @mixin hoverImg {
     left: 0;
     top: 0;
@@ -48,9 +50,7 @@ $whiteColor :#ffffff;
     }
 }
 
-@mixin borderRadiusBox {
-    border-radius: 20px;
-}
+
 
 @mixin btnStyleBorder {
     @include displayFlex(flex, row, nowrap, center, center, center);

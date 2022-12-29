@@ -128,7 +128,8 @@ function all() {
       name: "Rose",
       song: "Masih - Rose.mp3",
       singer: "Masih",
-    },{
+    },
+    {
       id: 5,
       image_cover: "pic1 (3).jpg",
       name: "ha mahdi",
@@ -390,8 +391,10 @@ function all() {
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
 
-  let boards = document.querySelector(".boards"),
-    item_board;
+  let board = document.querySelector(".board"),
+    dots_board = document.querySelector(".dots-board"),
+    item_board,
+    item_dots;
 
   for (let i = 0; i < songIndex; i++) {
     var div = document.createElement("div");
@@ -407,12 +410,18 @@ function all() {
                   <span></span>`;
 
     div.innerHTML = sample;
-    boards.appendChild(div);
+    board.appendChild(div);
     item_board = document.querySelectorAll(".item-board");
+
+    var divDots = document.createElement("div");
+    divDots.className = "item-dots";
+    divDots.id = id;
+    dots_board.appendChild(divDots);
+    item_dots = document.querySelectorAll(".item-dots");
   }
 
-  clickItemBoards();
-  function clickItemBoards() {
+  clickItemboard();
+  function clickItemboard() {
     item_board.forEach((element) => {
       element.addEventListener("click", () => {
         addToPlayList(element.id);
@@ -422,7 +431,55 @@ function all() {
 
         // var stateObj = { foo: "bar" };
         // history.pushState(stateObj, "mp3", "mp3.html");
+      });
+    });
+  }
 
+  clickItemDot();
+  let centerBoard = board.offsetWidth,
+    curerentSilde = 4;
+  function clickItemDot() {
+    item_dots.forEach((element) => {
+      element.addEventListener("click", () => {
+        const witdthElement = item_board[element.id].offsetWidth;
+
+        if (element.id >= 7) {
+          var pos = element.id * witdthElement;
+        } else {
+          var pos = (element.id - 2) * witdthElement;
+        }
+
+        if (element.id != curerentSilde) {
+
+          var id = null;
+          clearInterval(id);
+          id = setInterval(frame, 10);
+
+          function frame() {
+            if (curerentSilde > element.id) {
+              if (centerBoard >= pos) {
+                centerBoard -= 15;
+              } else {
+                curerentSilde = element.id;
+                clearInterval(id);
+              }
+            } else if (curerentSilde < element.id) {
+              if (centerBoard <= pos) {
+                centerBoard += 15;
+              } else {
+                curerentSilde = element.id;
+                clearInterval(id);
+              }
+            }
+
+            // console.log("item click=>" + element.id);
+            // console.log("centerBoard=>" + centerBoard);
+            // console.log("curerentSilde 2 =>" + curerentSilde);
+
+            board.scrollTo(centerBoard, 0);
+          }
+        }
+        
       });
     });
   }
@@ -585,4 +642,3 @@ function runMp3JS() {
     }
   });
 }
-

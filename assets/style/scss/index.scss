@@ -39,7 +39,7 @@ body {
 
 .content-main {
     @include widthHeight(100%, 100%);
-    padding: 0 1.5rem 5rem 1.5rem;
+    padding: 0 0rem 5rem 0rem;
     @include displayFlex(flex, column, nowrap, flex-start, center, center);
     @include colRowGap(0, 1rem);
     scrollbar-width: none;
@@ -89,6 +89,7 @@ header {
     @include widthHeight(100%, 60px);
     @include displayFlex(flex, row-reverse, nowrap, space-between, center, flex-start);
     margin: 1.5rem 0 .5rem 0;
+    padding: 0 1.5rem;
 }
 
 .search-header {
@@ -135,25 +136,26 @@ header {
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-.boards {
-    @include widthHeight(auto, 14rem);
+.board {
+    @include widthHeight(auto, auto);
     @include displayFlex(flex, row, nowrap, flex-start, center, center);
-    @include colRowGap(1.2rem, 0);
+    @include colRowGap(1.5rem, 0);
     overflow: auto;
+    transition: all .3s ease-in-out;
+    padding: 0 1.5rem 3rem 1.5rem;
 
-    // &::-webkit-scrollbar {
-    //     display: none;
-    //     width: 0 !important;
-    // }
+    &::-webkit-scrollbar {
+        display: none;
+        width: 0 !important;
+    }
 }
 
 .item-board {
-    @include widthHeight(100%, 100%);
+    @include widthHeight(100%, 12rem);
     @include borderRadiusBox;
     transition: .3s ease-in-out;
     position: relative;
     cursor: pointer;
-
 
     &:hover {
         transform: scale(1.03);
@@ -195,7 +197,41 @@ header {
 
 }
 
-@include media(Mobile) {}
+.dots-board {
+    @include widthHeight(100%, auto);
+    @include displayFlex(flex, row, nowrap, center, center, center);
+    @include colRowGap(.8rem, 0);
+
+    .item-dots {
+        @include widthHeight(1rem, .5rem);
+        border-radius: 1000px;
+        background-color: $whiteColor;
+        opacity: .5;
+        transition: all .3s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            @include widthHeight(2.5rem, .5rem);
+            opacity: 1;
+            background-color: $accentColor;
+        }
+    }
+}
+
+@include media(Mobile) {
+
+    .item-board {
+
+        img {
+            @include widthHeight(19rem, 100%);
+        }
+
+    }
+
+    .dots-board {
+        display: none;
+    }
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////

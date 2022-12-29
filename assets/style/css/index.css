@@ -166,7 +166,7 @@ header {
   transform: scale(1.03);
 }
 .item-board img {
-  width: "";
+  width: 22rem;
   height: 100%;
   object-fit: cover;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
@@ -231,11 +231,17 @@ header {
   height: 0.5rem;
   border-radius: 1000px;
   background-color: #ffffff;
-  opacity: 0.5;
+  opacity: 0.3;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 .dots-board .item-dots:hover {
+  width: 2.5rem;
+  height: 0.5rem;
+  opacity: 1;
+  background-color: #F8AE5E;
+}
+.dots-board .dot-active {
   width: 2.5rem;
   height: 0.5rem;
   opacity: 1;

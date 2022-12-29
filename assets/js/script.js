@@ -396,7 +396,7 @@ function all() {
     item_board,
     item_dots;
 
-  for (let i = 0; i < songIndex; i++) {
+  for (let i = 0; i < 5; i++) {
     var div = document.createElement("div");
     div.className = "item-board";
     const id = `${songs[i].id}`;
@@ -415,6 +415,9 @@ function all() {
 
     var divDots = document.createElement("div");
     divDots.className = "item-dots";
+    if (id == 4) {
+      divDots.className = "item-dots dot-active";
+    }
     divDots.id = id;
     dots_board.appendChild(divDots);
     item_dots = document.querySelectorAll(".item-dots");
@@ -437,20 +440,23 @@ function all() {
 
   clickItemDot();
   let centerBoard = board.offsetWidth,
-    curerentSilde = 4;
+    curerentSilde = 4,
+    witdthElement = item_board.offsetWidth;
   function clickItemDot() {
     item_dots.forEach((element) => {
       element.addEventListener("click", () => {
-        const witdthElement = item_board[element.id].offsetWidth;
 
-        if (element.id >= 7) {
+        if (!witdthElement) {
+          witdthElement = item_board[element.id].offsetWidth;
+        }
+
+        if (element.id >= 5) {
           var pos = element.id * witdthElement;
         } else {
           var pos = (element.id - 2) * witdthElement;
         }
 
         if (element.id != curerentSilde) {
-
           var id = null;
           clearInterval(id);
           id = setInterval(frame, 10);
@@ -479,7 +485,10 @@ function all() {
             board.scrollTo(centerBoard, 0);
           }
         }
-        
+
+        var current = document.getElementsByClassName("dot-active");
+        current[0].className = current[0].className.replace(" dot-active", "");
+        element.className += " dot-active";
       });
     });
   }

@@ -162,7 +162,7 @@ header {
     }
 
     img {
-        @include widthHeight("", 100%);
+        @include widthHeight(22rem, 100%);
         object-fit: cover;
         // z-index: 1;
         box-shadow: 0 5px 10px rgb(0, 0, 0, .5);
@@ -206,7 +206,7 @@ header {
         @include widthHeight(1rem, .5rem);
         border-radius: 1000px;
         background-color: $whiteColor;
-        opacity: .5;
+        opacity: .3;
         transition: all .3s ease-in-out;
         cursor: pointer;
 
@@ -215,6 +215,13 @@ header {
             opacity: 1;
             background-color: $accentColor;
         }
+        
+    }
+
+    .dot-active {
+        @include widthHeight(2.5rem, .5rem);
+        opacity: 1;
+        background-color: $accentColor;
     }
 }
 

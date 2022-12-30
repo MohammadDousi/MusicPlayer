@@ -491,11 +491,11 @@ header {
 
 @media (min-width: 0px) and (max-width: 420px) {
   .container-music {
-    padding: 0rem 0rem;
+    padding: 0rem 1.5rem;
     margin: 3rem 0;
   }
   .container-music-1 {
-    margin-top: 3rem;
+    margin-top: 1rem;
   }
   .header-container-music span {
     font-size: 1.5rem;
@@ -1068,7 +1068,7 @@ header {
 }
 footer {
   width: 100%;
-  padding: 2rem 0;
+  padding: 2rem 1.5rem;
 }
 footer ul {
   display: inline-flex;
@@ -1103,7 +1103,7 @@ footer p:nth-child(3) {
 
 @media (min-width: 0px) and (max-width: 420px) {
   footer {
-    padding: 0 0 6.5rem 0;
+    padding: 0 1.5rem 6.5rem 1.5rem;
   }
   footer ul {
     display: inline-flex;

@@ -399,12 +399,12 @@ header {
 @include media(Mobile) {
 
     .container-music {
-        padding: 0rem 0rem;
+        padding: 0rem 1.5rem;
         margin: 3rem 0;
     }
 
     .container-music-1 {
-        margin-top: 3rem;
+        margin-top: 1rem;
     }
 
     .header-container-music {
@@ -916,7 +916,7 @@ header {
 
 footer {
     width: 100%;
-    padding: 2rem 0;
+    padding: 2rem 1.5rem;
 
     ul {
         @include displayFlex(inline-flex, row-reverse, nowrap, center, center, center);
@@ -949,7 +949,7 @@ footer {
 @include media(Mobile) {
 
     footer {
-        padding: 0 0 6.5rem 0;
+        padding: 0 1.5rem 6.5rem 1.5rem;
 
         ul {
             @include displayFlex(inline-flex, row-reverse, wrap, center, center, center);

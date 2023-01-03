@@ -250,7 +250,7 @@ header {
 
 .container-music {
     @include widthHeight(100%, "");
-    margin: 2rem 0;
+    margin: 4.5rem 0;
     padding: 0rem 9rem;
     @include displayFlex(flex, column, nowrap, flex-start, center, flex-start);
 }

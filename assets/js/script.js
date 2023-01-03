@@ -1,9 +1,7 @@
 let include_main = document.getElementById("include-main");
 let include_mp3 = document.getElementById("include-mp3");
 
-
 async function load_header() {
-
   const response = await fetch("header.html");
   const data = await response.text();
 
@@ -15,7 +13,6 @@ async function load_header() {
 }
 
 async function load_footer() {
-
   const response = await fetch("footer.html");
   const data = await response.text();
 
@@ -27,7 +24,6 @@ async function load_footer() {
 }
 
 async function load_main() {
-
   const response = await fetch("main.html");
   const data = await response.text();
 
@@ -39,7 +35,6 @@ async function load_main() {
 }
 
 async function load_mp3() {
-
   const response = await fetch("mp3.html");
   const data = await response.text();
 
@@ -53,7 +48,6 @@ async function load_mp3() {
 }
 
 async function load_player() {
-
   const response = await fetch("player.html");
   const data = await response.text();
 
@@ -158,7 +152,7 @@ function all() {
 
   let prev = document.getElementById("prev-music-onplay");
   let next = document.getElementById("next-music-onplay");
-  let play_pause = document.querySelectorAll(".play-music-onplay");
+  let play_pause = document.querySelector(".play-music-onplay");
 
   progress_body?.addEventListener("click", setProgress);
   prev?.addEventListener("click", prevSong);
@@ -176,11 +170,9 @@ function all() {
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
 
-  play_pause.forEach((element) => {
-    element.addEventListener("click", () => {
-      isPlaying = player.classList.contains("play");
-      isPlaying ? puaseSong() : playSong();
-    });
+  play_pause.addEventListener("click", () => {
+    isPlaying = player.classList.contains("play");
+    isPlaying ? puaseSong() : playSong();
   });
 
   // loadSong(songs[songIndex - 1]);
@@ -202,6 +194,7 @@ function all() {
 
   function playSong() {
     player.classList.add("play");
+
     if (current_Time) {
       audio.currentTime = current_Time;
     }
@@ -210,22 +203,17 @@ function all() {
 
     isPlaying ? audio.play() : audio.play();
 
-    for (let i = 0; i < play_pause.length; i++) {
-      play_pause[i].classList.remove("fa-circle-play");
-      play_pause[i].classList.add("fa-pause");
-    }
+    play_pause.classList.remove("fa-circle-play");
+    play_pause.classList.add("fa-pause");
   }
 
   function puaseSong() {
     player.classList.remove("play");
-    clearInterval(audioInteval);
 
     audio.pause();
 
-    for (let i = 0; i < play_pause.length; i++) {
-      play_pause[i].classList.remove("fa-pause");
-      play_pause[i].classList.add("fa-circle-play");
-    }
+    play_pause.classList.remove("fa-pause");
+    play_pause.classList.add("fa-circle-play");
   }
 
   function prevSong() {
@@ -397,19 +385,7 @@ function all() {
     item_board.forEach((element) => {
       element.addEventListener("click", () => {
         addToPlayList(element.id);
-
-        // include_main.style.display = "none";
-        // include_mp3.style.display = "flex";
-
-        // var stateObj = { foo: "bar" };
-        // history.pushState(stateObj, "mp3", "mp3.html");
-
-        // if(location.href === mp3.html ){
-        //   alert ("hi");
-        // }else{
-        //   alert ("no");
-        // }
-
+        location.assign("#mp3");
       });
     });
   }
@@ -421,7 +397,6 @@ function all() {
   function clickItemDot() {
     item_dots.forEach((element) => {
       element.addEventListener("click", () => {
-
         if (!witdthElement) {
           witdthElement = item_board[element.id].offsetWidth;
         }
@@ -575,6 +550,40 @@ function all() {
     });
   }
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////                                 ////////////////////////////////////
+////////////////////////////          mp3 page js            ////////////////////////////////////
+////////////////////////////                                 ////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+window.addEventListener("hashchange",() => {
+    var hash = location.hash;
+
+    console.log(hash);
+
+    switch (hash) {
+      case "#mp3":
+        include_main.style.display = "none";
+        include_mp3.style.display = "flex";
+        break;
+      default:
+        include_main.style.display = "block";
+        include_mp3.style.display = "none";
+        break;
+    }
+  },false);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////                                 ////////////////////////////////////
+////////////////////////////          mp3 page js            ////////////////////////////////////
+////////////////////////////                                 ////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 function runMp3JS() {
   /////////////////////////////////////////////////////////////////////////////////////////////////

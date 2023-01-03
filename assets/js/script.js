@@ -1,96 +1,69 @@
 let include_main = document.getElementById("include-main");
 let include_mp3 = document.getElementById("include-mp3");
 
+
 async function load_header() {
-  let myPromise = new Promise(function (resolve) {
-    let load = new XMLHttpRequest();
-    load.open("GET", "header.html");
 
-    load.onload = function () {
-      if (load.status == 200) {
-        resolve(load.response);
-      } else {
-        resolve("File not Found");
-      }
-    };
+  const response = await fetch("header.html");
+  const data = await response.text();
 
-    load.send();
-  });
-  document.getElementById("include-header").innerHTML = await myPromise;
+  if (response.status == 200) {
+    document.getElementById("include-header").innerHTML = data;
+  } else {
+    console.log("File not Found");
+  }
 }
 
 async function load_footer() {
-  let myPromise = new Promise(function (resolve) {
-    let load = new XMLHttpRequest();
-    load.open("GET", "footer.html");
 
-    load.onload = function () {
-      if (load.status == 200) {
-        resolve(load.response);
-      } else {
-        resolve("File not Found");
-      }
-    };
+  const response = await fetch("footer.html");
+  const data = await response.text();
 
-    load.send();
-  });
-  document.getElementById("include-footer").innerHTML = await myPromise;
-}
-
-async function load_player() {
-  let myPromise = new Promise(function (resolve) {
-    let load = new XMLHttpRequest();
-    load.open("GET", "player.html");
-
-    load.onload = function () {
-      if (load.status == 200) {
-        resolve(load.response);
-      } else {
-        resolve("File not Found");
-      }
-    };
-    load.send();
-  });
-  document.getElementById("include-player").innerHTML = await myPromise;
-
-  await all();
+  if (response.status == 200) {
+    document.getElementById("include-footer").innerHTML = data;
+  } else {
+    console.log("File not Found");
+  }
 }
 
 async function load_main() {
-  let myPromise = new Promise(function (resolve) {
-    let load = new XMLHttpRequest();
-    load.open("GET", "main.html");
 
-    load.onload = function () {
-      if (load.status == 200) {
-        resolve(load.response);
-      } else {
-        resolve("File not Found");
-      }
-    };
-    load.send();
-  });
+  const response = await fetch("main.html");
+  const data = await response.text();
 
-  include_main.innerHTML = await myPromise;
+  if (response.status == 200) {
+    include_main.innerHTML = data;
+  } else {
+    console.log("File not Found");
+  }
 }
 
 async function load_mp3() {
-  let myPromise = new Promise(function (resolve) {
-    let load = new XMLHttpRequest();
-    load.open("GET", "mp3.html");
 
-    load.onload = function () {
-      if (load.status == 200) {
-        resolve(load.response);
-      } else {
-        resolve("File not Found");
-      }
-    };
-    load.send();
-  });
-  include_mp3.innerHTML = await myPromise;
+  const response = await fetch("mp3.html");
+  const data = await response.text();
+
+  if (response.status == 200) {
+    include_mp3.innerHTML = data;
+  } else {
+    console.log("File not Found");
+  }
 
   await runMp3JS();
+}
+
+async function load_player() {
+
+  const response = await fetch("player.html");
+  const data = await response.text();
+
+  if (response.status == 200) {
+    document.getElementById("include-player").innerHTML = data;
+  } else {
+    console.log("File not Found");
+  }
+
+  await all();
 }
 
 load_header();
@@ -166,10 +139,6 @@ function all() {
   let player = document.querySelector(".player");
   let btn_playlist = document.getElementById("btn-playlist");
   let playlist_onplay = document.querySelector(".playlist-onplay");
-  let columns = document.getElementsByClassName("vertical"),
-    audioInteval,
-    analyser,
-    buffer;
 
   let badge_time = document.getElementById("badge-time");
   let progress_play = document.querySelector(".progrees-time-play");
@@ -434,6 +403,13 @@ function all() {
 
         // var stateObj = { foo: "bar" };
         // history.pushState(stateObj, "mp3", "mp3.html");
+
+        // if(location.href === mp3.html ){
+        //   alert ("hi");
+        // }else{
+        //   alert ("no");
+        // }
+
       });
     });
   }

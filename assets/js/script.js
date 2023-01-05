@@ -132,6 +132,7 @@ function all() {
 
   let player = document.querySelector(".player");
   let btn_playlist = document.getElementById("btn-playlist");
+  btn_playlist?.addEventListener("click", ClosePlayList);
   let playlist_onplay = document.querySelector(".playlist-onplay");
 
   let badge_time = document.getElementById("badge-time");
@@ -150,6 +151,14 @@ function all() {
     playListIndex = 0,
     idOnlay;
 
+  const btnClosePlayList = document.querySelector(".fa-close");
+  btnClosePlayList.addEventListener("click", ClosePlayList);
+
+  const btnRepeat = document.querySelector(".fa-repeat");
+  btnRepeat.addEventListener("click", repeatSong);
+  let SwitchRepeat = 1,
+    playRepeat = 0;
+
   let prev = document.getElementById("prev-music-onplay");
   let next = document.getElementById("next-music-onplay");
   let play_pause = document.querySelector(".play-music-onplay");
@@ -158,9 +167,6 @@ function all() {
   prev?.addEventListener("click", prevSong);
   next?.addEventListener("click", nextSong);
   audio?.addEventListener("ended", nextSong);
-
-  // let repet = document.getElementById("repet-music-onplay"), switch_repet;
-  // repet.addEventListener('click', repetSong);
 
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -226,30 +232,50 @@ function all() {
   }
 
   function nextSong() {
-    playListIndex++;
+    console.log(playListIndex);
 
-    if (playListIndex > playlist.length - 1) {
-      playListIndex = 0;
+    switch (SwitchRepeat) {
+      case 1:
+        playListIndex++;
+        if (playListIndex > playlist.length - 1) {
+          playListIndex = 0;
+        }
+
+        console.log(playListIndex);
+
+        break;
+      case 2:
+        playRepeat++;
+        if (playRepeat == 2) {
+          playListIndex++;
+          playRepeat = 0;
+          console.log(playListIndex);
+
+          if (playListIndex > playlist.length - 1) {
+            playListIndex = 0;
+          }
+        }
+
+        break;
     }
+
     loadSong(songs[songs.findIndex((x) => x.id == playlist[playListIndex])]);
     playSong();
   }
 
-  function repetSong() {
-    // switch(switch_repet){
-    //     case "norepet":
-    //         switch_repet = "one-repet";
-    //         repet.classList.remove();
-    //         repet.classList.add("fa fa-repeat");
-    //     break;
-    //     case "one-repet":
-    //         switch_repet = "total-repet";
-    //     break;
-    //     case "total-repet":
-    //         switch_repet = "norepet";
-    //         repet.classList.add("fa fa-repeat");
-    //     break;
-    // }
+  function repeatSong() {
+    switch (SwitchRepeat) {
+      case 1:
+        btnRepeat.style.opacity = "1";
+        btnRepeat.style.color = "#F8AE5E";
+        SwitchRepeat = 2;
+        break;
+      case 2:
+        btnRepeat.style.opacity = "";
+        btnRepeat.style.color = "#fff";
+        SwitchRepeat = 1;
+        break;
+    }
   }
 
   function updateProgress(e) {
@@ -447,16 +473,16 @@ function all() {
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////                                 ////////////////////////////////////
-  ////////////////////////////             playlist            ////////////////////////////////////
-  ////////////////////////////                                 ////////////////////////////////////
+  ////////////////////////////  add - clear - update playlist  ////////////////////////////////////
+  ////////////////////////////  open-close playlist            ////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
 
-  btn_playlist?.addEventListener("click", (e) => {
+  function ClosePlayList() {
     playlist_onplay.style.display == "none"
       ? (playlist_onplay.style.display = "flex")
       : (playlist_onplay.style.display = "none");
-  });
+  }
 
   let list_music_onplay = document.querySelector(".list-music-onplay"),
     item_playlist,
@@ -470,7 +496,6 @@ function all() {
     playSong();
 
     const found = playlist.find((element) => element == id);
-
     if (!found) {
       playlist.push(id);
       updatePlaylist();
@@ -522,14 +547,12 @@ function all() {
   function fun_item_playlist() {
     item_playlist_div.forEach((element) => {
       element.addEventListener("click", () => {
-        console.log(element.id);
         loadSong(songs[songs.findIndex((x) => x.id == element.id)]);
         playSong();
       });
     });
     btn_play.forEach((element) => {
       element.addEventListener("click", () => {
-        console.log(element.id);
         loadSong(songs[songs.findIndex((x) => x.id == element.id)]);
         playSong();
       });
@@ -549,6 +572,60 @@ function all() {
       });
     });
   }
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////                                 ////////////////////////////////////
+  ////////////////////////////         Featured Music          ////////////////////////////////////
+  ////////////////////////////                                 ////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+
+  let listMusic = document.querySelector(".list-music"),
+    playIcon,
+    coverImg;
+
+  for (let i = 0; i < 6; i++) {
+    var div = document.createElement("div");
+    div.className = "item-list-music";
+    const id = `${songs[i].id}`;
+
+    let sample = `<div class="cover" id="${id}">
+                    <img src="assets/file/cover/${songs[i].image_cover}" alt="img ${songs[i].image_cover}">
+                    <span></span>
+                  </div>
+                  <div class="name">
+                    <i class="fa fa-play-circle" id="${id}"></i>
+                    <div>
+                        <p>${songs[i].name}</p>
+                        <p id="${id}">${songs[i].singer}</p>
+                    </div>
+                  </div>`;
+
+    div.innerHTML = sample;
+    listMusic.appendChild(div);
+    coverImg = document.querySelectorAll(".cover");
+    playIcon = document.querySelectorAll(".name i");
+    nameSinger = document.querySelectorAll(".name div p:nth-child(2)");
+
+    playIconFun();
+  }
+
+  function playIconFun() {
+    playIcon.forEach((element) => {
+      element.addEventListener("click", () => {
+        addToPlayList(element.id);
+      });
+    });
+
+    coverImg.forEach((element) => {
+      element.addEventListener("click", () => {});
+    });
+
+    nameSinger.forEach((element) => {
+      element.addEventListener("click", () => {});
+    });
+  }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -559,8 +636,9 @@ function all() {
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-window.addEventListener("hashchange",() => {
+window.addEventListener(
+  "hashchange",
+  () => {
     var hash = location.hash;
 
     console.log(hash);
@@ -575,7 +653,9 @@ window.addEventListener("hashchange",() => {
         include_mp3.style.display = "none";
         break;
     }
-  },false);
+  },
+  false
+);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////

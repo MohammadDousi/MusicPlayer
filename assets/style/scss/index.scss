@@ -215,7 +215,7 @@ header {
             opacity: 1;
             background-color: $accentColor;
         }
-        
+
     }
 
     .dot-active {
@@ -289,22 +289,23 @@ header {
 .list-music {
     @include widthHeight(100%, "");
     @include displayFlex(flex, row, nowrap, flex-start, center, center);
-    @include colRowGap(1rem, 0);
+    @include colRowGap(1.5rem, 0);
     padding-top: 1.5rem;
 }
 
 .item-list-music {
     @include widthHeight(16.66%, "");
     @include displayFlex(flex, column, nowrap, center, center, center);
-    @include colRowGap(0, 1rem);
+    @include colRowGap(0, 1.5rem);
     cursor: pointer;
     overflow: hidden;
 
     .cover {
+        height: 10rem;
         position: relative;
 
         img {
-            width: 100%;
+            @include widthHeight(100%, 100%);
             @include borderRadiusBox;
             object-fit: cover;
         }
@@ -314,16 +315,16 @@ header {
         }
     }
 
-
     .name {
         width: 100%;
         @include displayFlex(flex, row, nowrap, flex-start, center, center);
         @include colRowGap(.5rem, 0);
         position: relative;
         overflow: hidden;
+        padding-left: .3rem;
 
         i {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: $whiteColor;
             opacity: .5;
 
@@ -335,22 +336,18 @@ header {
 
         div {
             @include displayFlex(flex, column, nowrap, flex-start, center, flex-start);
-            @include colRowGap(0, .2rem);
-            padding-left: .5rem;
+            @include colRowGap(0, .3rem);
+            padding-left: .2rem;
 
             p {
                 @include fontSizeWeightColor(14px, 500, $whiteColor);
 
                 &:nth-child(2) {
+                    opacity: .5;
+
                     &:hover {
                         text-decoration: underline;
                     }
-                }
-
-                a {
-                    @include fontSizeWeightColor(14px, 400, $whiteColor);
-                    opacity: .5;
-                    font-weight: 400;
                 }
             }
 
@@ -361,11 +358,16 @@ header {
 
 .album-item-list-music {
     width: 25% !important;
+
+
+    .cover {
+        height: 17rem;
+    }
 }
 
 .best-list-music {
     flex-wrap: wrap !important;
-    row-gap: 1rem;
+    @include colRowGap(1rem, 1rem);
 }
 
 .best-item-list-music {
@@ -531,16 +533,48 @@ header {
 
 .title-onplay {
     @include widthHeight(100%, "");
-    @include displayFlex(flex, row, nowrap, flex-start, center, baseline);
-    @include colRowGap(.5rem, 0);
+    @include displayFlex(flex, row, nowrap, flex-start, center, center);
     padding: 1.5rem 1.5rem;
+
+    .title {
+        width: 100%;
+        @include displayFlex(flex, row, nowrap, flex-start, center, baseline);
+        @include colRowGap(.5rem, 0);
+
+        i {
+            @include fontSizeWeightColor(14px, "", $whiteColor);
+            opacity: .4;
+        }
+
+        p {
+            text-align: left;
+            @include fontSizeWeightColor(14px, 400, $whiteColor);
+            opacity: .4;
+        }
+
+    }
+
+    .menu-icon {
+        width: 100%;
+        @include displayFlex(flex, row-reverse, nowrap, flex-start, center, center);
+        @include colRowGap(1.5rem,1rem);
+        @include fontSizeWeightColor(14px, "", $whiteColor);
+        cursor: pointer;
+
+        i {
+            @include fontSizeWeightColor(14px, "", $whiteColor);
+            opacity: .4;
+            
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        
+    }
 }
 
-.title-2 {
-    text-align: left;
-    @include fontSizeWeightColor(14px, 400, $whiteColor);
-    opacity: .4;
-}
+
 
 .list-music-onplay {
     @include widthHeight(100%, 14rem);
@@ -593,7 +627,9 @@ header {
 }
 
 .btn-item {
-    @extend .title-2;
+    text-align: left;
+    @include fontSizeWeightColor(14px, 400, $whiteColor);
+    opacity: .4;
 
     &:hover {
         opacity: 1;

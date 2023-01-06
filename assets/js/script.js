@@ -496,6 +496,7 @@ function all() {
     playSong();
 
     const found = playlist.find((element) => element == id);
+
     if (!found) {
       playlist.push(id);
       updatePlaylist();
@@ -537,10 +538,6 @@ function all() {
 
       fun_item_playlist();
       fun_clearToListItem();
-
-      // for (let i = 0; i < playlist.length; i++) {
-      //     console.log("for=>"+playlist[i]);
-      // }
     }
   }
 
@@ -549,12 +546,17 @@ function all() {
       element.addEventListener("click", () => {
         loadSong(songs[songs.findIndex((x) => x.id == element.id)]);
         playSong();
+        let index = playlist.indexOf(element.id);
+        playListIndex = index;
       });
     });
     btn_play.forEach((element) => {
       element.addEventListener("click", () => {
         loadSong(songs[songs.findIndex((x) => x.id == element.id)]);
         playSong();
+
+        let index = playlist.indexOf(element.id);
+        playListIndex = index;
       });
     });
   }
@@ -615,11 +617,15 @@ function all() {
     playIcon.forEach((element) => {
       element.addEventListener("click", () => {
         addToPlayList(element.id);
+        let index = playlist.indexOf(element.id);
+        playListIndex = index;
       });
     });
 
     coverImg.forEach((element) => {
-      element.addEventListener("click", () => {});
+      element.addEventListener("click", () => {
+        location.assign("#mp3");
+      });
     });
 
     nameSinger.forEach((element) => {
@@ -631,28 +637,45 @@ function all() {
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////                                 ////////////////////////////////////
-////////////////////////////          mp3 page js            ////////////////////////////////////
+////////////////////////////          switch page            ////////////////////////////////////
 ////////////////////////////                                 ////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// let index = ArrPage[ArrPage.findIndex((x) => x.name == namePage)];
+// const found = arrPage.find((element) => element == namePage);
+// let index = arrPage.indexOf(namePage);
+
+
+let arrPage = ["main", "mp3"];
 
 window.addEventListener(
   "hashchange",
   () => {
     var hash = location.hash;
-
-    console.log(hash);
+    
+    start = hash.lastIndexOf("#");
+    end = hash.lastIndexOf("");
+    namePage = hash.substring(start + 1, end);
 
     switch (hash) {
       case "#mp3":
-        include_main.style.display = "none";
-        include_mp3.style.display = "flex";
+        showPage();
+        document.getElementById("include-" + namePage).style.display = "flex";
         break;
       default:
-        include_main.style.display = "block";
-        include_mp3.style.display = "none";
+        showPage();
+        document.getElementById("include-main").style.display = "block";
         break;
     }
+
+    function showPage() {
+      for (var i = 0; i < arrPage.length; i++) {
+        document.getElementById("include-" + arrPage[i]).style.display = "none";
+      }
+    }
+
   },
   false
 );

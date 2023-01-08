@@ -642,11 +642,9 @@ function all() {
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-
 // let index = ArrPage[ArrPage.findIndex((x) => x.name == namePage)];
 // const found = arrPage.find((element) => element == namePage);
 // let index = arrPage.indexOf(namePage);
-
 
 let arrPage = ["main", "mp3"];
 
@@ -654,10 +652,10 @@ window.addEventListener(
   "hashchange",
   () => {
     var hash = location.hash;
-    
-    start = hash.lastIndexOf("#");
-    end = hash.lastIndexOf("");
-    namePage = hash.substring(start + 1, end);
+
+    let start = hash.lastIndexOf("#");
+    let end = hash.lastIndexOf("");
+    let namePage = hash.substring(start + 1, end);
 
     switch (hash) {
       case "#mp3":
@@ -675,7 +673,6 @@ window.addEventListener(
         document.getElementById("include-" + arrPage[i]).style.display = "none";
       }
     }
-
   },
   false
 );

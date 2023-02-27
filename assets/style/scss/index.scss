@@ -557,24 +557,22 @@ header {
     .menu-icon {
         width: 100%;
         @include displayFlex(flex, row-reverse, nowrap, flex-start, center, center);
-        @include colRowGap(1.5rem,1rem);
+        @include colRowGap(1.5rem, 1rem);
         @include fontSizeWeightColor(14px, "", $whiteColor);
         cursor: pointer;
 
         i {
             @include fontSizeWeightColor(14px, "", $whiteColor);
             opacity: .4;
-            
+
             &:hover {
                 opacity: 1;
             }
         }
 
-        
+
     }
 }
-
-
 
 .list-music-onplay {
     @include widthHeight(100%, 14rem);
@@ -1139,7 +1137,84 @@ footer {
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////                                 ////////////////////////////////////
-////////////////////////////           media query           ////////////////////////////////////
+////////////////////////////            sign page            ////////////////////////////////////
 ////////////////////////////                                 ////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+.content-sign {
+    @include displayFlex(flex, row, nowrap, center, center, center);
+    @include colRowGap(1rem, 0);
+    padding: 2.5rem 5.5rem;
+}
+
+#form-sign {
+    @include widthHeight(40%, 100%);
+    @include displayFlex(flex, column, nowrap, center, center, center);
+    @include colRowGap (0, 1rem);
+    @include borderRadiusBox;
+    padding: 0rem 2.5rem;
+
+    #sign-logo {
+        width: 8rem;
+        object-fit: cover;
+        border-radius: 100%;
+    }
+
+    .title-sign {
+        @include widthHeight(100%, auto);
+        @include fontSizeWeightColor(16px, 300, $whiteColor);
+        margin-top: .5rem;
+    }
+
+    >form {
+        @include displayFlex(flex, column, nowrap, center, center, center);
+        @include colRowGap(0, 1rem);
+        @include widthHeight(100%, auto);
+        margin-top: 1.5rem;
+
+        .title-input {
+            @include widthHeight(100%, auto);
+            @include fontSizeWeightColor(14px, 300, rgba(255, 255, 255, .3));
+            text-align: left;
+            margin-left: 2.5rem;
+        }
+
+        .input-text {
+            @include inputText ;
+        }
+
+        >div {
+            @include widthHeight(100%, auto);
+            @include displayFlex(flex, row, nowrap, space-between, center, center);
+            margin-top: 1.5rem;
+
+            >p {
+                @include fontSizeWeightColor(14px, 300, $whiteColor);
+            }
+        }
+
+        .input-btn {
+            @include btnStyleBorder;
+            padding: .8rem 4rem;
+
+            &:nth-child(7) {
+                @include btnStyleNonBorder;
+            }
+        }
+
+    }
+}
+
+#img-sign {
+    @include widthHeight(60%, 100%);
+
+    >img {
+        @include widthHeight(100%, 100%);
+        @include borderRadiusBox;
+        object-fit: cover;
+    }
+
+}

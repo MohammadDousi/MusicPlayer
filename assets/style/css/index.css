@@ -312,10 +312,10 @@ header {
   column-gap: 0.5rem;
   row-gap: 0;
   font-size: 14px;
-  font-weight: 500;
-  color: #ffffff;
-  padding: 0.6rem 1.3rem;
-  border: 1px solid #ffffff;
+  font-weight: 700;
+  color: #14162E;
+  padding: 0.8rem 1.3rem;
+  background-color: #F8AE5E;
   border-radius: 1000px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -325,13 +325,26 @@ header {
   color: #ffffff;
 }
 .header-container-music div button:hover {
-  color: #070818;
-  background-color: #F8AE5E;
-  border: 1px solid #F8AE5E;
+  background-color: #ff982b;
 }
 .header-container-music div button:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.5rem;
+  row-gap: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #F8AE5E;
+  padding: 0.8rem 1.3rem;
+  border-radius: 1000px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  letter-spacing: 0.05rem;
   border: 1px solid transparent;
-  background-color: transparent;
 }
 .header-container-music div button:nth-child(2):hover {
   color: #F8AE5E;
@@ -605,7 +618,7 @@ header {
   align-items: center;
   column-gap: 0;
   row-gap: 0;
-  background-color: hsla(236deg, 55%, 6%, 0.9);
+  background-color: hsla(236, 55%, 6%, 0.9);
   position: fixed;
   left: 0;
   top: 0;
@@ -921,7 +934,7 @@ header {
   -webkit-appearance: none;
   width: 0.8rem;
   height: 0.8rem;
-  background: #D07164;
+  background: #ff982b;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
   transition: background 0.3s ease-in-out;
   border-radius: 50%;
@@ -1004,7 +1017,7 @@ header {
   border-radius: 50%;
   position: absolute;
   cursor: pointer;
-  background-color: #D07164;
+  background-color: #ff982b;
   z-index: 3;
   transition: 0.3s;
 }
@@ -1085,10 +1098,10 @@ header {
   column-gap: 0.5rem;
   row-gap: 0;
   font-size: 14px;
-  font-weight: 500;
-  color: #ffffff;
-  padding: 0.6rem 1.3rem;
-  border: 1px solid #ffffff;
+  font-weight: 700;
+  color: #14162E;
+  padding: 0.8rem 1.3rem;
+  background-color: #F8AE5E;
   border-radius: 1000px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -1099,13 +1112,26 @@ header {
   padding: 0.5rem 2rem;
 }
 .div-btn-download button:hover {
-  color: #070818;
-  background-color: #F8AE5E;
-  border: 1px solid #F8AE5E;
+  background-color: #ff982b;
 }
 .div-btn-download button:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.5rem;
+  row-gap: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #F8AE5E;
+  padding: 0.8rem 1.3rem;
+  border-radius: 1000px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  letter-spacing: 0.05rem;
   border: 1px solid transparent;
-  background-color: transparent;
 }
 .div-btn-download button:nth-child(2):hover {
   color: #F8AE5E;
@@ -1281,10 +1307,10 @@ footer p:nth-child(3) {
   column-gap: 0.5rem;
   row-gap: 0;
   font-size: 14px;
-  font-weight: 500;
-  color: #ffffff;
-  padding: 0.6rem 1.3rem;
-  border: 1px solid #ffffff;
+  font-weight: 700;
+  color: #14162E;
+  padding: 0.8rem 1.3rem;
+  background-color: #F8AE5E;
   border-radius: 1000px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -1294,9 +1320,7 @@ footer p:nth-child(3) {
   color: #ffffff;
 }
 .btn-box button:hover {
-  color: #070818;
-  background-color: #F8AE5E;
-  border: 1px solid #F8AE5E;
+  background-color: #ff982b;
 }
 
 .track-artist-box {
@@ -1393,15 +1417,38 @@ footer p:nth-child(3) {
   column-gap: 0;
   row-gap: 1rem;
   border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
   padding: 0rem 2.5rem;
 }
 #form-sign #sign-logo {
-  width: 8rem;
+  width: 6rem;
   object-fit: cover;
   border-radius: 100%;
+  animation: myAnim 26s ease-in-out 0s infinite normal forwards;
 }
-#form-sign .title-sign {
-  width: 100%;
+@keyframes myAnim {
+  0%, 100% {
+    transform: rotate(0deg);
+    transform-origin: 50% 50%;
+  }
+  10% {
+    transform: rotate(8deg);
+  }
+  20%, 40%, 60% {
+    transform: rotate(-10deg);
+  }
+  30%, 50%, 70% {
+    transform: rotate(10deg);
+  }
+  80% {
+    transform: rotate(-8deg);
+  }
+  90% {
+    transform: rotate(8deg);
+  }
+}
+#form-sign .title-sign, #form-sign > form .goto-sign-up p {
+  width: auto;
   height: auto;
   font-size: 16px;
   font-weight: 300;
@@ -1419,16 +1466,16 @@ footer p:nth-child(3) {
   row-gap: 1rem;
   width: 100%;
   height: auto;
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
 }
 #form-sign > form .title-input {
   width: 100%;
   height: auto;
   font-size: 14px;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  opacity: 0.5;
   text-align: left;
-  margin-left: 2.5rem;
 }
 #form-sign > form .input-text {
   width: 100%;
@@ -1442,7 +1489,7 @@ footer p:nth-child(3) {
   padding-left: 2.5rem;
   border-radius: 1000px;
 }
-#form-sign > form > div {
+#form-sign > form .forget-login {
   width: 100%;
   height: auto;
   display: flex;
@@ -1451,14 +1498,19 @@ footer p:nth-child(3) {
   align-content: center;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
-#form-sign > form > div > p {
+#form-sign > form .forget-login > p {
   font-size: 14px;
   font-weight: 300;
   color: #ffffff;
+  opacity: 0.5;
+  cursor: pointer;
 }
-#form-sign > form .input-btn {
+#form-sign > form .forget-login > p:hover {
+  opacity: 1;
+}
+#form-sign > form .forget-login > button {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -1468,26 +1520,52 @@ footer p:nth-child(3) {
   column-gap: 0.5rem;
   row-gap: 0;
   font-size: 14px;
-  font-weight: 500;
-  color: #ffffff;
-  padding: 0.6rem 1.3rem;
-  border: 1px solid #ffffff;
+  font-weight: 700;
+  color: #14162E;
+  padding: 0.8rem 1.3rem;
+  background-color: #F8AE5E;
   border-radius: 1000px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   letter-spacing: 0.05rem;
   padding: 0.8rem 4rem;
 }
-#form-sign > form .input-btn:hover {
-  color: #070818;
-  background-color: #F8AE5E;
-  border: 1px solid #F8AE5E;
+#form-sign > form .forget-login > button:hover {
+  background-color: #ff982b;
 }
-#form-sign > form .input-btn:nth-child(7) {
+#form-sign > form .goto-sign-up {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+#form-sign > form .goto-sign-up p {
+  margin: 0;
+}
+#form-sign > form .goto-sign-up > button {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.5rem;
+  row-gap: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #F8AE5E;
+  padding: 0.8rem 1.3rem;
+  border-radius: 1000px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  letter-spacing: 0.05rem;
   border: 1px solid transparent;
-  background-color: transparent;
+  margin-left: 0.3rem;
 }
-#form-sign > form .input-btn:nth-child(7):hover {
+#form-sign > form .goto-sign-up > button:hover {
   color: #F8AE5E;
   border: 1px solid #F8AE5E;
 }

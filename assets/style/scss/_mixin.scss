@@ -1,7 +1,7 @@
 $primaryColor : #14162E;
 $primaryColorDarker : #070818;
 $accentColor : #F8AE5E;
-$accentColorDarker : #D07164;
+$accentColorDarker : #ff982b;
 $whiteColor :#ffffff;
 
 
@@ -63,25 +63,30 @@ $whiteColor :#ffffff;
 @mixin btnStyleBorder {
     @include displayFlex(flex, row, nowrap, center, center, center);
     @include colRowGap(.5rem, 0);
-    @include fontSizeWeightColor(14px, 500, $whiteColor);
-    padding: .6rem 1.3rem;
-    border: 1px solid $whiteColor;
+    @include fontSizeWeightColor(14px, 700, $primaryColor);
+    padding: .8rem 1.3rem;
+    background-color: $accentColor;
     border-radius: 1000px;
     cursor: pointer;
     transition: all .2s ease-in-out;
     letter-spacing: .05rem;
 
     &:hover {
-        color: $primaryColorDarker;
-        background-color: $accentColor;
-        border: 1px solid $accentColor;
+        background-color: $accentColorDarker;
     }
 }
 
 @mixin btnStyleNonBorder {
 
+    @include displayFlex(flex, row, nowrap, center, center, center);
+    @include colRowGap(.5rem, 0);
+    @include fontSizeWeightColor(14px, 700, $accentColor);
+    padding: .8rem 1.3rem;
+    border-radius: 1000px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    letter-spacing: .05rem;
     border: 1px solid transparent;
-    background-color: transparent;
 
     &:hover {
         color: $accentColor;

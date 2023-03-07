@@ -1,3 +1,13 @@
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////                                 ////////////////////////////////////
+////////////////////////////            main css             ////////////////////////////////////
+////////////////////////////                                 ////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 @import "font.css";
 @import "mixin";
 
@@ -47,7 +57,6 @@ body {
     overflow: -moz-scrollbars-none;
     -ms-overflow-style: none;
 }
-
 
 #include-header,
 #include-footer,
@@ -273,16 +282,18 @@ header {
     div {
         @include displayFlex(flex, row, nowrap, center, center, center);
         @include colRowGap(.3rem, 0);
-
-        button {
-            @include btnStyleBorder;
-            @include fontSizeWeightColor(12px, 600, $whiteColor);
-
-            &:nth-child(2) {
-                @include btnStyleNonBorder;
-            }
-        }
     }
+
+}
+
+.btn-container-play-all {
+    @include btnStyleBorder;
+    @include fontSizeWeightColor(12px, 600, $whiteColor);
+}
+
+.btn-container-see-all {
+    @include btnStyleNonBorder;
+    @include fontSizeWeightColor(12px, 600, $whiteColor);
 
 }
 
@@ -871,74 +882,6 @@ header {
     }
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////                                 ////////////////////////////////////
-////////////////////////////          box download           ////////////////////////////////////
-////////////////////////////                                 ////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-
-.box-download {
-    @include widthHeight(100%, 100%);
-    position: absolute;
-    @include displayFlex(none, row, nowrap, center, center, flex-start);
-    background-color: rgb(20, 22, 46, .95);
-    z-index: 999;
-}
-
-.form-download {
-    @include widthHeight(22rem, auto);
-    box-shadow: 0 5px 25px rgb(0, 0, 0, .5);
-    background-color: $primaryColorDarker;
-    @include borderRadiusBox;
-    overflow: hidden;
-
-    img {
-        width: 100%;
-        object-fit: cover;
-        animation: anim-form-download .5s 1 both;
-    }
-
-    h3 {
-        width: 100%;
-        @include fontSizeWeightColor(14px, 400, $whiteColor);
-        padding: 1.5rem 2rem;
-        line-height: 1.1rem;
-    }
-
-}
-
-.div-btn-download {
-    width: 100%;
-    @include displayFlex(flex, row, nowrap, center, center, center);
-    @include colRowGap(1rem, 0);
-    padding: .5rem 0 2.5rem 0;
-    animation: anim-form-download .3s 1 both;
-
-    button {
-        @include btnStyleBorder;
-        @include fontSizeWeightColor(14px, 500, $whiteColor);
-        padding: .5rem 2rem;
-
-        &:nth-child(2) {
-            @include btnStyleNonBorder;
-        }
-
-        p {
-            padding: 0;
-        }
-    }
-}
-
-@keyframes anim-form-download {
-
-    from {
-        width: 0%;
-    }
-
-    to {}
-}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1006,271 +949,4 @@ footer {
 
 
     }
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////                                 ////////////////////////////////////
-////////////////////////////        mp3 - box info           ////////////////////////////////////
-////////////////////////////                                 ////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-.box-info {
-    @include widthHeight(calc(100% - 18rem), auto);
-    @include displayFlex(flex, row, nowrap, space-between, center, center);
-    @include colRowGap(2rem, 0);
-    @include borderRadiusBox;
-    background-color: $primaryColorDarker;
-    margin: 0 0 2rem 0;
-
-    >img {
-        @include widthHeight(28%, 100%);
-        @include borderRadiusBox;
-        border-end-end-radius: 0px;
-        border-top-right-radius: 0px;
-        object-fit: cover;
-    }
-
-    >div {
-        @include widthHeight(70%, 100%);
-        @include displayFlex(flex, column, nowrap, center, center, flex-start);
-        @include colRowGap(0, 2rem);
-        padding: 0 3.5rem 0 0;
-        overflow: hidden;
-
-        .date-play-like-box,
-        .name-box,
-        .btn-box,
-        .track-artist-box {
-            @include widthHeight(100%, auto);
-            @include colRowGap(.7rem, 0.2rem);
-        }
-    }
-}
-
-.date-play-like-box {
-    @include displayFlex(flex, row, nowrap, flex-end, center, flex-start);
-    @include fontSizeWeightColor(12px, 400, $whiteColor);
-    opacity: .5;
-}
-
-.name-box {
-    @include displayFlex(flex, column, nowrap, flex-start, center, flex-start);
-
-    >p {
-        @include fontSizeWeightColor(26px, 600, $whiteColor);
-
-        &:nth-child(2) {
-            @include fontSizeWeightColor(18px, 400, $whiteColor);
-            opacity: .5;
-        }
-    }
-}
-
-.btn-box {
-    @include displayFlex(flex, row, nowrap, flex-start, center, center);
-
-    button {
-        @include btnStyleBorder;
-        @include fontSizeWeightColor(12px, 500, $whiteColor);
-    }
-}
-
-.track-artist-box {
-    @include displayFlex(flex, row, nowrap, flex-start, center, center);
-    column-gap: .3rem !important;
-
-    p {
-        @include fontSizeWeightColor(12px, 500, $whiteColor);
-        opacity: .5;
-
-        &:nth-child(2) {
-            opacity: 1;
-            cursor: pointer;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-    }
-}
-
-.lyrics-details {
-    @include widthHeight(calc(100% - 18rem), auto);
-    @include displayFlex(flex, column, nowrap, flex-start, center, center);
-
-    .btn-details {
-        @include widthHeight(100%, auto);
-        @include displayFlex(flex, column, nowrap, center, center, center);
-        @include colRowGap(0, .5rem);
-        @include fontSizeWeightColor(14px, 500, $whiteColor);
-        cursor: pointer;
-
-        &:hover {
-            color: $accentColor;
-        }
-
-        i {
-            transform: rotate(90deg);
-            writing-mode: vertical-rl;
-        }
-    }
-
-    .body-details {
-        @include widthHeight(100%, 0);
-        @include fontSizeWeightColor(14px, 400, $whiteColor);
-        overflow: hidden;
-        transition: all .3s ease;
-
-        p {
-            opacity: .8;
-            line-height: 1.8rem;
-        }
-    }
-
-
-}
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////                                 ////////////////////////////////////
-////////////////////////////            sign page            ////////////////////////////////////
-////////////////////////////                                 ////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-.content-sign {
-    @include displayFlex(flex, row, nowrap, center, center, center);
-    @include colRowGap(1rem, 0);
-    padding: 2.5rem 5.5rem;
-}
-
-#form-sign {
-    @include widthHeight(40%, 100%);
-    @include displayFlex(flex, column, nowrap, center, center, center);
-    @include colRowGap (0, 1rem);
-    @include borderRadiusBox;
-    background-color: rgba($color: $whiteColor, $alpha: .05);
-    padding: 0rem 2.5rem;
-
-    #sign-logo {
-        width: 6rem;
-        object-fit: cover;
-        border-radius: 100%;
-        animation: myAnim 26s ease-in-out 0s infinite normal forwards;    }
-
-        @keyframes myAnim {
-            0%,
-            100% {
-                transform: rotate(0deg);
-                transform-origin: 50% 50%;
-            }
-        
-            10% {
-                transform: rotate(8deg);
-            }
-        
-            20%,
-            40%,
-            60% {
-                transform: rotate(-10deg);
-            }
-        
-            30%,
-            50%,
-            70% {
-                transform: rotate(10deg);
-            }
-        
-            80% {
-                transform: rotate(-8deg);
-            }
-        
-            90% {
-                transform: rotate(8deg);
-            }
-        }
-
-    .title-sign {
-        @include widthHeight(auto, auto);
-        @include fontSizeWeightColor(16px, 300, $whiteColor);
-        margin-top: .5rem;
-    }
-
-    >form {
-        @include displayFlex(flex, column, nowrap, center, center, center);
-        @include colRowGap(0, 1rem);
-        @include widthHeight(100%, auto);
-        margin-top: 2.5rem;
-
-        .title-input {
-            @include widthHeight(100%, auto);
-            @include fontSizeWeightColor(14px, 300, $whiteColor);
-            opacity: .5;
-            text-align: left;
-        }
-
-        .input-text {
-            @include inputText;
-        }
-
-        .forget-login {
-            @include widthHeight(100%, auto);
-            @include displayFlex(flex, row, nowrap, space-between, center, center);
-            margin-top: 1rem;
-
-            >p {
-                @include fontSizeWeightColor(14px, 300, $whiteColor);
-                opacity: .5;
-                cursor: pointer;
-
-                &:hover{
-                    opacity: 1;
-                }
-            }
-
-            >button {
-                @include btnStyleBorder;
-                padding: .8rem 4rem;
-
-            }
-        }
-
-
-        .goto-sign-up {
-            @include displayFlex(flex, row, nowrap, center, center, center);
-            margin-top: 2.5rem;
-
-            p {
-                @extend .title-sign;
-                margin: 0;
-            }
-
-            > button {
-                @include btnStyleNonBorder;
-                // padding-left: 0;
-                // padding-right: 0;
-                margin-left: .3rem;
-            }
-
-        }
-
-
-    }
-}
-
-#img-sign {
-    @include widthHeight(60%, 100%);
-
-    >img {
-        @include widthHeight(100%, 100%);
-        @include borderRadiusBox;
-        object-fit: cover;
-    }
-
 }

@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="assets/style/css/index.css">
     <link rel="stylesheet" href="assets/style/css/all.css">
+    <link rel="stylesheet" href="assets/style/css/sign.css">
 
     <title>Sign up / Login</title>
 
@@ -23,18 +24,18 @@
             <img class="img-sign-slide" src="assets/file/cover/cover-music (17).jpg">
         </section>
 
-        <section id="form-sign">
+        <section id="section-FormSignIn">
 
             <img id="sign-logo" src="assets/file/logo/logo.png" alt="logo">
             <p class="title-sign">To continue, log in to MusciPlayer.</p>
 
-            <form action="" method="POST">
+            <form>
 
-                <p class="title-input">Email address or username</p>
-                <input class="input-text" type="email" placeholder="info@music.com" required>
+                <p class="title-input">Username, Mobile Number OR Email</p>
+                <input class="input-text" type="text" placeholder="@">
 
                 <p class="title-input">Password</p>
-                <input class="input-text" type="password" placeholder="Password" maxlength="20" required>
+                <input class="input-text" type="password" placeholder="Password" maxlength="20">
 
                 <div class="forget-login">
                     <p>Forgot your password?</p>
@@ -44,7 +45,7 @@
                 <div class="goto-sign-up">
 
                     <p>Don't have an account ?</p>
-                    <button id="goto-signUp" class="input-btn" type="button">SIGN UP FOR MUSICPLAYER</button>
+                    <button id="show-signUp" class="input-btn" type="button">SIGN UP FOR MUSICPLAYER</button>
 
                 </div>
 
@@ -53,10 +54,44 @@
 
         </section>
 
+        <section id="section-FormSignUp">
+
+            <img id="sign-logo" src="assets/file/logo/logo.png" alt="logo">
+            <p class="title-sign">To continue, log in to MusciPlayer.</p>
+
+            <form>
+
+                <p class="title-input">Email</p>
+                <input class="input-text" type="email" placeholder="">
+
+                <p class="title-input">Password</p>
+                <input class="input-text" type="email" placeholder="">
+
+                <p class="title-input">Confirm Password</p>
+                <input class="input-text" type="password" placeholder="" maxlength="20">
+
+                <div class="forget-login">
+                    <p>Forgot your password?</p>
+                    <button class="input-btn" type="button">LOG IN</button>
+                </div>
+
+                <div class="goto-sign-up">
+
+                    <button id="show-signIn" class="input-btn" type="button">Go to SIGN IN</button>
+
+                </div>
+
+            </form>
+
+
+
+
+        </section>
+
     </main>
 
 </body>
 
-<script src="assets/js/script.js"></script>
+<script src="assets/js/sign.js"></script>
 
 </html>

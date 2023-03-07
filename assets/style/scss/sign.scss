@@ -1,0 +1,145 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////                                 ////////////////////////////////////
+////////////////////////////            sign page            ////////////////////////////////////
+////////////////////////////                                 ////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+@import "mixin";
+
+.content-sign {
+    @include displayFlex(flex, row, nowrap, flex-start, center, center);
+    @include colRowGap(1rem, 0);
+    padding: 2.5rem 5.5rem;
+}
+
+#img-sign {
+    @include widthHeight(60%, 100%);
+
+    >img {
+        @include widthHeight(100%, 100%);
+        @include borderRadiusBox;
+        object-fit: cover;
+    }
+
+}
+
+#section-FormSignIn {
+    @include widthHeight(40%, 100%);
+    @include displayFlex(flex, column, nowrap, center, center, center);
+    @include colRowGap (0, 1rem);
+    @include borderRadiusBox;
+    background-color: rgba($color: $whiteColor, $alpha: .05);
+    padding: 1.5rem 2.5rem;
+
+    #sign-logo {
+        width: 6rem;
+        object-fit: cover;
+        border-radius: 100%;
+        animation: myAnim 26s ease-in-out 0s infinite normal forwards;    }
+
+        @keyframes myAnim {
+            0%,
+            100% {
+                transform: rotate(0deg);
+                transform-origin: 50% 50%;
+            }
+        
+            10% {
+                transform: rotate(8deg);
+            }
+        
+            20%,
+            40%,
+            60% {
+                transform: rotate(-10deg);
+            }
+        
+            30%,
+            50%,
+            70% {
+                transform: rotate(10deg);
+            }
+        
+            80% {
+                transform: rotate(-8deg);
+            }
+        
+            90% {
+                transform: rotate(8deg);
+            }
+        }
+
+    .title-sign {
+        @include widthHeight(auto, auto);
+        @include fontSizeWeightColor(16px, 300, $whiteColor);
+        margin-top: .5rem;
+    }
+
+    >form {
+        @include displayFlex(flex, column, nowrap, center, center, center);
+        @include colRowGap(0, 1rem);
+        @include widthHeight(100%, auto);
+        margin-top: 2.5rem;
+
+        .title-input {
+            @include widthHeight(100%, auto);
+            @include fontSizeWeightColor(14px, 300, $whiteColor);
+            opacity: .5;
+            text-align: left;
+        }
+
+        .input-text {
+            @include inputText;
+        }
+
+        .forget-login {
+            @include widthHeight(100%, auto);
+            @include displayFlex(flex, row, nowrap, space-between, center, center);
+            margin-top: 1rem;
+
+            >p {
+                @include fontSizeWeightColor(14px, 300, $whiteColor);
+                opacity: .5;
+                cursor: pointer;
+
+                &:hover{
+                    opacity: 1;
+                }
+            }
+
+            >button {
+                @include btnStyleNormal;
+                padding: .8rem 4rem;
+
+            }
+        }
+
+    }
+}
+
+#section-FormSignUp {
+    @extend #section-FormSignIn ;
+    width: 70%;
+}
+
+
+.goto-sign-up {
+    @include displayFlex(flex, row, nowrap, center, center, center);
+    margin-top: 2.5rem;
+    transition: ease-in-out .5s;
+
+    p {
+        @extend .title-sign;
+        margin: 0;
+    }
+
+    > button {
+        @include btnStyleNonBorder;
+        // padding-left: 0;
+        // padding-right: 0;
+        margin-left: .3rem;
+    }
+
+}

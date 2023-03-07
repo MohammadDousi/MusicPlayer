@@ -1,3 +1,4 @@
 {
-    "editor.inlayHints.fontFamily": "Fira Code,Hasklig,Consolas,IRANSans,monospace"
+    "editor.inlayHints.fontFamily": "Fira Code,Hasklig,Consolas,IRANSans,monospace",
+    "liveServer.settings.port": 5501
 }

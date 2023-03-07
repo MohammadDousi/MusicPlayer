@@ -60,7 +60,7 @@ $whiteColor :#ffffff;
     border-radius: 1000px;
 }
 
-@mixin btnStyleBorder {
+@mixin btnStyleNormal {
     @include displayFlex(flex, row, nowrap, center, center, center);
     @include colRowGap(.5rem, 0);
     @include fontSizeWeightColor(14px, 700, $primaryColor);
@@ -73,6 +73,24 @@ $whiteColor :#ffffff;
 
     &:hover {
         background-color: $accentColorDarker;
+    }
+}
+
+@mixin btnStyleBorder {
+    @include displayFlex(flex, row, nowrap, center, center, center);
+    @include colRowGap(.5rem, 0);
+    @include fontSizeWeightColor(14px, 700, $primaryColor);
+    border: 1px solid $whiteColor;
+    padding: .8rem 1.3rem;
+    border-radius: 1000px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    letter-spacing: .05rem;
+
+    &:hover {
+        background-color: $accentColor;
+        border: 1px solid $accentColor;
+        color: $primaryColor;
     }
 }
 

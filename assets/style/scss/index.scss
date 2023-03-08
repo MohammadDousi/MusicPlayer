@@ -882,9 +882,10 @@ header {
 @include media(Mobile) {
 
     .player {
-        @include widthHeight(100%, 9.5rem);
+        @include widthHeight(100%, auto);
         @include displayFlex(flex, column, nowrap, center, center, center);
-        @include colRowGap(0, 1rem);
+        @include colRowGap(0, 1.5rem);
+        padding: 1.5rem;
     }
 
     .pic-name {

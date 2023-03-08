@@ -459,6 +459,7 @@ header {
   font-size: 14px;
   font-weight: 500;
   color: #ffffff;
+  text-align: left;
 }
 .item-list-music .name div p:nth-child(2) {
   opacity: 0.5;
@@ -554,7 +555,7 @@ header {
   .list-music {
     flex-wrap: wrap;
     column-gap: 1rem;
-    row-gap: 1rem;
+    row-gap: 1.5rem;
     padding: 1.5rem 1.5rem 0 1.5rem;
   }
   .list-music::-webkit-scrollbar {
@@ -575,11 +576,10 @@ header {
     overflow: visible;
   }
   .item-list-music .cover {
-    width: 7.5rem;
-    height: 7.5rem;
+    width: 100%;
   }
   .item-list-music .name {
-    column-gap: 0;
+    column-gap: 0.5rem;
     row-gap: 0;
     margin-left: 0;
   }

@@ -347,5 +347,18 @@
     width: 0%;
   }
 }
+@media (min-width: 0px) and (max-width: 420px) {
+  .div-btn-download {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0;
+    row-gap: 1rem;
+    padding-bottom: 1rem;
+  }
+}
 
 /*# sourceMappingURL=mp3.css.map */

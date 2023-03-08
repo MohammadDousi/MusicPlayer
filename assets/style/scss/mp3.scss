@@ -243,4 +243,12 @@
 }
 
 
-@include media(Mobile) {}
+@include media(Mobile) {
+    
+    .div-btn-download {
+        @include displayFlex(flex, column, nowrap, center, center, center);
+        @include colRowGap(0, 1rem);
+        padding-bottom: 1rem;
+
+    }   
+}

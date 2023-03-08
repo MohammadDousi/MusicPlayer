@@ -152,6 +152,7 @@
 
 #section-FormSignUp {
   width: 70%;
+  display: none;
 }
 
 .goto-sign-up {

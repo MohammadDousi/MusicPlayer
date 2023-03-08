@@ -52,7 +52,7 @@ body {
   -ms-overflow-style: none;
 }
 
-#include-header,
+.include-header,
 #include-footer,
 #include-main,
 #include-mp3 {
@@ -98,7 +98,7 @@ header {
   align-content: center;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 1.5rem 0 0.5rem 0;
+  margin: 1.5rem 0 1.5rem 0;
   padding: 0 1.5rem;
 }
 

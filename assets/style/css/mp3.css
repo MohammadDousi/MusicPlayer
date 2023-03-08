@@ -208,8 +208,6 @@
     align-content: center;
     justify-content: flex-start;
     align-items: flex-start;
-    column-gap: 0;
-    row-gap: 1rem;
     padding: 0 1rem 1.5rem 1rem;
   }
   .box-info > div .date-play-like-box {
@@ -246,19 +244,19 @@
 .box-download {
   width: 100%;
   height: 100%;
-  position: absolute;
-  display: none;
+  display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-content: center;
   justify-content: center;
-  align-items: flex-start;
-  background-color: rgba(20, 22, 46, 0.95);
+  align-items: center;
+  position: absolute;
+  background-color: rgba(20, 22, 46, 0.98);
   z-index: 999;
 }
 
 .form-download {
-  width: 22rem;
+  width: 18rem;
   height: auto;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
   background-color: #070818;
@@ -292,7 +290,7 @@
   padding: 0.5rem 0 2.5rem 0;
   animation: anim-form-download 0.3s 1 both;
 }
-.div-btn-download button {
+.div-btn-download #download {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -303,24 +301,18 @@
   row-gap: 0;
   font-size: 14px;
   font-weight: 700;
-  color: #ffffff;
-  border: 1px solid #ffffff;
+  color: #14162E;
   padding: 0.8rem 1.3rem;
+  background-color: #F8AE5E;
   border-radius: 1000px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   letter-spacing: 0.05rem;
-  font-size: 14px;
-  font-weight: 500;
-  color: #ffffff;
-  padding: 0.5rem 2rem;
 }
-.div-btn-download button:hover {
-  background-color: #F8AE5E;
-  border: 1px solid #F8AE5E;
-  color: #14162E;
+.div-btn-download #download:hover {
+  background-color: #ff982b;
 }
-.div-btn-download button:nth-child(2) {
+.div-btn-download #close-download {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -339,12 +331,15 @@
   letter-spacing: 0.05rem;
   border: 1px solid transparent;
 }
-.div-btn-download button:nth-child(2):hover {
+.div-btn-download #close-download:hover {
   color: #F8AE5E;
   border: 1px solid #F8AE5E;
 }
-.div-btn-download button p {
-  padding: 0;
+.div-btn-download button {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  padding: 0.5rem 2rem;
 }
 
 @keyframes anim-form-download {

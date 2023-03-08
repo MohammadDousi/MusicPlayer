@@ -1,13 +1,14 @@
 let include_main = document.getElementById("include-main");
 let include_mp3 = document.getElementById("include-mp3");
-
-
 async function load_header() {
   const response = await fetch("header.html");
   const data = await response.text();
-
+  
+  let include_header = document.querySelectorAll(".include-header");
   if (response.status == 200) {
-    document.getElementById("include-header").innerHTML = data;
+    for(var i=0;i < include_header.length ;i++){
+    include_header[i].innerHTML = data;
+    }
   } else {
     console.log("File not Found");
   }
@@ -46,7 +47,7 @@ async function load_mp3() {
   } else {
     console.log("File not Found");
   }
-
+  await load_header();
   await loadJS("assets/js/mp3.js");
 }
 
@@ -63,11 +64,11 @@ async function load_player() {
   await all();
 }
 
+load_main();
 load_header();
 load_footer();
-load_main();
-load_mp3();
 load_player();
+load_mp3();
 
 function loadJS(address){
 

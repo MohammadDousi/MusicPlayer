@@ -57,7 +57,7 @@ body {
     -ms-overflow-style: none;
 }
 
-#include-header,
+.include-header,
 #include-footer,
 #include-main,
 #include-mp3 {
@@ -105,7 +105,7 @@ body {
 header {
     @include widthHeight(100%, 60px);
     @include displayFlex(flex, row-reverse, nowrap, space-between, center, flex-start);
-    margin: 1.5rem 0 .5rem 0;
+    margin: 1.5rem 0 1.5rem 0;
     padding: 0 1.5rem;
 }
 

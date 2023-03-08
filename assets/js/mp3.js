@@ -16,9 +16,18 @@
 
 let boxDownload = document.querySelector(".box-download");
 let btnDownload = document.getElementById("btn-download");
+let btnCloseDownload = document.getElementById("close-download");
 btnDownload.addEventListener("click", () => {
   boxDownload.style.display = "flex";
 });
+
+btnCloseDownload.addEventListener("click",()=>{
+  boxDownload.style.display = "none";
+})
+
+boxDownload.addEventListener("click",()=>{
+  boxDownload.style.display = "none";
+})
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////

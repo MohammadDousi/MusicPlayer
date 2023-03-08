@@ -139,7 +139,6 @@
         >div {
             @include widthHeight(100%, "");
             @include displayFlex(flex, column, nowrap, flex-start, center, flex-start);
-            @include colRowGap(0, 1rem);
             padding: 0 1rem 1.5rem 1rem;
 
             .date-play-like-box {
@@ -148,9 +147,11 @@
 
             .btn-box {
                 @include displayFlex(flex, row, nowrap, space-between, center, center);
-                @include colRowGap(.5rem,0);
+                @include colRowGap(.5rem, 0);
+
                 button {
                     padding: 0.8rem 1.2rem;
+
                     >p {
                         display: none;
                     }
@@ -183,14 +184,14 @@
 
 .box-download {
     @include widthHeight(100%, 100%);
+    @include displayFlex(flex, row, nowrap, center, center, center);
     position: absolute;
-    @include displayFlex(none, row, nowrap, center, center, flex-start);
-    background-color: rgb(20, 22, 46, .95);
+    background-color: rgb(20, 22, 46, .98);
     z-index: 999;
 }
 
 .form-download {
-    @include widthHeight(22rem, auto);
+    @include widthHeight(18rem, auto);
     box-shadow: 0 5px 25px rgb(0, 0, 0, .5);
     background-color: $primaryColorDarker;
     @include borderRadiusBox;
@@ -218,18 +219,17 @@
     padding: .5rem 0 2.5rem 0;
     animation: anim-form-download .3s 1 both;
 
+    #download {
+        @include btnStyleNormal;
+    }
+
+    #close-download {
+        @include btnStyleNonBorder;
+    }
+
     button {
-        @include btnStyleBorder;
         @include fontSizeWeightColor(14px, 500, $whiteColor);
         padding: .5rem 2rem;
-
-        &:nth-child(2) {
-            @include btnStyleNonBorder;
-        }
-
-        p {
-            padding: 0;
-        }
     }
 }
 
@@ -241,3 +241,6 @@
 
     to {}
 }
+
+
+@include media(Mobile) {}

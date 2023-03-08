@@ -89,7 +89,7 @@ body {
 @include media(Mobile) {
 
     .content-main {
-        padding: 0 0rem 7rem 0rem;
+        padding: 0 0rem 8rem 0rem;
     }
 }
 
@@ -303,7 +303,7 @@ header {
 }
 
 .list-music {
-    @include widthHeight(100%, "");
+    @include widthHeight(100%, auto);
     @include displayFlex(flex, row, nowrap, flex-start, center, flex-start);
     @include colRowGap(1.5rem, 0);
     padding-top: 1.5rem;
@@ -417,7 +417,7 @@ header {
 @include media(Mobile) {
 
     .container-music {
-        padding: 0rem 1.5rem;
+        padding: 0;
         margin: 3rem 0;
     }
 
@@ -426,6 +426,7 @@ header {
     }
 
     .header-container-music {
+        padding: 0 1.5rem;
 
         span {
             @include fontSizeWeightColor(1.5rem, 900, $whiteColor);
@@ -443,6 +444,7 @@ header {
     }
 
     .list-music {
+        padding: 1.5rem 1.5rem 0 1.5rem;
         overflow: auto;
 
         &::-webkit-scrollbar {
@@ -454,7 +456,7 @@ header {
     .item-list-music {
         @include widthHeight(100%, "");
         @include displayFlex(flex, column, nowrap, center, center, center);
-        @include colRowGap(0, .5rem);
+        @include colRowGap(0, 1rem);
         overflow: visible;
 
         .cover {
@@ -475,9 +477,10 @@ header {
                 margin-left: 0;
 
                 p {
-                    @include fontSizeWeightColor(12px, 300, $whiteColor);
+                    @include fontSizeWeightColor(14px, 500, $whiteColor);
 
                     &:nth-child(2) {
+                        @include fontSizeWeightColor(12px, 300, $whiteColor);
                         &:hover {
                             text-decoration: underline;
                         }

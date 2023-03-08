@@ -672,6 +672,7 @@ window.addEventListener(
       case "#mp3":
         showPage();
         document.getElementById("include-" + namePage).style.display = "flex";
+        
         break;
       default:
         showPage();

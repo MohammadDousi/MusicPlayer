@@ -458,7 +458,7 @@ header {
     }
 
     .item-list-music {
-        @include widthHeight(47%, "");
+        @include widthHeight(47.6%, "");
         @include displayFlex(flex, column, nowrap, center, center, center);
         @include colRowGap(0, 1rem);
         overflow: visible;
@@ -532,22 +532,10 @@ header {
     }
     
 
-    // .best-list-music {
-    //     flex-wrap: nowrap !important;
-    // }
+    .best-list-music {
+        @include colRowGap(1rem,1rem);
+    }
 
-    // .best-item-list-music {
-    //     @include widthHeight(auto, auto);
-    //     @include displayFlex(flex, column, nowrap, center, center, center);
-    //     background-color: transparent;
-    //     padding-right: 0;
-
-    //     img {
-    //         @include widthHeight(6.5rem, auto);
-    //         @include borderRadiusBox;
-    //     }
-
-    // }
 
 }
 

@@ -563,7 +563,7 @@ header {
     width: 0 !important;
   }
   .item-list-music {
-    width: 47%;
+    width: 47.6%;
     height: "";
     display: flex;
     flex-direction: column;
@@ -653,6 +653,10 @@ header {
     align-items: center;
     column-gap: 0.5rem;
     row-gap: 0.5rem;
+  }
+  .best-list-music {
+    column-gap: 1rem;
+    row-gap: 1rem;
   }
 }
 .playlist-onplay {

@@ -430,7 +430,7 @@ header {
         padding: 0 1.5rem;
 
         span {
-            @include fontSizeWeightColor(1.5rem, 900, $whiteColor);
+            @include fontSizeWeightColor(18px, 900, $whiteColor);
         }
 
         div {
@@ -446,8 +446,8 @@ header {
 
     .list-music {
         flex-wrap: wrap;
-        @include colRowGap(1rem, 1.5rem);
-        padding: 1.5rem 1.5rem 0 1.5rem;
+        @include colRowGap(1rem, 2rem);
+        padding: 1.5rem 1rem 0 1rem;
 
         //// scroll horizental with overflow: auto;
 

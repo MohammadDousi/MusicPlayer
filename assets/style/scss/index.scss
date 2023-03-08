@@ -89,7 +89,7 @@ body {
 @include media(Mobile) {
 
     .content-main {
-        padding: 0 0rem 8rem 0rem;
+        padding: 0 0rem 9rem 0rem;
     }
 }
 
@@ -444,6 +444,8 @@ header {
     }
 
     .list-music {
+
+        @include colRowGap(1rem, 0);
         padding: 1.5rem 1.5rem 0 1.5rem;
         overflow: auto;
 
@@ -460,17 +462,17 @@ header {
         overflow: visible;
 
         .cover {
-            width: 6.5rem;
-            height: 6.5rem;
+            width: 7.5rem;
+            height: 7.5rem;
         }
 
         .name {
             @include colRowGap(0, 0);
             margin-left: 0;
 
-            i {
-                display: none;
-            }
+            // i {
+            //     display: none;
+            // }
 
             div {
                 @include colRowGap(0, .2rem);
@@ -912,6 +914,7 @@ footer {
 
         li {
             cursor: pointer;
+            color: $accentColor;
 
             &:hover {
                 opacity: .5;

@@ -1,4 +1,3 @@
-
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////                                 ////////////////////////////////////
@@ -102,12 +101,12 @@ header {
 }
 
 .search-header {
-    background-color: $primaryColorDarker;
-    box-shadow: 0 0 10px rgb(0 0 0 / 50%);
-    border-radius: 1000px;
-    padding: 1rem 3rem;
+    @include widthHeight(25%, auto);
     @include displayFlex(flex, row, nowrap, space-between, center, baseline);
     @include colRowGap(1rem, 0);
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0 1.5rem;
+    border-radius: 1000px;
 
     i {
         font-size: 12px;
@@ -116,15 +115,26 @@ header {
 
     input {
         @include widthHeight(100%, "");
-        @include fontSizeWeightColor(14px, 500, $accentColor);
+        @include inputText;
+        padding-left: .5rem;
+        padding-right: 0;
+        background-color: transparent;
         text-align: left;
-
-        &::placeholder {
-            font-weight: 300;
-            color: $whiteColor;
-        }
     }
 
+}
+
+.gotoSignBtn-header {
+    @include displayFlex(flex, row, nowrap, center, center, center);
+    @include colRowGap(.5rem, 0);
+
+    #btn-SignIn {
+        @include btnStyleNormal;
+    }
+
+    #btn-SignUp {
+        @include btnStyleNonBorder;
+    }
 }
 
 

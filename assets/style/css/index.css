@@ -98,10 +98,8 @@ header {
 }
 
 .search-header {
-  background-color: #070818;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  border-radius: 1000px;
-  padding: 1rem 3rem;
+  width: 25%;
+  height: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -110,6 +108,9 @@ header {
   align-items: baseline;
   column-gap: 1rem;
   row-gap: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0 1.5rem;
+  border-radius: 1000px;
 }
 .search-header i {
   font-size: 12px;
@@ -118,14 +119,76 @@ header {
 .search-header input {
   width: 100%;
   height: "";
+  width: 100%;
+  height: auto;
   font-size: 14px;
   font-weight: 500;
   color: #F8AE5E;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-align: left;
+  padding: 1rem;
+  padding-left: 2.5rem;
+  border-radius: 1000px;
+  padding-left: 0.5rem;
+  padding-right: 0;
+  background-color: transparent;
   text-align: left;
 }
-.search-header input::placeholder {
-  font-weight: 300;
-  color: #ffffff;
+
+.gotoSignBtn-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.5rem;
+  row-gap: 0;
+}
+.gotoSignBtn-header #btn-SignIn {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.5rem;
+  row-gap: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #14162E;
+  padding: 0.8rem 1.3rem;
+  background-color: #F8AE5E;
+  border-radius: 1000px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  letter-spacing: 0.05rem;
+}
+.gotoSignBtn-header #btn-SignIn:hover {
+  background-color: #ff982b;
+}
+.gotoSignBtn-header #btn-SignUp {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.5rem;
+  row-gap: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #F8AE5E;
+  padding: 0.8rem 1.3rem;
+  border-radius: 1000px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  letter-spacing: 0.05rem;
+  border: 1px solid transparent;
+}
+.gotoSignBtn-header #btn-SignUp:hover {
+  color: #F8AE5E;
+  border: 1px solid #F8AE5E;
 }
 
 @media (min-width: 0px) and (max-width: 420px) {
@@ -314,7 +377,7 @@ header {
   row-gap: 0;
   font-size: 14px;
   font-weight: 700;
-  color: #14162E;
+  color: #ffffff;
   border: 1px solid #ffffff;
   padding: 0.8rem 1.3rem;
   border-radius: 1000px;

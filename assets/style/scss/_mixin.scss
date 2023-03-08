@@ -79,7 +79,7 @@ $whiteColor :#ffffff;
 @mixin btnStyleBorder {
     @include displayFlex(flex, row, nowrap, center, center, center);
     @include colRowGap(.5rem, 0);
-    @include fontSizeWeightColor(14px, 700, $primaryColor);
+    @include fontSizeWeightColor(14px, 700, $whiteColor);
     border: 1px solid $whiteColor;
     padding: .8rem 1.3rem;
     border-radius: 1000px;

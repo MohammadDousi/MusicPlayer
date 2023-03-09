@@ -184,7 +184,7 @@
 
 .box-download {
     @include widthHeight(100%, 100%);
-    @include displayFlex(flex, row, nowrap, center, center, center);
+    @include displayFlex(none, row, nowrap, center, center, center);
     position: absolute;
     background-color: rgb(20, 22, 46, .98);
     z-index: 999;

@@ -8,10 +8,10 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-let BtnGoToSign = document.getElementById("btn-SignIn");
+// let BtnGoToSign = document.getElementById("btn-SignIn");
 
-BtnGoToSign.addEventListener("click", GotoSign);
+// BtnGoToSign.addEventListener("click", GotoSign);
 
-function GotoSign() {
-  location.assign("sign.html");
-}
+// function GotoSign() {
+//   location.assign("sign.html");
+// }

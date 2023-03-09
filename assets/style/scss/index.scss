@@ -57,7 +57,7 @@ body {
     -ms-overflow-style: none;
 }
 
-#include-header,
+.include-header,
 #include-footer,
 #include-main,
 #include-mp3 {
@@ -105,7 +105,7 @@ body {
 header {
     @include widthHeight(100%, 60px);
     @include displayFlex(flex, row-reverse, nowrap, space-between, center, flex-start);
-    margin: 1.5rem 0 .5rem 0;
+    margin: 1.5rem 0 1.5rem 0;
     padding: 0 1.5rem;
 }
 
@@ -458,7 +458,7 @@ header {
     }
 
     .item-list-music {
-        @include widthHeight(47.6%, "");
+        @include widthHeight(47.6% !important, "");
         @include displayFlex(flex, column, nowrap, center, center, center);
         @include colRowGap(0, 1rem);
         overflow: visible;
@@ -484,6 +484,7 @@ header {
 
                     &:nth-child(2) {
                         @include fontSizeWeightColor(12px, 300, $whiteColor);
+
                         &:hover {
                             text-decoration: underline;
                         }
@@ -496,44 +497,43 @@ header {
     }
 
     .album-item-list-music {
-        width: auto !important;
 
         img {
             width: 10rem;
         }
     }
-    
+
     .best-item-list-music {
         @include widthHeight(100% !important, auto);
         @include displayFlex(flex, row, nowrap, center, center, center);
         @include borderRadiusBox;
         background-color: $primaryColorDarker;
         padding-right: 1.5rem;
-    
+
         .cover {
             @include widthHeight(7.5rem, 100%);
             margin-right: 1rem;
-    
+
             img {
                 @include widthHeight(100%, 100%);
                 object-fit: cover;
             }
-    
+
             span {
                 @include hoverImg;
             }
         }
-    
+
         .name {
             @include displayFlex(flex, row-reverse, nowrap, space-between, center, center);
-            @include colRowGap(0.5rem,0.5rem);
+            @include colRowGap(0.5rem, 0.5rem);
         }
-    
+
     }
-    
+
 
     .best-list-music {
-        @include colRowGap(1rem,1rem);
+        @include colRowGap(1rem, 1rem);
     }
 
 
@@ -574,6 +574,9 @@ header {
     @include widthHeight(100%, "");
     @include displayFlex(flex, row, nowrap, flex-start, center, center);
     padding: 1.5rem 1.5rem;
+    border-bottom: .1rem;
+    border-style: solid;
+    border-color: rgba($color: $whiteColor, $alpha: .3);
 
     .title {
         width: 100%;
@@ -905,6 +908,10 @@ header {
         @include colRowGap(0, 1.5rem);
         padding: 1.5rem;
         overflow: hidden;
+        border-top: .15rem;
+        border-style: solid;
+        border-color: rgba($color: $whiteColor, $alpha: .3);
+
     }
 
     .pic-name {

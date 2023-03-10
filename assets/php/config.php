@@ -1,17 +1,5 @@
 <?php
 
-// $host         = "localhost";
-// $username     = "peccawoq_UserMusicPlayer";
-// $password     = "Kv&_=Z]W)-@P";
-// $dbname       = "peccawoq_DBMusicPlayer";
-
-$host         = "localhost";
-$username     = "root";
-$password     = "";
-$dbname       = "peccawoq_DBMusicPlayer";
-
-
-
 try {
     $con = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
 

@@ -7,7 +7,8 @@
   align-content: center;
   justify-content: flex-start;
   align-items: center;
-  column-gap: 1.5rem;
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem;
   row-gap: 1.5rem;
   padding-top: 1.5rem;
 }
@@ -113,6 +114,4 @@
   .btn-PlayRadio {
     font-size: 40px;
   }
-}
-
-/*# sourceMappingURL=radio.css.map */
+}/*# sourceMappingURL=radio.css.map */

@@ -2,15 +2,14 @@ let include_main = document.getElementById("include-main");
 let include_radio = document.getElementById("include-radio");
 let include_mp3 = document.getElementById("include-mp3");
 
-
 async function load_header() {
   const response = await fetch("header.html");
   const data = await response.text();
-  
+
   let include_header = document.querySelectorAll(".include-header");
   if (response.status == 200) {
-    for(var i=0;i < include_header.length ;i++){
-    include_header[i].innerHTML = data;
+    for (var i = 0; i < include_header.length; i++) {
+      include_header[i].innerHTML = data;
     }
   } else {
     console.log("File not Found");
@@ -38,7 +37,6 @@ async function load_main() {
     include_main.innerHTML = data;
 
     load_radio();
-
   } else {
     console.log("File not Found");
   }
@@ -87,75 +85,75 @@ load_footer();
 load_player();
 load_mp3();
 
-function loadJS(address){
-
+function loadJS(address) {
   let scriptEle = document.createElement("script");
   scriptEle.setAttribute("src", address);
   document.body.appendChild(scriptEle);
 }
 
-
 function all() {
   let songs = [
     {
       id: 1,
-      image_cover: "pic1 (3).jpg",
+      cover: "pic1 (3).jpg",
       name: "ha mahdi",
       song: "ha mahdi.mp3",
       singer: "Basem Karbalaye",
     },
     {
       id: 2,
-      image_cover: "pic1 (4).jpg",
+      cover: "pic1 (4).jpg",
       name: "Bi Gonah",
       song: "Alireza Ghorbani - Bi Gonah.mp3",
       singer: "Alireza Ghorbani",
     },
     {
       id: 3,
-      image_cover: "pic1 (1).jpg",
+      cover: "pic1 (1).jpg",
       name: "Barzakhe Asheghi",
       song: "Hamed Homayoun - Barzakhe Asheghi.mp3",
       singer: "Hamed Homayoun",
     },
     {
       id: 4,
-      image_cover: "pic1 (2).jpg",
+      cover: "pic1 (2).jpg",
       name: "Rose",
       song: "Masih - Rose.mp3",
       singer: "Masih",
     },
     {
       id: 5,
-      image_cover: "pic1 (3).jpg",
+      cover: "pic1 (3).jpg",
       name: "ha mahdi",
       song: "ha mahdi.mp3",
       singer: "Basem Karbalaye",
     },
     {
       id: 6,
-      image_cover: "pic1 (4).jpg",
+      cover: "pic1 (4).jpg",
       name: "Bi Gonah",
       song: "Alireza Ghorbani - Bi Gonah.mp3",
       singer: "Alireza Ghorbani",
     },
     {
       id: 7,
-      image_cover: "pic1 (1).jpg",
+      cover: "pic1 (1).jpg",
       name: "Barzakhe Asheghi",
       song: "Hamed Homayoun - Barzakhe Asheghi.mp3",
       singer: "Hamed Homayoun",
     },
     {
       id: 8,
-      image_cover: "pic1 (2).jpg",
+      cover: "pic1 (2).jpg",
       name: "Rose",
       song: "Masih - Rose.mp3",
       singer: "Masih",
     },
   ];
 
-  let playlist = [];
+  // id , name , singer
+  let playlist = [],
+    newset = [];
 
   const audio = new Audio();
 
@@ -168,9 +166,9 @@ function all() {
   let progress_play = document.querySelector(".progrees-time-play");
   let progress_body = document.querySelector(".progrees-time-onplay");
 
-  const image_cover = document.querySelectorAll("#cover-music-onplay");
-  const name_curr_music = document.querySelectorAll("#name-music-onplay");
-  const singer_curr_music = document.querySelectorAll("#singer-music-onplay");
+  const cover = document.querySelector("#cover-music-onplay");
+  const name_curr_music = document.querySelector("#name-music-onplay");
+  const singer_curr_music = document.querySelector("#singer-music-onplay");
   const time_all_music = document.getElementById("all-time-music");
   const time_play = document.getElementById("time-play");
 
@@ -178,7 +176,8 @@ function all() {
     current_Time,
     songIndex = songs.length,
     playListIndex = 0,
-    idOnlay;
+    idOnlay,
+    loadSongFromArray = "";
 
   const btnClosePlayList = document.querySelector(".fa-close");
   btnClosePlayList.addEventListener("click", ClosePlayList);
@@ -213,17 +212,15 @@ function all() {
   // loadSong(songs[songIndex - 1]);
 
   function loadSong(song) {
-    image_cover.forEach((element) => {
-      element.src = "assets/file/cover/" + song.image_cover;
-    });
-    name_curr_music.forEach((element) => {
-      element.innerText = song.name;
-    });
-    singer_curr_music.forEach((element) => {
-      element.innerText = song.singer;
-    });
+
+    console.log(song);
+
+    cover.src = "assets/file/cover/" + song.cover;
+    name_curr_music.innerText = song.name;
+    singer_curr_music.innerText = song.singer;
+
     idOnlay = song.id;
-    audio.src = "assets/file/music/" + song.song;
+    audio.src = "assets/file/song/" + song.name+".mp3";
     audio.load();
   }
 
@@ -256,17 +253,22 @@ function all() {
     if (playListIndex < 0) {
       playListIndex = playlist.length - 1;
     }
-    loadSong(songs[songs.findIndex((x) => x.id == playlist[playListIndex])]);
+
+    switch(loadSongFromArray){
+      case "newset":
+        loadSong(newset[newset.findIndex((x) => x.id == playlist[playListIndex].id)]);
+        break;
+    }
+
     playSong();
   }
 
   function nextSong() {
-    console.log(playListIndex);
 
     switch (SwitchRepeat) {
       case 1:
         playListIndex++;
-        if (playListIndex > playlist.length - 1) {
+        if (playListIndex > playlist.length) {
           playListIndex = 0;
         }
 
@@ -288,7 +290,13 @@ function all() {
         break;
     }
 
-    loadSong(songs[songs.findIndex((x) => x.id == playlist[playListIndex])]);
+    switch(loadSongFromArray){
+      case "newset":
+        loadSong(newset[newset.findIndex((x) => x.id == playlist[playListIndex].id)]);
+        console.log(newset[newset.findIndex((x) => x.id == playlist[playListIndex].id)]);
+        break;
+    }
+
     playSong();
   }
 
@@ -414,7 +422,7 @@ function all() {
     const id = `${songs[i].id}`;
     div.id = id;
 
-    let sample = `<img src="assets/file/cover/${songs[i].image_cover}" alt="img ${songs[i].image_cover}">
+    let sample = `<img src="assets/file/cover/${songs[i].cover}" alt="img ${songs[i].cover}">
                   <div>
                     <p>${songs[i].name}</p>
                     <p>Track by ${songs[i].singer}</p>
@@ -520,14 +528,31 @@ function all() {
     clearToListItem;
 
   function addToPlayList(id) {
-    loadSong(songs[songs.findIndex((x) => x.id == id)]);
+
+    // loadSong(songs[songs.findIndex((x) => x.id == id)]);
+
+    switch(loadSongFromArray){
+      case "newset":
+        loadSong(newset[newset.findIndex((x) => x.id == id)]);
+        break;
+    }
+    // console.log(`${loadSongFromArray}`);
 
     playSong();
 
-    const found = playlist.find((element) => element == id);
+    const foundSong = playlist.find((x) => x.id == id);
 
-    if (!found) {
-      playlist.push(id);
+    if (!foundSong) {
+
+      const addArray = newset.find((x) => x.id == id);
+
+      playlist.push({
+        id: addArray.id,
+        name: addArray.name,
+        cover: addArray.cover,
+        singer: addArray.singer,
+      });
+
       updatePlaylist();
     }
   }
@@ -540,19 +565,19 @@ function all() {
     for (let i = 0; i < playlist.length; i++) {
       var div = document.createElement("div");
       div.className = "item-playlist-onplay";
-      div.id = `${playlist[i]}`;
-      var indexx = songs.findIndex((x) => x.id == playlist[i]);
+      div.id = `${playlist[i].id}`;
+      var indexx = songs.findIndex((x) => x.id == playlist[i].id);
 
-      let sample = `<div id = ${playlist[i]}>
-                        <img src="assets/file/cover/${songs[indexx].image_cover}" alt="img cover">
+      let sample = `<div id = ${playlist[i].id}>
+                        <img src="assets/file/cover/${playlist[i].cover}" alt="img cover">
                         <div>
-                            <p>${songs[indexx].name}</p>
-                            <p>${songs[indexx].singer}</p>
+                            <p>${playlist[i].name}</p>
+                            <p>${playlist[i].singer}</p>
                         </div>
                   </div>
                   <div>
-                  <i class="fa fa-trash title-2 btn-item" id=${playlist[i]}></i>
-                  <i class="fa fa-circle-play title-2 btn-item" id=${playlist[i]}></i>
+                  <i class="fa fa-trash title-2 btn-item" id=${playlist[i].id}></i>
+                  <i class="fa fa-circle-play title-2 btn-item" id=${playlist[i].id}></i>
                   </div>`;
 
       div.innerHTML = sample;
@@ -616,35 +641,95 @@ function all() {
     playIcon,
     coverImg;
 
-  for (let i = 0; i < 6; i++) {
-    var div = document.createElement("div");
-    div.className = "item-list-music";
-    const id = `${songs[i].id}`;
+  let url = "assets/php/function.php",
+    formData = new FormData();
 
-    let sample = `<div class="cover" id="${id}">
-                    <img src="assets/file/cover/${songs[i].image_cover}" alt="img ${songs[i].image_cover}">
-                    <span></span>
-                  </div>
-                  <div class="name">
-                    <i class="fa fa-play-circle" id="${id}"></i>
-                    <div>
-                        <p>${songs[i].name}</p>
-                        <p id="${id}">${songs[i].singer}</p>
-                    </div>
-                  </div>`;
+  formData.append("fun", "newest");
 
-    div.innerHTML = sample;
-    listMusic.appendChild(div);
-    coverImg = document.querySelectorAll(".cover");
-    playIcon = document.querySelectorAll(".name i");
-    nameSinger = document.querySelectorAll(".name div p:nth-child(2)");
+  fetch(url, { method: "POST", body: formData })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (myJson) {
+      // if (myJson == "MobileOkey") {
+      //   body_FormGetMobile.style.display = "none";
+      //   body_FormOtpCode.style.display = "block";
+      //   timerOtpCode();
+      //   helpText.innerText =
+      //     "جهت ورود کد ارسال شده به شماره موبایل را در کادر زیر وارد نمایید.";
+      // }
 
-    playIconFun();
-  }
+      // for (let [key, value] of formData) {
+      //   formData.delete(key, value);
+      // }
+      // console.log(JSON.stringify(myJson));
+
+      for (let i = 0; i < myJson.length; i++) {
+        newset.push({
+          id: myJson[i].id,
+          name: myJson[i].name,
+          cover: myJson[i].cover,
+          singer: myJson[i].singer,
+        });
+
+        var div = document.createElement("div");
+        div.className = "item-list-music";
+        const id = `${myJson[i].id}`;
+
+        let sample = `<div class="cover" id="${id}">
+                        <img src="assets/file/cover/${myJson[i].cover}" alt="img ${myJson[i].cover}">
+                        <span></span>
+                      </div>
+                      <div class="name">
+                        <i class="fa fa-play-circle" id="${id}"></i>
+                        <div>
+                            <p>${myJson[i].name}</p>
+                            <p id="${id}">${myJson[i].singer}</p>
+                        </div>
+                      </div>`;
+
+        div.innerHTML = sample;
+        listMusic.appendChild(div);
+        coverImg = document.querySelectorAll(".cover");
+        playIcon = document.querySelectorAll(".name i");
+        nameSinger = document.querySelectorAll(".name div p:nth-child(2)");
+
+        playIconFun();
+
+      }
+
+    });
+
+  // for (let i = 0; i < 6; i++) {
+  //   var div = document.createElement("div");
+  //   div.className = "item-list-music";
+  //   const id = `${songs[i].id}`;
+
+  //   let sample = `<div class="cover" id="${id}">
+  //                   <img src="assets/file/cover/${songs[i].cover}" alt="img ${songs[i].cover}">
+  //                   <span></span>
+  //                 </div>
+  //                 <div class="name">
+  //                   <i class="fa fa-play-circle" id="${id}"></i>
+  //                   <div>
+  //                       <p>${songs[i].name}</p>
+  //                       <p id="${id}">${songs[i].singer}</p>
+  //                   </div>
+  //                 </div>`;
+
+  //   div.innerHTML = sample;
+  //   listMusic.appendChild(div);
+  //   coverImg = document.querySelectorAll(".cover");
+  //   playIcon = document.querySelectorAll(".name i");
+  //   nameSinger = document.querySelectorAll(".name div p:nth-child(2)");
+
+  //   playIconFun();
+  // }
 
   function playIconFun() {
     playIcon.forEach((element) => {
       element.addEventListener("click", () => {
+        loadSongFromArray = "newset";
         addToPlayList(element.id);
         let index = playlist.indexOf(element.id);
         playListIndex = index;
@@ -690,7 +775,7 @@ window.addEventListener(
       case "#mp3":
         showPage();
         document.getElementById("include-" + namePage).style.display = "flex";
-        
+
         break;
       default:
         showPage();

@@ -12,6 +12,11 @@
 .body-Radio {
     @include widthHeight(16.66%, 10rem);
     position: relative;
+
+    >p {
+        @include fontSizeWeightColor(18px,500,rgba($color:$whiteColor,$alpha:.5));
+        margin-top: 1.5rem;
+    }
 }
 
 .img-PlayRadio {
@@ -84,7 +89,7 @@
 
         @include widthHeight(100%, auto);
         overflow: auto;
-        // @include colRowGap(2rem, 12em);
+        overflow-y: hidden;
         padding: 1.5rem 1rem 0 1rem;
 
         &::-webkit-scrollbar {

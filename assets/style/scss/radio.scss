@@ -1,0 +1,117 @@
+@import "mixin";
+
+
+
+.container-radio {
+    @include widthHeight(100%, auto);
+    @include displayFlex(flex, row, nowrap, flex-start, center, center);
+    @include colRowGap(1.5rem, 1.5rem);
+    padding-top: 1.5rem;
+}
+
+.body-Radio {
+    @include widthHeight(16.66%, 10rem);
+    position: relative;
+}
+
+.img-PlayRadio {
+    @include widthHeight(100%, 100%);
+    border-radius: 50%;
+    z-index: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.bodyBtn-PlayRadio {
+    @include widthHeight(100%, 100%);
+    position: relative;
+}
+
+.btn-PlayRadio {
+    @include widthHeight(50%, 50%);
+    @include fontSizeWeightColor(50px, 500, rgba($color: $whiteColor, $alpha: .8));
+    background-color: rgba($color: $whiteColor , $alpha: .1);
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 25% 0 0 25%;
+    z-index: 999;
+    animation: animBtRadio 0s ease-in-out 0s infinite normal forwards;
+
+    &:nth-child(2) {
+        scale: 1.4;
+        z-index: 1;
+        animation-duration: 3s;
+        background-color: rgba($color: $primaryColor , $alpha: .2);
+    }
+
+    &:nth-child(3) {
+        scale: 1.8;
+        z-index: 2;
+        animation-duration: 5s;
+        background-color: rgba($color: $primaryColor , $alpha: .15);
+    }
+
+    &:nth-child(4) {
+        scale: 2;
+        z-index: 2;
+        animation-duration: 3s;
+        background-color: rgba($color: $whiteColor , $alpha: .05);
+    }
+
+    @keyframes animBtRadio {
+
+        0%,
+        50%,
+        100% {
+            opacity: 1;
+        }
+
+        25%,
+        75% {
+            opacity: 0;
+        }
+    }
+}
+
+
+@include media(Mobile) {
+
+    .container-radio {
+
+        @include widthHeight(100%, auto);
+        overflow: auto;
+        // @include colRowGap(2rem, 12em);
+        padding: 1.5rem 1rem 0 1rem;
+
+        &::-webkit-scrollbar {
+            display: none;
+            width: 0 !important;
+        }
+
+    }
+
+    .body-Radio {
+        @include widthHeight(100%, 7.5rem);
+        position: relative;
+    }
+
+    .img-PlayRadio {
+        @include widthHeight(7.5rem, 7.5rem);
+        position: unset;
+    }
+
+    .bodyBtn-PlayRadio {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .btn-PlayRadio {
+        font-size: 40px;
+    }
+
+}

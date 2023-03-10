@@ -156,7 +156,7 @@ header {
     @include colRowGap(1.5rem, 0);
     overflow: auto;
     transition: all .3s ease-in-out;
-    padding: 0 1.5rem 3rem 1.5rem;
+    padding: 0 1rem 3rem 1rem;
 
     &::-webkit-scrollbar {
         display: none;

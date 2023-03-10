@@ -1,5 +1,8 @@
 let include_main = document.getElementById("include-main");
+let include_radio = document.getElementById("include-radio");
 let include_mp3 = document.getElementById("include-mp3");
+
+
 async function load_header() {
   const response = await fetch("header.html");
   const data = await response.text();
@@ -33,6 +36,20 @@ async function load_main() {
 
   if (response.status == 200) {
     include_main.innerHTML = data;
+
+    load_radio();
+
+  } else {
+    console.log("File not Found");
+  }
+}
+
+async function load_radio() {
+  const response = await fetch("radio.html");
+  const data = await response.text();
+
+  if (response.status == 200) {
+    include_radio.innerHTML = data;
   } else {
     console.log("File not Found");
   }

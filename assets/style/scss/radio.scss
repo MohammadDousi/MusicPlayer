@@ -10,7 +10,7 @@
 }
 
 .body-Radio {
-    @include widthHeight(16.66%, 10rem);
+    @include widthHeight(8rem, 8rem);
     position: relative;
 
     >p {
@@ -20,7 +20,7 @@
 }
 
 .img-PlayRadio {
-    @include widthHeight(100%, 100%);
+    @include widthHeight(100%, auto);
     border-radius: 50%;
     z-index: 0;
     position: absolute;
@@ -29,7 +29,7 @@
 }
 
 .bodyBtn-PlayRadio {
-    @include widthHeight(100%, 100%);
+    @include widthHeight(8rem, 8rem);
     position: relative;
 }
 
@@ -43,7 +43,7 @@
     left: 0;
     top: 0;
     margin: 25% 0 0 25%;
-    z-index: 999;
+    z-index: 998;
     animation: animBtRadio 0s ease-in-out 0s infinite normal forwards;
 
     &:nth-child(2) {

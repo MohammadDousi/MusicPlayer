@@ -651,53 +651,48 @@ function all() {
       return response.json();
     })
     .then(function (myJson) {
-      // if (myJson == "MobileOkey") {
-      //   body_FormGetMobile.style.display = "none";
-      //   body_FormOtpCode.style.display = "block";
-      //   timerOtpCode();
-      //   helpText.innerText =
-      //     "جهت ورود کد ارسال شده به شماره موبایل را در کادر زیر وارد نمایید.";
-      // }
 
-      // for (let [key, value] of formData) {
-      //   formData.delete(key, value);
-      // }
-      // console.log(JSON.stringify(myJson));
-
-      for (let i = 0; i < myJson.length; i++) {
-        newset.push({
-          id: myJson[i].id,
-          name: myJson[i].name,
-          cover: myJson[i].cover,
-          singer: myJson[i].singer,
-        });
-
-        var div = document.createElement("div");
-        div.className = "item-list-music";
-        const id = `${myJson[i].id}`;
-
-        let sample = `<div class="cover" id="${id}">
-                        <img src="assets/file/cover/${myJson[i].cover}" alt="img ${myJson[i].cover}">
-                        <span></span>
-                      </div>
-                      <div class="name">
-                        <i class="fa fa-play-circle" id="${id}"></i>
-                        <div>
-                            <p>${myJson[i].name}</p>
-                            <p id="${id}">${myJson[i].singer}</p>
+      if (myJson != "" || null) {
+        for (let i = 0; i < myJson.length; i++) {
+          newset.push({
+            id: myJson[i].id,
+            name: myJson[i].name,
+            cover: myJson[i].cover,
+            singer: myJson[i].singer,
+          });
+  
+          var div = document.createElement("div");
+          div.className = "item-list-music";
+          const id = `${myJson[i].id}`;
+  
+          let sample = `<div class="cover" id="${id}">
+                          <img src="assets/file/cover/${myJson[i].cover}" alt="img ${myJson[i].cover}">
+                          <span></span>
                         </div>
-                      </div>`;
-
-        div.innerHTML = sample;
-        listMusic.appendChild(div);
-        coverImg = document.querySelectorAll(".cover");
-        playIcon = document.querySelectorAll(".name i");
-        nameSinger = document.querySelectorAll(".name div p:nth-child(2)");
-
-        playIconFun();
-
+                        <div class="name">
+                          <i class="fa fa-play-circle" id="${id}"></i>
+                          <div>
+                              <p>${myJson[i].name}</p>
+                              <p id="${id}">${myJson[i].singer}</p>
+                          </div>
+                        </div>`;
+  
+          div.innerHTML = sample;
+          listMusic.appendChild(div);
+          coverImg = document.querySelectorAll(".cover");
+          playIcon = document.querySelectorAll(".name i");
+          nameSinger = document.querySelectorAll(".name div p:nth-child(2)");
+  
+          playIconFun();
+  
+        }  
       }
 
+      for (let [key, value] of formData) {
+        formData.delete(key, value);
+      }
+
+     
     });
 
   // for (let i = 0; i < 6; i++) {

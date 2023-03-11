@@ -160,6 +160,7 @@ header {
   scrollbar-width: none;
   transition: all 0.3s ease-in-out;
   padding: 0 1rem 3rem 1rem;
+  scroll-snap-type: x mandatory;
 }
 .board::-webkit-scrollbar {
   display: none;
@@ -261,12 +262,25 @@ header {
 }
 
 @media (min-width: 0px) and (max-width: 420px) {
+  .item-board {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
   .item-board img {
     width: 19rem;
     height: 100%;
   }
   .dots-board {
     display: none;
+  }
+}
+@media (min-width: 0px) and (max-width: 320px) {
+  .item-board {
+    height: 10rem;
+  }
+  .item-board img {
+    width: 17rem;
+    height: 100%;
   }
 }
 .container-music {
@@ -578,6 +592,7 @@ header {
   }
   .item-list-music .cover {
     width: 100%;
+    height: auto;
   }
   .item-list-music .name {
     column-gap: 0.5rem;
@@ -655,6 +670,16 @@ header {
   .best-list-music {
     column-gap: 1rem;
     row-gap: 1rem;
+  }
+}
+@media (min-width: 0px) and (max-width: 320px) {
+  .item-list-music {
+    width: 47.1% !important;
+    height: "";
+  }
+  .best-item-list-music {
+    width: 100% !important;
+    height: auto;
   }
 }
 .playlist-onplay {
@@ -1088,7 +1113,6 @@ header {
     column-gap: 0;
     row-gap: 1.5rem;
     padding: 1.5rem;
-    overflow: hidden;
     border-top: 0.15rem;
     border-style: solid;
     border-color: rgba(255, 255, 255, 0.3);

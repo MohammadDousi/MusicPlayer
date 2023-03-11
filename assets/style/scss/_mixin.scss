@@ -120,8 +120,14 @@ $whiteColor :#ffffff;
         }
     }
 
-    @if($size ==Mobile) {
+    @if($size == Mobile ) {
         @media (min-width:0px) and (max-width:420px) {
+            @content;
+        }
+    }
+
+    @if($size == SmallMobile ){
+        @media (min-width:0px) and (max-width:320px) {
             @content;
         }
     }

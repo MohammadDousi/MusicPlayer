@@ -1,4 +1,7 @@
 
 ## unsend to git mp3 file music
-## create music folder -> file / music / add file mp3
+## create music folder -> file / song / add file mp3
 *.mp3
+
+## maunal config in host
+config.php

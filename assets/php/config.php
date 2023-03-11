@@ -1,5 +1,10 @@
 <?php
 
+$host = "localhost";
+$dbname = "peccawoq_DBMusicPlayer";
+$username = "root";
+$password = "";
+
 try {
     $con = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
 

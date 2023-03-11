@@ -5,6 +5,8 @@ $dbname = "peccawoq_DBMusicPlayer";
 $username = "root";
 $password = "";
 
+// no send
+
 try {
     $con = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
 

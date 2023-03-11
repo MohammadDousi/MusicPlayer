@@ -4,4 +4,4 @@
 *.mp3
 
 ## maunal config in host
-assets/php/config.php
+config.php

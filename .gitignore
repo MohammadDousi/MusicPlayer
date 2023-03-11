@@ -3,5 +3,5 @@
 ## create music folder -> file / song / add file mp3
 *.mp3
 
-## maunal config in host
+## manual config in host
 config.php

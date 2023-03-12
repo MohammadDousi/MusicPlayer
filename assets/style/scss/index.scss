@@ -629,7 +629,7 @@ header {
     .menu-icon {
         width: 100%;
         @include displayFlex(flex, row-reverse, nowrap, flex-start, center, center);
-        @include colRowGap(1.5rem, 1rem);
+        @include colRowGap(1.8rem, 1rem);
         @include fontSizeWeightColor(14px, "", $whiteColor);
         cursor: pointer;
 
@@ -650,6 +650,7 @@ header {
     @include widthHeight(100%, 14rem);
     @include displayFlex(flex, column, nowrap, flex-start, center, flex-start);
     @include colRowGap(0, .2rem);
+    padding: .5rem ;
     /* overflow: auto;
     overflow: -moz-scrollbars-none;
     scrollbar-width: none;
@@ -660,7 +661,8 @@ header {
     @include widthHeight(100%, "");
     @include displayFlex(flex, row, nowrap, space-between, center, center);
     cursor: pointer;
-    padding: .5rem 1.5rem;
+    padding: .5rem 1rem;
+    @include borderRadiusBox ;
 
     &:hover {
         background-color: rgb(248, 174, 94, .15);

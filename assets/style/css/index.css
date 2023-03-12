@@ -755,7 +755,7 @@ header {
   align-content: center;
   justify-content: flex-start;
   align-items: center;
-  column-gap: 1.5rem;
+  column-gap: 1.8rem;
   row-gap: 1rem;
   font-size: 14px;
   font-weight: "";
@@ -783,6 +783,7 @@ header {
   align-items: flex-start;
   column-gap: 0;
   row-gap: 0.2rem;
+  padding: 0.5rem;
   /* overflow: auto;
   overflow: -moz-scrollbars-none;
   scrollbar-width: none;
@@ -799,7 +800,8 @@ header {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
 }
 .item-playlist-onplay:hover {
   background-color: rgba(248, 174, 94, 0.15);

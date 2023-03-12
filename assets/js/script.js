@@ -81,7 +81,7 @@ function all() {
   let isPlaying,
     current_Time,
     playListIndex = 0,
-    idOnplay;
+    idOnplay,time_onplay;
 
   let songs = [
     {
@@ -343,6 +343,7 @@ function all() {
       min_dur = "0" + min_dur;
     }
     time_all_music.innerText = Math.floor(duration / 60) + ":" + min_dur;
+
   }
 
   function setProgress(e) {

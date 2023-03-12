@@ -1,5 +1,4 @@
 let include_main = document.getElementById("include-main");
-let include_radio = document.getElementById("include-radio");
 let include_mp3 = document.getElementById("include-mp3");
 
 async function load_header() {
@@ -14,8 +13,6 @@ async function load_header() {
   } else {
     console.log("File not Found");
   }
-
-  await loadJS("assets/js/main.js");
 }
 
 async function load_footer() {
@@ -35,19 +32,6 @@ async function load_main() {
 
   if (response.status == 200) {
     include_main.innerHTML = data;
-
-    load_radio();
-  } else {
-    console.log("File not Found");
-  }
-}
-
-async function load_radio() {
-  const response = await fetch("radio.html");
-  const data = await response.text();
-
-  if (response.status == 200) {
-    include_radio.innerHTML = data;
   } else {
     console.log("File not Found");
   }
@@ -88,10 +72,17 @@ load_mp3();
 function loadJS(address) {
   let scriptEle = document.createElement("script");
   scriptEle.setAttribute("src", address);
+  scriptEle.setAttribute("type", "module");
   document.body.appendChild(scriptEle);
 }
 
+
 function all() {
+  let isPlaying,
+    current_Time,
+    playListIndex = 0,
+    idOnplay;
+
   let songs = [
     {
       id: 1,
@@ -151,9 +142,13 @@ function all() {
     },
   ];
 
-  // id , name , singer
-  let playlist = [],
-    newset = [];
+  let url = "assets/php/function.php",
+    formData = new FormData();
+
+  // id , name , cover , singer
+  let loadSongFromArray = "",
+    playlist = [],
+    newsetArray = [];
 
   const audio = new Audio();
 
@@ -172,18 +167,11 @@ function all() {
   const time_all_music = document.getElementById("all-time-music");
   const time_play = document.getElementById("time-play");
 
-  let isPlaying,
-    current_Time,
-    songIndex = songs.length,
-    playListIndex = 0,
-    idOnlay,
-    loadSongFromArray = "";
-
   const btnClosePlayList = document.querySelector(".fa-close");
-  btnClosePlayList.addEventListener("click", ClosePlayList);
+  btnClosePlayList?.addEventListener("click", ClosePlayList);
 
   const btnRepeat = document.querySelector(".fa-repeat");
-  btnRepeat.addEventListener("click", repeatSong);
+  btnRepeat?.addEventListener("click", repeatSong);
   let SwitchRepeat = 1,
     playRepeat = 0;
 
@@ -204,7 +192,7 @@ function all() {
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
 
-  play_pause.addEventListener("click", () => {
+  play_pause?.addEventListener("click", () => {
     isPlaying = player.classList.contains("play");
     isPlaying ? puaseSong() : playSong();
   });
@@ -213,14 +201,12 @@ function all() {
 
   function loadSong(song) {
 
-    console.log(song);
-
     cover.src = "assets/file/cover/" + song.cover;
     name_curr_music.innerText = song.name;
     singer_curr_music.innerText = song.singer;
 
-    idOnlay = song.id;
-    audio.src = "assets/file/song/" + song.name+".mp3";
+    idOnplay = song.id;
+    audio.src = "assets/file/song/" + song.name + ".mp3";
     audio.load();
   }
 
@@ -254,9 +240,13 @@ function all() {
       playListIndex = playlist.length - 1;
     }
 
-    switch(loadSongFromArray){
+    switch (loadSongFromArray) {
       case "newset":
-        loadSong(newset[newset.findIndex((x) => x.id == playlist[playListIndex].id)]);
+        loadSong(
+          newsetArray[
+            newsetArray.findIndex((x) => x.id == playlist[playListIndex].id)
+          ]
+        );
         break;
     }
 
@@ -264,7 +254,6 @@ function all() {
   }
 
   function nextSong() {
-
     switch (SwitchRepeat) {
       case 1:
         playListIndex++;
@@ -290,10 +279,18 @@ function all() {
         break;
     }
 
-    switch(loadSongFromArray){
+    switch (loadSongFromArray) {
       case "newset":
-        loadSong(newset[newset.findIndex((x) => x.id == playlist[playListIndex].id)]);
-        console.log(newset[newset.findIndex((x) => x.id == playlist[playListIndex].id)]);
+        loadSong(
+          newsetArray[
+            newsetArray.findIndex((x) => x.id == playlist[playListIndex].id)
+          ]
+        );
+        console.log(
+          newsetArray[
+            newsetArray.findIndex((x) => x.id == playlist[playListIndex].id)
+          ]
+        );
         break;
     }
 
@@ -528,12 +525,11 @@ function all() {
     clearToListItem;
 
   function addToPlayList(id) {
-
     // loadSong(songs[songs.findIndex((x) => x.id == id)]);
 
-    switch(loadSongFromArray){
+    switch (loadSongFromArray) {
       case "newset":
-        loadSong(newset[newset.findIndex((x) => x.id == id)]);
+        loadSong(newsetArray[newsetArray.findIndex((x) => x.id == id)]);
         break;
     }
     // console.log(`${loadSongFromArray}`);
@@ -543,8 +539,7 @@ function all() {
     const foundSong = playlist.find((x) => x.id == id);
 
     if (!foundSong) {
-
-      const addArray = newset.find((x) => x.id == id);
+      const addArray = newsetArray.find((x) => x.id == id);
 
       playlist.push({
         id: addArray.id,
@@ -618,7 +613,7 @@ function all() {
   function fun_clearToListItem() {
     clearToListItem.forEach((element) => {
       element.addEventListener("click", () => {
-        if (element.id != idOnlay) {
+        if (element.id != idOnplay) {
           const index = playlist.indexOf(element.id);
           if (index > -1) {
             playlist.splice(index, 1);
@@ -632,94 +627,104 @@ function all() {
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////                                 ////////////////////////////////////
-  ////////////////////////////         Featured Music          ////////////////////////////////////
+  ////////////////////////////         Newset Music          ////////////////////////////////////
   ////////////////////////////                                 ////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
 
-  let listMusic = document.querySelector(".list-music"),
+  let listNewset = document.querySelector("#newset"),
     playIcon,
-    coverImg;
-
-  let url = "assets/php/function.php",
-    formData = new FormData();
+    coverImg,
+    nameSinger;
 
   formData.append("fun", "newest");
 
-  fetch(url, { method: "POST", body: formData })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (myJson) {
+  async function postData(url = "", data) {
+    const response = await fetch(url, { method: "POST", body: data });
+    return response.json();
+  }
 
-      if (myJson != "" || null) {
-        for (let i = 0; i < myJson.length; i++) {
-          newset.push({
-            id: myJson[i].id,
-            name: myJson[i].name,
-            cover: myJson[i].cover,
-            singer: myJson[i].singer,
-          });
-  
-          var div = document.createElement("div");
-          div.className = "item-list-music";
-          const id = `${myJson[i].id}`;
-  
-          let sample = `<div class="cover" id="${id}">
-                          <img src="assets/file/cover/${myJson[i].cover}" alt="img ${myJson[i].cover}">
-                          <span></span>
+  postData(url, formData).then((data) => {
+    if (data != "" || null) {
+      for (let i = 0; i < data.length; i++) {
+        newsetArray.push({
+          id: data[i].id,
+          name: data[i].name,
+          cover: data[i].cover,
+          singer: data[i].singer,
+        });
+
+        var div = document.createElement("div");
+        div.className = "item-list-music";
+        const id = `${data[i].id}`;
+
+        let sample = `<div class="cover" id="${id}">
+                        <img src="assets/file/cover/${data[i].cover}" alt="img ${data[i].cover}">
+                        <span></span>
+                      </div>
+                      <div class="name">
+                        <i class="fa fa-play-circle" id="${id}"></i>
+                        <div>
+                            <p>${data[i].name}</p>
+                            <p id="${id}">${data[i].singer}</p>
                         </div>
-                        <div class="name">
-                          <i class="fa fa-play-circle" id="${id}"></i>
-                          <div>
-                              <p>${myJson[i].name}</p>
-                              <p id="${id}">${myJson[i].singer}</p>
-                          </div>
-                        </div>`;
-  
-          div.innerHTML = sample;
-          listMusic.appendChild(div);
-          coverImg = document.querySelectorAll(".cover");
-          playIcon = document.querySelectorAll(".name i");
-          nameSinger = document.querySelectorAll(".name div p:nth-child(2)");
-  
-          playIconFun();
-  
-        }  
+                      </div>`;
+
+        div.innerHTML = sample;
+        listNewset.appendChild(div);
+        coverImg = document.querySelectorAll(".cover");
+        playIcon = document.querySelectorAll(".name i");
+        nameSinger = document.querySelectorAll(".name div p:nth-child(2)");
       }
+    }
+    for (let [key, value] of formData) {
+      formData.delete(key, value);
+    }
+    playIconFun();
+  });
+  //   .then(function (response) {
+  //     return response.json();
+  //   })
+  //   .then(function (myJson) {
+  //     if (myJson != "" || null) {
+  //       for (let i = 0; i < myJson.length; i++) {
+  //         newsetArray.push({
+  //           id: myJson[i].id,
+  //           name: myJson[i].name,
+  //           cover: myJson[i].cover,
+  //           singer: myJson[i].singer,
+  //         });
 
-      for (let [key, value] of formData) {
-        formData.delete(key, value);
-      }
+  //         var div = document.createElement("div");
+  //         div.className = "item-list-music";
+  //         const id = `${myJson[i].id}`;
 
-     
-    });
+  //         let sample = `<div class="cover" id="${id}">
+  //                         <img src="assets/file/cover/${myJson[i].cover}" alt="img ${myJson[i].cover}">
+  //                         <span></span>
+  //                       </div>
+  //                       <div class="name">
+  //                         <i class="fa fa-play-circle" id="${id}"></i>
+  //                         <div>
+  //                             <p>${myJson[i].name}</p>
+  //                             <p id="${id}">${myJson[i].singer}</p>
+  //                         </div>
+  //                       </div>`;
 
-  // for (let i = 0; i < 6; i++) {
-  //   var div = document.createElement("div");
-  //   div.className = "item-list-music";
-  //   const id = `${songs[i].id}`;
+  //         div.innerHTML = sample;
+  //         listNewset.appendChild(div);
+  //         coverImg = document.querySelectorAll(".cover");
+  //         playIcon = document.querySelectorAll(".name i");
+  //         nameSinger = document.querySelectorAll(".name div p:nth-child(2)");
 
-  //   let sample = `<div class="cover" id="${id}">
-  //                   <img src="assets/file/cover/${songs[i].cover}" alt="img ${songs[i].cover}">
-  //                   <span></span>
-  //                 </div>
-  //                 <div class="name">
-  //                   <i class="fa fa-play-circle" id="${id}"></i>
-  //                   <div>
-  //                       <p>${songs[i].name}</p>
-  //                       <p id="${id}">${songs[i].singer}</p>
-  //                   </div>
-  //                 </div>`;
+  //       }
+  //     }
 
-  //   div.innerHTML = sample;
-  //   listMusic.appendChild(div);
-  //   coverImg = document.querySelectorAll(".cover");
-  //   playIcon = document.querySelectorAll(".name i");
-  //   nameSinger = document.querySelectorAll(".name div p:nth-child(2)");
+  //     for (let [key, value] of formData) {
+  //       formData.delete(key, value);
+  //     }
 
-  //   playIconFun();
-  // }
+  //   });
 
   function playIconFun() {
     playIcon.forEach((element) => {
@@ -733,7 +738,12 @@ function all() {
 
     coverImg.forEach((element) => {
       element.addEventListener("click", () => {
-        location.assign("#mp3");
+
+        let data = newsetArray.find((x) => x.id == element.id);
+       
+       
+        // location.assign("#mp3");
+
       });
     });
 

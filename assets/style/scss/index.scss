@@ -335,7 +335,6 @@ header {
     overflow: hidden;
 
     .cover {
-        height: 10rem;
         position: relative;
 
         img {
@@ -445,7 +444,7 @@ header {
     }
 
     .header-container-music {
-        padding: 0 1.5rem;
+        padding: 0 1rem;
 
         span {
             @include fontSizeWeightColor(18px, 900, $whiteColor);

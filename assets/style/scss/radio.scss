@@ -10,7 +10,7 @@
 }
 
 .body-Radio {
-    @include widthHeight(8rem, 8rem);
+    @include widthHeight(10rem, 10rem);
     position: relative;
 
     >p {
@@ -29,7 +29,7 @@
 }
 
 .bodyBtn-PlayRadio {
-    @include widthHeight(8rem, 8rem);
+    @include widthHeight(10rem, 10rem);
     position: relative;
 }
 
@@ -110,6 +110,7 @@
     }
 
     .bodyBtn-PlayRadio {
+        @include widthHeight(7.5rem,7.5rem);
         position: absolute;
         left: 0;
         top: 0;

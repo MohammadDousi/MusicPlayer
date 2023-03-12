@@ -13,8 +13,8 @@
 }
 
 .body-Radio {
-  width: 8rem;
-  height: 8rem;
+  width: 10rem;
+  height: 10rem;
   position: relative;
 }
 .body-Radio > p {
@@ -35,8 +35,8 @@
 }
 
 .bodyBtn-PlayRadio {
-  width: 8rem;
-  height: 8rem;
+  width: 10rem;
+  height: 10rem;
   position: relative;
 }
 
@@ -106,6 +106,8 @@
     position: unset;
   }
   .bodyBtn-PlayRadio {
+    width: 7.5rem;
+    height: 7.5rem;
     position: absolute;
     left: 0;
     top: 0;

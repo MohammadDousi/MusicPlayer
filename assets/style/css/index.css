@@ -413,7 +413,6 @@ header {
   overflow: hidden;
 }
 .item-list-music .cover {
-  height: 10rem;
   position: relative;
 }
 .item-list-music .cover img {
@@ -551,7 +550,7 @@ header {
     margin-top: 1rem;
   }
   .header-container-music {
-    padding: 0 1.5rem;
+    padding: 0 1rem;
   }
   .header-container-music span {
     font-size: 18px;

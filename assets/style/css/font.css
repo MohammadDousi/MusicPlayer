@@ -4,42 +4,40 @@
 	font-family: Roboto;
 	font-style: normal;
 	font-weight: 900;
-	src: url('../font/Roboto/Roboto-Black.ttf');
+	src: url('/assets/font/Roboto/Roboto-Black.ttf');
 }
 
 @font-face {
 	font-family: Roboto;
 	font-style: normal;
 	font-weight: 700;
-	src: url('../font/Roboto/Roboto-Bold.ttf');
+	src: url('/assets/font/Roboto/Roboto-Bold.ttf');
 }
 
 @font-face {
 	font-family: Roboto;
 	font-style: normal;
 	font-weight: 600;
-	src: url('../font/Roboto/Roboto-Medium.ttf');
+	src: url('/assets/font/Roboto/Roboto-Medium.ttf');
 }
 
 @font-face {
 	font-family: Roboto;
 	font-style: normal;
 	font-weight: 500;
-	src: url('../font/Roboto/Roboto-Regular.ttf');
+	src: url('/assets/font/Roboto/Roboto-Regular.ttf');
 }
-
 
 @font-face {
 	font-family: Roboto;
 	font-style: normal;
 	font-weight: 400;
-	src: url('../font/Roboto/Roboto-Light.ttf');
+	src: url('/assets/font/Roboto/Roboto-Light.ttf');
 }
-
 
 @font-face {
 	font-family: Roboto;
 	font-style: normal;
 	font-weight: 300;
-	src: url('../font/Roboto/Roboto-Thin.ttf');
+	src: url('/assets/font/Roboto/Roboto-Thin.ttf');
 }

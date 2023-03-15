@@ -580,10 +580,9 @@ function all() {
       );
       clearToListItem = document.querySelectorAll(".clear-item-playlist");
       btn_play = document.querySelectorAll(".play-item-playlist");
-
-      // fun_item_playlist();
-      fun_clearToListItem();
     }
+    fun_item_playlist();
+    fun_clearToListItem();
   }
 
   function fun_item_playlist() {
@@ -620,11 +619,10 @@ function all() {
   function fun_clearToListItem() {
     clearToListItem.forEach((element) => {
       element.addEventListener("click", () => {
-
         if (element.id != idOnplay) {
           const removeById = (arr, id) => {
             const requiredIndex = arr.findIndex((el) => {
-              return el.id === String(id);
+              return el.id == String(id);
             });
             if (requiredIndex === -1) {
               return false;
@@ -633,10 +631,8 @@ function all() {
           };
 
           removeById(playlist, element.id);
-
           updatePlaylist();
         }
-
       });
     });
   }

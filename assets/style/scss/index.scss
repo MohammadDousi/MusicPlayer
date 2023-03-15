@@ -706,7 +706,7 @@ header {
 }
 
 .play-item-playlist {
-    @extend .clear-item-playlist ;
+    @extend .clear-item-playlist;
     font-size: 22px;
     margin-left: .5rem
 }
@@ -753,14 +753,16 @@ header {
     }
 
     .clear-item-playlist {
-        padding: .5rem;
+        padding: .8rem;
         z-index: 999;
+
+        background-color: $accentColorDarker;
     }
-    
+
     .play-item-playlist {
         display: none;
     }
-    
+
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////

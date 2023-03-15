@@ -892,8 +892,9 @@ header {
     color: #ffffff;
   }
   .clear-item-playlist, .play-item-playlist {
-    padding: 0.5rem;
+    padding: 0.8rem;
     z-index: 999;
+    background-color: #ff982b;
   }
   .play-item-playlist {
     display: none;

@@ -3,8 +3,7 @@
 include('config.php');
 
 // include $_SERVER['DOCUMENT_ROOT'] . "/assets/php/config.php";
-// include $_SERVER['DOCUMENT_ROOT']."/API/jdf.php";
-
+// include $_SERVER['DOCUMENT_ROOT'] . "/assets/php/jdf.php";
 
 if (isset($_POST['fun'])) {
 

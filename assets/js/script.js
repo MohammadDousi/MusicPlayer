@@ -620,6 +620,8 @@ function all() {
   function fun_clearToListItem() {
     clearToListItem.forEach((element) => {
       element.addEventListener("click", () => {
+
+        alert("hi"+element.id);
         if (element.id != idOnplay) {
           const removeById = (arr, id) => {
             const requiredIndex = arr.findIndex((el) => {

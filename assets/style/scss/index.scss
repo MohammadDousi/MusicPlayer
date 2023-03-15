@@ -578,7 +578,7 @@ header {
     @include widthHeight(22rem, calc(100% - 4.5rem));
     @include displayFlex(none, column, nowrap, flex-start, center, center);
     @include colRowGap(0, 0);
-    background-color: rgb(7, 8, 24, .95);
+    background-color: rgb(7, 8, 24, .99);
     position: fixed;
     left: 0;
     top: 0;
@@ -752,6 +752,12 @@ header {
 
     }
 
+    .clear-item-playlist {
+        margin: 1rem;
+        padding: .5rem;
+        background-color: bisque;
+    }
+
     .play-item-playlist {
         display: none;
     }
@@ -770,7 +776,7 @@ header {
 .player {
     @include widthHeight(100%, 4.5rem);
     padding: 0.5rem 1.5rem;
-    background-color: rgb(7, 8, 24, .95);
+    background-color: rgb(7, 8, 24, .99);
     @include displayFlex(flex, row, nowrap, center, center, center);
     @include colRowGap(1rem, 0);
     position: fixed;

@@ -893,6 +893,7 @@ header {
   }
   .clear-item-playlist, .play-item-playlist {
     padding: 0.5rem;
+    z-index: 999;
   }
   .play-item-playlist {
     display: none;

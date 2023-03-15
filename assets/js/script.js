@@ -581,7 +581,7 @@ function all() {
       clearToListItem = document.querySelectorAll(".clear-item-playlist");
       btn_play = document.querySelectorAll(".play-item-playlist");
 
-      fun_item_playlist();
+      // fun_item_playlist();
       fun_clearToListItem();
     }
   }
@@ -621,7 +621,6 @@ function all() {
     clearToListItem.forEach((element) => {
       element.addEventListener("click", () => {
 
-        alert("hi"+element.id);
         if (element.id != idOnplay) {
           const removeById = (arr, id) => {
             const requiredIndex = arr.findIndex((el) => {
@@ -637,6 +636,7 @@ function all() {
 
           updatePlaylist();
         }
+
       });
     });
   }

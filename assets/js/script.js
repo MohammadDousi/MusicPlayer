@@ -76,12 +76,12 @@ function loadJS(address) {
   document.body.appendChild(scriptEle);
 }
 
-
 function all() {
   let isPlaying,
     current_Time,
     playListIndex = 0,
-    idOnplay,time_onplay;
+    idOnplay,
+    time_onplay;
 
   let songs = [
     {
@@ -200,7 +200,6 @@ function all() {
   // loadSong(songs[songIndex - 1]);
 
   function loadSong(song) {
-
     cover.src = "assets/file/cover/" + song.cover;
     name_curr_music.innerText = song.name;
     singer_curr_music.innerText = song.singer;
@@ -343,7 +342,6 @@ function all() {
       min_dur = "0" + min_dur;
     }
     time_all_music.innerText = Math.floor(duration / 60) + ":" + min_dur;
-
   }
 
   function setProgress(e) {
@@ -526,14 +524,11 @@ function all() {
     clearToListItem;
 
   function addToPlayList(id) {
-    // loadSong(songs[songs.findIndex((x) => x.id == id)]);
-
     switch (loadSongFromArray) {
       case "newset":
         loadSong(newsetArray[newsetArray.findIndex((x) => x.id == id)]);
         break;
     }
-    // console.log(`${loadSongFromArray}`);
 
     playSong();
 
@@ -594,7 +589,13 @@ function all() {
   function fun_item_playlist() {
     item_playlist_div.forEach((element) => {
       element.addEventListener("click", () => {
-        loadSong(songs[songs.findIndex((x) => x.id == element.id)]);
+        switch (loadSongFromArray) {
+          case "newset":
+            loadSong(
+              newsetArray[newsetArray.findIndex((x) => x.id == element.id)]
+            );
+            break;
+        }
         playSong();
         let index = playlist.indexOf(element.id);
         playListIndex = index;
@@ -602,9 +603,14 @@ function all() {
     });
     btn_play.forEach((element) => {
       element.addEventListener("click", () => {
-        loadSong(songs[songs.findIndex((x) => x.id == element.id)]);
+        switch (loadSongFromArray) {
+          case "newset":
+            loadSong(
+              newsetArray[newsetArray.findIndex((x) => x.id == element.id)]
+            );
+            break;
+        }
         playSong();
-
         let index = playlist.indexOf(element.id);
         playListIndex = index;
       });
@@ -615,10 +621,18 @@ function all() {
     clearToListItem.forEach((element) => {
       element.addEventListener("click", () => {
         if (element.id != idOnplay) {
-          const index = playlist.indexOf(element.id);
-          if (index > -1) {
-            playlist.splice(index, 1);
-          }
+          const removeById = (arr, id) => {
+            const requiredIndex = arr.findIndex((el) => {
+              return el.id === String(id);
+            });
+            if (requiredIndex === -1) {
+              return false;
+            }
+            return !!arr.splice(requiredIndex, 1);
+          };
+
+          removeById(playlist, element.id);
+
           updatePlaylist();
         }
       });
@@ -739,12 +753,9 @@ function all() {
 
     coverImg.forEach((element) => {
       element.addEventListener("click", () => {
-
         let data = newsetArray.find((x) => x.id == element.id);
-       
-       
-        // location.assign("#mp3");
 
+        // location.assign("#mp3");
       });
     });
 
@@ -752,6 +763,34 @@ function all() {
       element.addEventListener("click", () => {});
     });
   }
+
+  let btnNewSetPlayAll = document.getElementById("btnNewSetPlayAll");
+  btnNewSetPlayAll.addEventListener("click", (e) => {
+    loadSongFromArray = "newset";
+
+    for (var i = 0; i < newsetArray.length; i++) {
+      const foundSong = playlist.find((x) => x.id == newsetArray[i].id);
+
+      if (!foundSong) {
+        const addArray = newsetArray.find((x) => x.id == newsetArray[i].id);
+
+        playlist.push({
+          id: addArray.id,
+          name: addArray.name,
+          cover: addArray.cover,
+          singer: addArray.singer,
+        });
+
+        updatePlaylist();
+      }
+    }
+
+    // if (newsetArray) {
+    //   for (var i = 0; i < newsetArray.length; i++) {
+    //     addToPlayList(newsetArray[i].id);
+    //   }
+    // }
+  });
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////

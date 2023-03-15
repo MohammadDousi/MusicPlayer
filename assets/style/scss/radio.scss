@@ -12,11 +12,6 @@
 .body-Radio {
     @include widthHeight(10rem, 10rem);
     position: relative;
-
-    >p {
-        @include fontSizeWeightColor(18px,500,rgba($color:$whiteColor,$alpha:.5));
-        margin-top: 1.5rem;
-    }
 }
 
 .img-PlayRadio {

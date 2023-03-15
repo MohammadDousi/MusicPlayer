@@ -17,12 +17,6 @@
   height: 10rem;
   position: relative;
 }
-.body-Radio > p {
-  font-size: 18px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.5);
-  margin-top: 1.5rem;
-}
 
 .img-PlayRadio {
   width: 100%;

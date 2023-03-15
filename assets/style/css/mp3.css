@@ -7,6 +7,7 @@
   align-content: center;
   justify-content: space-between;
   align-items: center;
+  -moz-column-gap: 2rem;
   column-gap: 2rem;
   row-gap: 2rem;
   border-radius: 20px;
@@ -14,12 +15,15 @@
   margin: 0 0 2rem 0;
   overflow: hidden;
 }
+
 .box-info > img {
   width: 28%;
   height: 100%;
   border-radius: 20px;
+  -o-object-fit: cover;
   object-fit: cover;
 }
+
 .box-info > div {
   width: 70%;
   height: 100%;
@@ -29,17 +33,20 @@
   align-content: center;
   justify-content: center;
   align-items: flex-start;
+  -moz-column-gap: 0;
   column-gap: 0;
   row-gap: 2rem;
   padding: 0 3.5rem 0 0;
   overflow: hidden;
 }
+
 .box-info > div .date-play-like-box,
 .box-info > div .name-box,
 .box-info > div .btn-box,
 .box-info > div .track-artist-box {
   width: 100%;
   height: auto;
+  -moz-column-gap: 0.7rem;
   column-gap: 0.7rem;
   row-gap: 0.2rem;
 }
@@ -65,11 +72,13 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
+
 .name-box > p {
   font-size: 26px;
   font-weight: 600;
   color: #ffffff;
 }
+
 .name-box > p:nth-child(2) {
   font-size: 18px;
   font-weight: 400;
@@ -85,6 +94,7 @@
   justify-content: flex-start;
   align-items: center;
 }
+
 .btn-box button {
   display: flex;
   flex-direction: row;
@@ -92,6 +102,7 @@
   align-content: center;
   justify-content: center;
   align-items: center;
+  -moz-column-gap: 0.5rem;
   column-gap: 0.5rem;
   row-gap: 0;
   font-size: 14px;
@@ -107,6 +118,7 @@
   font-weight: 500;
   color: #ffffff;
 }
+
 .btn-box button:hover {
   background-color: #F8AE5E;
   border: 1px solid #F8AE5E;
@@ -120,18 +132,22 @@
   align-content: center;
   justify-content: flex-start;
   align-items: center;
+  -moz-column-gap: 0.3rem !important;
   column-gap: 0.3rem !important;
 }
+
 .track-artist-box p {
   font-size: 12px;
   font-weight: 500;
   color: #ffffff;
   opacity: 0.5;
 }
+
 .track-artist-box p:nth-child(2) {
   opacity: 1;
   cursor: pointer;
 }
+
 .track-artist-box p:nth-child(2):hover {
   text-decoration: underline;
 }
@@ -146,6 +162,7 @@
   justify-content: flex-start;
   align-items: center;
 }
+
 .lyrics-details .btn-details {
   width: 100%;
   height: auto;
@@ -155,6 +172,7 @@
   align-content: center;
   justify-content: center;
   align-items: center;
+  -moz-column-gap: 0;
   column-gap: 0;
   row-gap: 0.5rem;
   font-size: 14px;
@@ -162,13 +180,16 @@
   color: #ffffff;
   cursor: pointer;
 }
+
 .lyrics-details .btn-details:hover {
   color: #F8AE5E;
 }
+
 .lyrics-details .btn-details i {
   transform: rotate(90deg);
   writing-mode: vertical-rl;
 }
+
 .lyrics-details .body-details {
   width: 100%;
   height: 0;
@@ -178,6 +199,7 @@
   overflow: hidden;
   transition: all 0.3s ease;
 }
+
 .lyrics-details .body-details p {
   opacity: 0.8;
   line-height: 1.8rem;
@@ -197,6 +219,7 @@
   .box-info > img {
     width: 100%;
     height: 100%;
+    -o-object-fit: cover;
     object-fit: cover;
   }
   .box-info > div {
@@ -220,6 +243,7 @@
     align-content: center;
     justify-content: space-between;
     align-items: center;
+    -moz-column-gap: 0.5rem;
     column-gap: 0.5rem;
     row-gap: 0;
   }
@@ -233,6 +257,7 @@
   .box-info > div .track-artist-box {
     width: 100%;
     height: auto;
+    -moz-column-gap: 0.7rem;
     column-gap: 0.7rem;
     row-gap: 0.2rem;
   }
@@ -263,11 +288,14 @@
   border-radius: 20px;
   overflow: hidden;
 }
+
 .form-download img {
   width: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
   animation: anim-form-download 0.5s 1 both;
 }
+
 .form-download h3 {
   width: 100%;
   font-size: 14px;
@@ -285,11 +313,13 @@
   align-content: center;
   justify-content: center;
   align-items: center;
+  -moz-column-gap: 1rem;
   column-gap: 1rem;
   row-gap: 0;
   padding: 0.5rem 0 2.5rem 0;
   animation: anim-form-download 0.3s 1 both;
 }
+
 .div-btn-download #download {
   display: flex;
   flex-direction: row;
@@ -297,6 +327,7 @@
   align-content: center;
   justify-content: center;
   align-items: center;
+  -moz-column-gap: 0.5rem;
   column-gap: 0.5rem;
   row-gap: 0;
   font-size: 14px;
@@ -309,9 +340,11 @@
   transition: all 0.2s ease-in-out;
   letter-spacing: 0.05rem;
 }
+
 .div-btn-download #download:hover {
   background-color: #ff982b;
 }
+
 .div-btn-download #close-download {
   display: flex;
   flex-direction: row;
@@ -319,6 +352,7 @@
   align-content: center;
   justify-content: center;
   align-items: center;
+  -moz-column-gap: 0.5rem;
   column-gap: 0.5rem;
   row-gap: 0;
   font-size: 14px;
@@ -331,10 +365,12 @@
   letter-spacing: 0.05rem;
   border: 1px solid transparent;
 }
+
 .div-btn-download #close-download:hover {
   color: #F8AE5E;
   border: 1px solid #F8AE5E;
 }
+
 .div-btn-download button {
   font-size: 14px;
   font-weight: 500;
@@ -355,10 +391,11 @@
     align-content: center;
     justify-content: center;
     align-items: center;
+    -moz-column-gap: 0;
     column-gap: 0;
     row-gap: 1rem;
     padding-bottom: 1rem;
   }
-}
+} 
 
 /*# sourceMappingURL=mp3.css.map */

@@ -567,8 +567,8 @@ function all() {
                         </div>
                   </div>
                   <div>
-                  <i class="fa fa-trash title-2 btn-item" id=${playlist[i].id}></i>
-                  <i class="fa fa-circle-play title-2 btn-item" id=${playlist[i].id}></i>
+                  <i class="fa fa-trash clear-item-playlist" id=${playlist[i].id}></i>
+                  <i class="fa fa-circle-play play-item-playlist" id=${playlist[i].id}></i>
                   </div>`;
 
       div.innerHTML = sample;
@@ -578,8 +578,8 @@ function all() {
       item_playlist_div = document.querySelectorAll(
         ".item-playlist-onplay> div"
       );
-      clearToListItem = document.querySelectorAll(".btn-item:nth-child(1)");
-      btn_play = document.querySelectorAll(".btn-item:nth-child(2)");
+      clearToListItem = document.querySelectorAll(".clear-item-playlist");
+      btn_play = document.querySelectorAll(".play-item-playlist");
 
       fun_item_playlist();
       fun_clearToListItem();

@@ -268,7 +268,7 @@ header {
     scroll-snap-stop: always;
   }
   .item-board img {
-    width: 19rem;
+    width: 21rem;
     height: 100%;
   }
   .dots-board {
@@ -280,7 +280,7 @@ header {
     height: 10rem;
   }
   .item-board img {
-    width: 17rem;
+    width: 19rem;
     height: 100%;
   }
 }
@@ -689,7 +689,7 @@ header {
   align-items: center;
   column-gap: 0;
   row-gap: 0;
-  background-color: rgba(7, 8, 24, 0.9);
+  background-color: rgba(7, 8, 24, 0.95);
   position: fixed;
   left: 0;
   top: 0;
@@ -841,17 +841,17 @@ header {
   opacity: 0.5;
 }
 
-.btn-item {
-  text-align: left;
+.clear-item-playlist, .play-item-playlist {
   font-size: 14px;
   font-weight: 400;
   color: #ffffff;
   opacity: 0.4;
 }
-.btn-item:hover {
+.clear-item-playlist:hover, .play-item-playlist:hover {
   opacity: 1;
 }
-.btn-item:nth-child(2) {
+
+.play-item-playlist {
   font-size: 22px;
   margin-left: 0.5rem;
 }
@@ -861,8 +861,17 @@ header {
     width: 100%;
     height: calc(100% - 12rem);
   }
+  .list-music-onplay {
+    height: auto;
+    column-gap: 0;
+    row-gap: 0.2rem;
+    overflow: auto;
+    overflow: -moz-scrollbars-none;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
   .item-playlist-onplay {
-    padding: 0.8rem 3.5rem;
+    padding: 0.8rem 2rem;
   }
   .item-playlist-onplay img {
     width: 3.5rem;
@@ -882,7 +891,10 @@ header {
     font-weight: 300;
     color: #ffffff;
   }
-  .btn-item:nth-child(2) {
+  .clear-item-playlist, .play-item-playlist {
+    padding: 0.5rem;
+  }
+  .play-item-playlist {
     display: none;
   }
 }
@@ -890,7 +902,7 @@ header {
   width: 100%;
   height: 4.5rem;
   padding: 0.5rem 1.5rem;
-  background-color: rgba(7, 8, 24, 0.9);
+  background-color: rgba(7, 8, 24, 0.95);
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

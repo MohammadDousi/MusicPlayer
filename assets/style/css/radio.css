@@ -7,6 +7,7 @@
   align-content: center;
   justify-content: flex-start;
   align-items: center;
+  -moz-column-gap: 1.5rem;
   column-gap: 1.5rem;
   row-gap: 1.5rem;
   padding-top: 1.5rem;
@@ -50,24 +51,28 @@
   z-index: 998;
   animation: animBtRadio 0s ease-in-out 0s infinite normal forwards;
 }
+
 .btn-PlayRadio:nth-child(2) {
   scale: 1.4;
   z-index: 1;
   animation-duration: 3s;
   background-color: rgba(20, 22, 46, 0.2);
 }
+
 .btn-PlayRadio:nth-child(3) {
   scale: 1.8;
   z-index: 2;
   animation-duration: 5s;
   background-color: rgba(20, 22, 46, 0.15);
 }
+
 .btn-PlayRadio:nth-child(4) {
   scale: 2;
   z-index: 2;
   animation-duration: 3s;
   background-color: rgba(255, 255, 255, 0.05);
 }
+
 @keyframes animBtRadio {
   0%, 50%, 100% {
     opacity: 1;
@@ -76,7 +81,6 @@
     opacity: 0;
   }
 }
-
 @media (min-width: 0px) and (max-width: 420px) {
   .container-radio {
     width: 100%;
@@ -109,6 +113,6 @@
   .btn-PlayRadio {
     font-size: 40px;
   }
-}
+} 
 
 /*# sourceMappingURL=radio.css.map */

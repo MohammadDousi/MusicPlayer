@@ -891,11 +891,6 @@ header {
     font-weight: 300;
     color: #ffffff;
   }
-  .clear-item-playlist, .play-item-playlist {
-    padding: 0.8rem;
-    z-index: 999;
-    background-color: #ff982b;
-  }
   .play-item-playlist {
     display: none;
   }

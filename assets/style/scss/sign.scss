@@ -37,39 +37,41 @@
         width: 6rem;
         object-fit: cover;
         border-radius: 100%;
-        animation: myAnim 26s ease-in-out 0s infinite normal forwards;    }
+        animation: myAnim 26s ease-in-out 0s infinite normal forwards;
+    }
 
-        @keyframes myAnim {
-            0%,
-            100% {
-                transform: rotate(0deg);
-                transform-origin: 50% 50%;
-            }
-        
-            10% {
-                transform: rotate(8deg);
-            }
-        
-            20%,
-            40%,
-            60% {
-                transform: rotate(-10deg);
-            }
-        
-            30%,
-            50%,
-            70% {
-                transform: rotate(10deg);
-            }
-        
-            80% {
-                transform: rotate(-8deg);
-            }
-        
-            90% {
-                transform: rotate(8deg);
-            }
+    @keyframes myAnim {
+
+        0%,
+        100% {
+            transform: rotate(0deg);
+            transform-origin: 50% 50%;
         }
+
+        10% {
+            transform: rotate(8deg);
+        }
+
+        20%,
+        40%,
+        60% {
+            transform: rotate(-10deg);
+        }
+
+        30%,
+        50%,
+        70% {
+            transform: rotate(10deg);
+        }
+
+        80% {
+            transform: rotate(-8deg);
+        }
+
+        90% {
+            transform: rotate(8deg);
+        }
+    }
 
     .title-sign {
         @include widthHeight(auto, auto);
@@ -94,37 +96,36 @@
             @include inputText;
         }
 
-        .forget-login {
-            @include widthHeight(100%, auto);
-            @include displayFlex(flex, row, nowrap, space-between, center, center);
-            margin-top: 1rem;
+    }
+}
 
-            >p {
-                @include fontSizeWeightColor(14px, 300, $whiteColor);
-                opacity: .5;
-                cursor: pointer;
+.forget-login {
+    @include widthHeight(100%, auto);
+    @include displayFlex(flex, row, nowrap, space-between, center, center);
+    margin-top: 1rem;
 
-                &:hover{
-                    opacity: 1;
-                }
-            }
+    >p {
+        @include fontSizeWeightColor(14px, 300, $whiteColor);
+        opacity: .5;
+        cursor: pointer;
 
-            >button {
-                @include btnStyleNormal;
-                padding: .8rem 4rem;
-
-            }
+        &:hover {
+            opacity: 1;
         }
+    }
+
+    >button {
+        @include btnStyleNormal;
+        padding: .8rem 4rem;
 
     }
 }
 
 #section-FormSignUp {
-    @extend #section-FormSignIn ;
+    @extend #section-FormSignIn;
     width: 70%;
-    display: none ;
+    display: none;
 }
-
 
 .goto-sign-up {
     @include displayFlex(flex, row, nowrap, center, center, center);
@@ -136,11 +137,54 @@
         margin: 0;
     }
 
-    > button {
+    >button {
         @include btnStyleNonBorder;
         // padding-left: 0;
         // padding-right: 0;
         margin-left: .3rem;
     }
+
+}
+
+
+@include media(Mobile) {
+
+    .content-sign {
+        flex-direction: column;
+        justify-content: start;
+        @include colRowGap(0rem, 1rem);
+        padding: 2rem 1rem;
+    }
+
+    #img-sign {
+        display: none;
+    }
+
+    #section-FormSignIn {
+        width: 100%;
+        height: auto;
+        padding: 1.5rem 1rem;
+    }
+
+    .forget-login {
+        flex-direction: column-reverse;
+        justify-content: center;
+        margin-top: 1rem;
+
+        >button {
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    .goto-sign-up {
+        flex-direction: column;
+        margin-top: 1rem;
+
+        >button {
+            margin-left: 0;
+        }
+
+    }
+
 
 }

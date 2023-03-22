@@ -142,7 +142,7 @@ function all() {
     },
   ];
 
-  let url = "assets/php/function.php",
+  let url = "assets/php/function",
     formData = new FormData();
 
   // id , name , cover , singer
